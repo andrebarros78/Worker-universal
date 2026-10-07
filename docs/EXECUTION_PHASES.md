@@ -34,6 +34,9 @@ A fresh process can determine root, objective, current phase, next phase, baseli
 ### Objective
 Create the stable extension plane without contaminating Rust core.
 
+Complete requirement authority: `docs/F02_CAPABILITY_MAP.md` (CAP-001..CAP-045).
+Implementation/proof mapping: `docs/F02_IMPLEMENTATION_MATRIX.md`.
+
 ### Deliverables
 - Capability Registry.
 - Adapter SDK and versioned contracts.

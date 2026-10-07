@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://timed-mission-agent.local/contracts/adapter-manifest.schema.json",
+  "title":"Adapter Manifest",
+  "type":"object",
+  "required":["schema_version","adapter_id","adapter_version","sdk_contract_version","capabilities"],
+  "properties":{
+    "schema_version":{"const":1},
+    "adapter_id":{"type":"string","minLength":1},
+    "adapter_version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "sdk_contract_version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "capabilities":{"type":"array","items":{"type":"string"},"minItems":1},
+    "config_schema_ref":{"type":["string","null"]},
+    "secret_refs":{"type":"array","items":{"type":"string"}},
+    "simulation_supported":{"type":"boolean"}
+  },
+  "additionalProperties":false
+}

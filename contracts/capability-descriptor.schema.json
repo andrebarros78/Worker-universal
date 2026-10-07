@@ -1,0 +1,31 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://timed-mission-agent.local/contracts/capability-descriptor.schema.json",
+  "title":"Capability Descriptor",
+  "type":"object",
+  "required":["schema_version","id","kind","contract_version","lifecycle","readiness","promotion","side_effect","idempotency","max_concurrency","cost_microunits","p95_ms","reliability_bps"],
+  "properties":{
+    "schema_version":{"const":1},
+    "id":{"type":"string","minLength":1},
+    "kind":{"enum":["native","api","mcp","browser","computer","vision","document","research","llm","storage","notification"]},
+    "provider":{"type":["string","null"]},
+    "contract_version":{"type":"string","pattern":"^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "dependencies":{"type":"array","items":{"type":"string"}},
+    "permissions":{"type":"array","items":{"type":"string"}},
+    "fallbacks":{"type":"array","items":{"type":"string"}},
+    "lifecycle":{"enum":["unavailable","starting","healthy","degraded","failed","disabled"]},
+    "readiness":{"enum":["installed","configured","authenticated","operational"]},
+    "promotion":{"enum":["experimental","tested","qualified","production"]},
+    "side_effect":{"enum":["none","read","write","submit","external_effect"]},
+    "idempotency":{"enum":["safe","conditional","unsafe"]},
+    "max_concurrency":{"type":"integer","minimum":1},
+    "resource_locks":{"type":"array","items":{"type":"string"}},
+    "cost_microunits":{"type":"integer","minimum":0},
+    "p95_ms":{"type":"integer","minimum":0},
+    "reliability_bps":{"type":"integer","minimum":0,"maximum":10000},
+    "evidence_types":{"type":"array","items":{"type":"string"}},
+    "transport":{"enum":["native","api","mcp","browser","computer","ai"]},
+    "config_ref":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}

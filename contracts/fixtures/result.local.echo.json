@@ -1,0 +1,13 @@
+{
+  "schema_version":1,
+  "invocation_id":"inv-001",
+  "capability_id":"native.local.echo",
+  "status":"succeeded",
+  "elapsed_ms":1,
+  "payload":{"value":"ping"},
+  "errors":[],
+  "evidence":[{"type":"structured_result","ref":"inline"}],
+  "artifact_refs":[],
+  "session_ref":null,
+  "cost_microunits":0
+}

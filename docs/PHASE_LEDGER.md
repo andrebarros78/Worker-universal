@@ -6,8 +6,8 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 |---|---|---|---|---|---|
 | F00 | v0.2.0 | Polyglot deterministic baseline | CLOSED | — | PROOF_POLYGLOT_V0_2.md |
 | F01 | v0.2.1 | Concept + executive continuity baseline | CLOSED | F00 | PROOF_F01_EXECUTIVE_CONTINUITY.md |
-| F02 | v0.2.x | Capability foundation | IN_PROGRESS | F01 | registry/policy/secrets/artifacts/sessions contracts + tests |
-| F03 | v0.3.x | Vision/OCR & document intelligence | PLANNED | F02 | invoice corpus benchmark + calibrated confidence |
+| F02 | v0.2.2 | Capability foundation | CLOSED | F01 | PROOF_F02_CAPABILITY_FOUNDATION.md |
+| F03 | v0.3.x | Vision/OCR & document intelligence | IN_PROGRESS | F02 | invoice corpus benchmark + calibrated confidence |
 | F04 | v0.4.x | Isolated Browser/Computer Worker | PLANNED | F02 | browser sandbox + DOM/form/download/upload + evidence + recovery |
 | F05 | v0.5.x | Durable mission runtime | PLANNED | F02,F04 | queue + idempotency + leases/fencing + reboot/restart recovery |
 | F06 | v0.5.x | Planner/Router/Knowledge | PLANNED | F02,F03,F04,F05 | capability routing + deterministic fallbacks + research contracts |
@@ -23,6 +23,6 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 
 Exactly one phase is active:
 
-`F02 — CAPABILITY_FOUNDATION — IN_PROGRESS`
+`F03 — VISION_OCR_DOCUMENT_INTELLIGENCE — IN_PROGRESS`
 
-Do not begin F03 implementation until F02 exit gate is proven and F02 is CLOSED.
+Do not begin F04 as the main lane until F03 exit gate is proven and F03 is CLOSED.

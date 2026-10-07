@@ -14,3 +14,4 @@ availability-elixir/_build/
 availability-elixir/deps/
 supervisor-go/tma-supervisor.exe
 web-worker/node_modules/
+foundation-rust/target/

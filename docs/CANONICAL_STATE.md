@@ -25,55 +25,59 @@ Machine-readable execution pointer:
 - proof: `docs\PROOF_POLYGLOT_V0_2.md`
 
 ### F01 — CONCEPT_EXECUTIVE_CONTINUITY_BASELINE — CLOSED
-- conceptual project persisted;
-- executive project persisted;
-- F00→F13 phases persisted;
-- machine-readable state persisted;
-- continuation gate integrated into baseline verification;
+- tag: `v0.2.1-executive-baseline`
 - proof: `docs\PROOF_F01_EXECUTIVE_CONTINUITY.md`
-- release tag: `v0.2.1-executive-baseline`
+
+### F02 — CAPABILITY_FOUNDATION — CLOSED
+- complete conceptual map: CAP-001..CAP-045;
+- provider-neutral Rust foundation;
+- Registry/Discovery/Resolver/Lifecycle/Policy;
+- Secrets/Artifacts/Sessions;
+- Tool Bus + invocation/result/error contracts;
+- Adapter SDK surfaces for Go/TypeScript/Python;
+- providerless/offline boot proven;
+- Rust core purity proven;
+- `F02_VERIFY=PASS`;
+- full `BASELINE_VERIFY=PASS`;
+- proof: `docs\PROOF_F02_CAPABILITY_FOUNDATION.md`;
+- release tag: `v0.2.2-capability-foundation`.
 
 ## Current phase
 
-`F02 — CAPABILITY_FOUNDATION — IN_PROGRESS`
+`F03 — VISION_OCR_DOCUMENT_INTELLIGENCE — IN_PROGRESS`
 
 Objective:
-Build the clean extension plane without adding provider/platform dependencies to Rust core.
+Build image ingestion, OCR/vision ensemble and provider interfaces, document/invoice extraction, field reconciliation, confidence calibration, selective re-read and a benchmark corpus.
 
 Required deliverables:
-- Capability Registry;
-- Adapter SDK/contracts;
-- capability health model;
-- Policy/Eligibility interface;
-- SecretProvider/Vault interface;
-- Artifact Store interface;
-- Session Manager interface;
-- Tool Bus descriptors for native/API/MCP/browser/AI capabilities;
-- local/offline implementations sufficient for deterministic tests.
+- image ingestion and normalization;
+- OCR provider interface through F02 capabilities;
+- local OCR adapter;
+- optional remote vision adapter interface;
+- invoice/document field schema;
+- multi-source field conflict resolver;
+- confidence calibration;
+- selective re-read for uncertain fields;
+- versioned labeled benchmark corpus;
+- accuracy/latency/reliability report.
 
 Exit gate:
-- optional provider absence does not prevent boot;
-- registry health/fallback tests pass;
-- incompatible contracts are rejected;
-- secrets never enter mission/evidence serialization;
-- capability selection fixtures are deterministic;
-- full baseline gate remains PASS;
-- F02 proof + commit + state advancement exist.
+- benchmark corpus versioned;
+- field accuracy threshold defined and met;
+- p50/p95/p99 measured;
+- invalid CNPJ/date/arithmetic caught;
+- calibration evaluated;
+- provider outage/fallback tested;
+- no OCR/LLM provider becomes mission authority;
+- full baseline remains PASS;
+- F03 proof + clean commit + state advancement exist.
 
 ## Next phase
 
-`F03 — VISION_OCR_DOCUMENT_INTELLIGENCE — PLANNED`
-
-Do not implement F03 as the main lane before F02 closes.
+`F04 — ISOLATED_BROWSER_COMPUTER_WORKER — PLANNED`
 
 ## Terminal phase
 
 `F13 — PERSONAL_PRODUCTION_V1_0`
 
 Terminal label: `MISSION_PROVEN`.
-
-The complete conceptual and executive definition is in:
-- `docs\PROJECT_CONCEPT.md`
-- `docs\EXECUTIVE_PROJECT.md`
-- `docs\EXECUTION_PHASES.md`
-- `docs\PHASE_LEDGER.md`

@@ -1,0 +1,23 @@
+{
+  "schema_version":1,
+  "id":"native.local.echo",
+  "kind":"native",
+  "provider":"local",
+  "contract_version":"1.0.0",
+  "dependencies":[],
+  "permissions":[],
+  "fallbacks":[],
+  "lifecycle":"healthy",
+  "readiness":"operational",
+  "promotion":"production",
+  "side_effect":"none",
+  "idempotency":"safe",
+  "max_concurrency":16,
+  "resource_locks":[],
+  "cost_microunits":0,
+  "p95_ms":5,
+  "reliability_bps":10000,
+  "evidence_types":["structured_result"],
+  "transport":"native",
+  "config_ref":null
+}

@@ -6,8 +6,8 @@ The detailed authority is `docs/EXECUTION_PHASES.md`. This file is the compact r
 |---|---|---|
 | F00 | v0.2.0 | Polyglot deterministic baseline — CLOSED |
 | F01 | v0.2.1 | Concept/executive continuity — CLOSED |
-| F02 | v0.2.x | Capability foundation — IN_PROGRESS |
-| F03 | v0.3.x | Vision/OCR/document intelligence |
+| F02 | v0.2.2 | Capability foundation — CLOSED |
+| F03 | v0.3.x | Vision/OCR/document intelligence — IN_PROGRESS |
 | F04 | v0.4.x | Isolated Browser/Computer Worker |
 | F05 | v0.5.x | Durable mission runtime |
 | F06 | v0.5.x | Planner/Router/Knowledge |

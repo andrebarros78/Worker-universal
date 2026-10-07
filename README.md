@@ -37,3 +37,11 @@ The gate fails if a verified runtime layer fails. SPARK is reported separately u
 - `docs/CANONICAL_STATE.md` — exact continuation point.
 
 Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STATE.md`.
+
+## Current canonical phase
+
+F02 Capability Foundation is closed and proven under `docs/PROOF_F02_CAPABILITY_FOUNDATION.md`.
+
+Current construction lane: `F03 VISION_OCR_DOCUMENT_INTELLIGENCE`.
+
+Always confirm the live pointer in `state/EXECUTION_STATE.json`.

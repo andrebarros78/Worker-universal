@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://timed-mission-agent.local/contracts/tool-result.schema.json",
+  "title":"Tool Result",
+  "type":"object",
+  "required":["schema_version","invocation_id","capability_id","status","elapsed_ms","errors","evidence"],
+  "properties":{
+    "schema_version":{"const":1},
+    "invocation_id":{"type":"string"},
+    "capability_id":{"type":"string"},
+    "status":{"enum":["succeeded","failed","cancelled","deadline_exceeded","needs_review"]},
+    "elapsed_ms":{"type":"number","minimum":0},
+    "payload":{},
+    "errors":{"type":"array","items":{"type":"object"}},
+    "evidence":{"type":"array","items":{"type":"object"}},
+    "artifact_refs":{"type":"array","items":{"type":"string"}},
+    "session_ref":{"type":["string","null"]},
+    "cost_microunits":{"type":"integer","minimum":0}
+  },
+  "additionalProperties":false
+}

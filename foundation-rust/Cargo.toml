@@ -1,0 +1,13 @@
+[package]
+name = "tma-foundation"
+version = "0.2.2"
+edition = "2024"
+description = "Provider-neutral capability foundation for Timed Mission Agent."
+
+[lib]
+name = "tma_foundation"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tma-foundation"
+path = "src/main.rs"

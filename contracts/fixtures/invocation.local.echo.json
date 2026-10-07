@@ -1,0 +1,14 @@
+{
+  "schema_version":1,
+  "invocation_id":"inv-001",
+  "mission_id":"mission-offline",
+  "capability_id":"native.local.echo",
+  "contract_version":"1.0.0",
+  "timeout_ms":100,
+  "idempotency_key":"offline-001",
+  "session_ref":null,
+  "secret_refs":[],
+  "artifact_refs":[],
+  "simulation":true,
+  "payload":{"value":"ping"}
+}

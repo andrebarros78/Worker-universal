@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://timed-mission-agent.local/contracts/tool-invocation.schema.json",
+  "title":"Tool Invocation",
+  "type":"object",
+  "required":["schema_version","invocation_id","mission_id","capability_id","contract_version","timeout_ms","payload"],
+  "properties":{
+    "schema_version":{"const":1},
+    "invocation_id":{"type":"string","minLength":1},
+    "mission_id":{"type":"string","minLength":1},
+    "capability_id":{"type":"string","minLength":1},
+    "contract_version":{"type":"string"},
+    "timeout_ms":{"type":"integer","minimum":1},
+    "idempotency_key":{"type":["string","null"]},
+    "session_ref":{"type":["string","null"]},
+    "secret_refs":{"type":"array","items":{"type":"string"}},
+    "artifact_refs":{"type":"array","items":{"type":"string"}},
+    "simulation":{"type":"boolean"},
+    "payload":{}
+  },
+  "additionalProperties":false
+}

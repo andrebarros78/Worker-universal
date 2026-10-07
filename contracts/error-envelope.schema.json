@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://timed-mission-agent.local/contracts/error-envelope.schema.json",
+  "title":"Stable Tool Error",
+  "type":"object",
+  "required":["class","retryable","message"],
+  "properties":{
+    "class":{"enum":["network_failure","session_expired","element_moved","layout_changed","rate_limit","worker_crash","model_timeout","low_confidence","validation_failed","duplicate_risk","deadline_risk","external_dependency","permission_denied","contract_mismatch","cancelled","unknown"]},
+    "retryable":{"type":"boolean"},
+    "message":{"type":"string"},
+    "detail_code":{"type":["string","null"]}
+  },
+  "additionalProperties":false
+}
