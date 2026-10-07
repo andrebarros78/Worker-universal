@@ -10,20 +10,20 @@
     "proof": "docs/PROOF_POLYGLOT_V0_2.md"
   },
   "last_closed_phase": {
-    "id": "F02",
-    "name": "CAPABILITY_FOUNDATION",
-    "proof": "docs/PROOF_F02_CAPABILITY_FOUNDATION.md",
-    "release_tag": "v0.2.2-capability-foundation"
-  },
-  "current_phase": {
     "id": "F03",
     "name": "VISION_OCR_DOCUMENT_INTELLIGENCE",
-    "status": "IN_PROGRESS",
-    "objective": "Build image ingestion, OCR/vision provider interfaces, invoice field extraction, multi-source reconciliation, confidence calibration, selective re-read and a versioned benchmark corpus without making any OCR/LLM provider mission authority."
+    "proof": "docs/PROOF_F03_VISION_OCR.md",
+    "release_tag": "v0.3.0-vision-ocr"
   },
-  "next_phase": {
+  "current_phase": {
     "id": "F04",
     "name": "ISOLATED_BROWSER_COMPUTER_WORKER",
+    "status": "IN_PROGRESS",
+    "objective": "Build isolated browser and computer-worker execution with DOM observation, semantic locators, form actions, upload/download, session persistence, evidence capture, layout-drift recovery and operator-desktop isolation."
+  },
+  "next_phase": {
+    "id": "F05",
+    "name": "DURABLE_MISSION_RUNTIME",
     "status": "PLANNED"
   },
   "terminal_phase": {
@@ -46,5 +46,5 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-07T18:11:39-03:00"
+  "updated_at": "2026-10-07T19:24:10-03:00"
 }

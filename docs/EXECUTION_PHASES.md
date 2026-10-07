@@ -62,6 +62,9 @@ Implementation/proof mapping: `docs/F02_IMPLEMENTATION_MATRIX.md`.
 ### Objective
 Make timed document tasks accurate and measurable.
 
+Complete requirement authority: `docs/F03_VISION_OCR_MAP.md` (VIS-001..VIS-035).
+Implementation/proof mapping: `docs/F03_IMPLEMENTATION_MATRIX.md`.
+
 ### Deliverables
 - image ingestion;
 - preprocessing;

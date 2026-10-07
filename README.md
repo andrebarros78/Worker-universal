@@ -40,8 +40,8 @@ Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STA
 
 ## Current canonical phase
 
-F02 Capability Foundation is closed and proven under `docs/PROOF_F02_CAPABILITY_FOUNDATION.md`.
+F03 Vision/OCR & Document Intelligence is closed and proven under `docs/PROOF_F03_VISION_OCR.md`.
 
-Current construction lane: `F03 VISION_OCR_DOCUMENT_INTELLIGENCE`.
+Current construction lane: `F04 ISOLATED_BROWSER_COMPUTER_WORKER`.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

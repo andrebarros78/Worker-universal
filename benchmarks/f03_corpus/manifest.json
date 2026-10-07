@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "dataset": "tma-f03-synthetic-invoices",
+  "version": "1.0.0",
+  "generator": "scripts/generate_f03_corpus.py",
+  "license": "project-generated synthetic data",
+  "cases": [
+    {
+      "id": "invoice-001",
+      "file": "invoice-001-clean.png",
+      "variant": "clean",
+      "expected_fields": {
+        "cnpj": "73.925.184/0001-74",
+        "numero": "100001",
+        "data_emissao": "01/10/2026",
+        "subtotal": "113,25",
+        "desconto": "2,50",
+        "acrescimos": "1,75",
+        "total": "112,50"
+      }
+    },
+    {
+      "id": "invoice-002",
+      "file": "invoice-002-low_contrast.png",
+      "variant": "low_contrast",
+      "expected_fields": {
+        "cnpj": "73.925.184/0002-55",
+        "numero": "100002",
+        "data_emissao": "02/10/2026",
+        "subtotal": "126,50",
+        "desconto": "5,00",
+        "acrescimos": "3,50",
+        "total": "125,00"
+      }
+    },
+    {
+      "id": "invoice-003",
+      "file": "invoice-003-mild_blur.png",
+      "variant": "mild_blur",
+      "expected_fields": {
+        "cnpj": "73.925.184/0003-36",
+        "numero": "100003",
+        "data_emissao": "03/10/2026",
+        "subtotal": "139,75",
+        "desconto": "7,50",
+        "acrescimos": "0,00",
+        "total": "132,25"
+      }
+    },
+    {
+      "id": "invoice-004",
+      "file": "invoice-004-compressed.png",
+      "variant": "compressed",
+      "expected_fields": {
+        "cnpj": "73.925.184/0004-17",
+        "numero": "100004",
+        "data_emissao": "04/10/2026",
+        "subtotal": "153,00",
+        "desconto": "0,00",
+        "acrescimos": "1,75",
+        "total": "154,75"
+      }
+    },
+    {
+      "id": "invoice-005",
+      "file": "invoice-005-clean.png",
+      "variant": "clean",
+      "expected_fields": {
+        "cnpj": "73.925.184/0005-06",
+        "numero": "100005",
+        "data_emissao": "05/10/2026",
+        "subtotal": "166,25",
+        "desconto": "2,50",
+        "acrescimos": "3,50",
+        "total": "167,25"
+      }
+    },
+    {
+      "id": "invoice-006",
+      "file": "invoice-006-low_contrast.png",
+      "variant": "low_contrast",
+      "expected_fields": {
+        "cnpj": "73.925.184/0006-89",
+        "numero": "100006",
+        "data_emissao": "06/10/2026",
+        "subtotal": "179,50",
+        "desconto": "5,00",
+        "acrescimos": "0,00",
+        "total": "174,50"
+      }
+    },
+    {
+      "id": "invoice-007",
+      "file": "invoice-007-mild_blur.png",
+      "variant": "mild_blur",
+      "expected_fields": {
+        "cnpj": "73.925.184/0007-60",
+        "numero": "100007",
+        "data_emissao": "07/10/2026",
+        "subtotal": "192,75",
+        "desconto": "7,50",
+        "acrescimos": "1,75",
+        "total": "187,00"
+      }
+    },
+    {
+      "id": "invoice-008",
+      "file": "invoice-008-compressed.png",
+      "variant": "compressed",
+      "expected_fields": {
+        "cnpj": "73.925.184/0008-40",
+        "numero": "100008",
+        "data_emissao": "08/10/2026",
+        "subtotal": "206,00",
+        "desconto": "0,00",
+        "acrescimos": "3,50",
+        "total": "209,50"
+      }
+    },
+    {
+      "id": "invoice-009",
+      "file": "invoice-009-clean.png",
+      "variant": "clean",
+      "expected_fields": {
+        "cnpj": "73.925.184/0009-21",
+        "numero": "100009",
+        "data_emissao": "09/10/2026",
+        "subtotal": "219,25",
+        "desconto": "2,50",
+        "acrescimos": "0,00",
+        "total": "216,75"
+      }
+    },
+    {
+      "id": "invoice-010",
+      "file": "invoice-010-low_contrast.png",
+      "variant": "low_contrast",
+      "expected_fields": {
+        "cnpj": "73.925.184/0010-65",
+        "numero": "100010",
+        "data_emissao": "10/10/2026",
+        "subtotal": "232,50",
+        "desconto": "5,00",
+        "acrescimos": "1,75",
+        "total": "229,25"
+      }
+    },
+    {
+      "id": "invoice-011",
+      "file": "invoice-011-mild_blur.png",
+      "variant": "mild_blur",
+      "expected_fields": {
+        "cnpj": "73.925.184/0011-46",
+        "numero": "100011",
+        "data_emissao": "11/10/2026",
+        "subtotal": "245,75",
+        "desconto": "7,50",
+        "acrescimos": "3,50",
+        "total": "241,75"
+      }
+    },
+    {
+      "id": "invoice-012",
+      "file": "invoice-012-compressed.png",
+      "variant": "compressed",
+      "expected_fields": {
+        "cnpj": "73.925.184/0012-27",
+        "numero": "100012",
+        "data_emissao": "12/10/2026",
+        "subtotal": "259,00",
+        "desconto": "0,00",
+        "acrescimos": "0,00",
+        "total": "259,00"
+      }
+    },
+    {
+      "id": "invoice-013",
+      "file": "invoice-013-clean.png",
+      "variant": "clean",
+      "expected_fields": {
+        "cnpj": "73.925.184/0013-08",
+        "numero": "100013",
+        "data_emissao": "13/10/2026",
+        "subtotal": "272,25",
+        "desconto": "2,50",
+        "acrescimos": "1,75",
+        "total": "271,50"
+      }
+    },
+    {
+      "id": "invoice-014",
+      "file": "invoice-014-low_contrast.png",
+      "variant": "low_contrast",
+      "expected_fields": {
+        "cnpj": "73.925.184/0014-99",
+        "numero": "100014",
+        "data_emissao": "14/10/2026",
+        "subtotal": "285,50",
+        "desconto": "5,00",
+        "acrescimos": "3,50",
+        "total": "284,00"
+      }
+    },
+    {
+      "id": "invoice-015",
+      "file": "invoice-015-mild_blur.png",
+      "variant": "mild_blur",
+      "expected_fields": {
+        "cnpj": "73.925.184/0015-70",
+        "numero": "100015",
+        "data_emissao": "15/10/2026",
+        "subtotal": "298,75",
+        "desconto": "7,50",
+        "acrescimos": "0,00",
+        "total": "291,25"
+      }
+    },
+    {
+      "id": "invoice-016",
+      "file": "invoice-016-compressed.png",
+      "variant": "compressed",
+      "expected_fields": {
+        "cnpj": "73.925.184/0016-50",
+        "numero": "100016",
+        "data_emissao": "16/10/2026",
+        "subtotal": "312,00",
+        "desconto": "0,00",
+        "acrescimos": "1,75",
+        "total": "313,75"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "adapter_id": "vision.ocr.tesseract",
+  "adapter_version": "1.0.0",
+  "sdk_contract_version": "1.0.0",
+  "capabilities": ["vision.ocr.tesseract", "document.invoice.extract"],
+  "config_schema_ref": null,
+  "secret_refs": [],
+  "simulation_supported": true
+}

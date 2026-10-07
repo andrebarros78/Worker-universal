@@ -1,0 +1,576 @@
+{
+  "schema_version": 1,
+  "dataset": "tma-f03-synthetic-invoices",
+  "dataset_version": "1.0.0",
+  "provider": "vision.ocr.tesseract",
+  "provider_version": "tesseract v5.4.0.20240606",
+  "cases": 16,
+  "fields": 112,
+  "field_accuracy": 1.0,
+  "field_accuracy_threshold": 0.97,
+  "validation_pass_rate": 1.0,
+  "validation_pass_threshold": 0.95,
+  "latency_ms": {
+    "p50": 329.2074,
+    "p95": 1427.9621,
+    "p99": 1427.9621,
+    "threshold_p99": 5000.0
+  },
+  "calibration": {
+    "fit_samples": 56,
+    "evaluation_samples": 56,
+    "raw_ece": 0.04961858482142863,
+    "calibrated_ece": 0.024959415584415723,
+    "non_regression_margin": 0.02
+  },
+  "selective_reread": {
+    "cases": 4,
+    "exercised": true
+  },
+  "cases_detail": [
+    {
+      "id": "invoice-001",
+      "variant": "clean",
+      "latency_ms": 294.8499,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9983766233766235,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 293.5506
+        }
+      ]
+    },
+    {
+      "id": "invoice-002",
+      "variant": "low_contrast",
+      "latency_ms": 329.2074,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 328.2942
+        }
+      ]
+    },
+    {
+      "id": "invoice-003",
+      "variant": "mild_blur",
+      "latency_ms": 279.8071,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9642857142857143,
+        "acrescimos": 0.9642857142857143,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 278.8517
+        }
+      ]
+    },
+    {
+      "id": "invoice-004",
+      "variant": "compressed",
+      "latency_ms": 776.1183,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235,
+        "desconto": 0.9642857142857143
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 299.5266
+        },
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "reread",
+          "elapsed_ms": 475.3144,
+          "fields": [
+            "desconto"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invoice-005",
+      "variant": "clean",
+      "latency_ms": 294.3401,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9642857142857143,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 293.4436
+        }
+      ]
+    },
+    {
+      "id": "invoice-006",
+      "variant": "low_contrast",
+      "latency_ms": 310.6591,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9642857142857143,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 309.8367
+        }
+      ]
+    },
+    {
+      "id": "invoice-007",
+      "variant": "mild_blur",
+      "latency_ms": 294.3165,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9642857142857143,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 293.5224
+        }
+      ]
+    },
+    {
+      "id": "invoice-008",
+      "variant": "compressed",
+      "latency_ms": 838.4282,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235,
+        "desconto": 0.9642857142857143
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 306.1564
+        },
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "reread",
+          "elapsed_ms": 531.0027,
+          "fields": [
+            "desconto"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invoice-009",
+      "variant": "clean",
+      "latency_ms": 595.4411,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9642857142857143,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 594.5034
+        }
+      ]
+    },
+    {
+      "id": "invoice-010",
+      "variant": "low_contrast",
+      "latency_ms": 323.8605,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 322.5966
+        }
+      ]
+    },
+    {
+      "id": "invoice-011",
+      "variant": "mild_blur",
+      "latency_ms": 290.3982,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9642857142857143,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 289.323
+        }
+      ]
+    },
+    {
+      "id": "invoice-012",
+      "variant": "compressed",
+      "latency_ms": 1179.5593,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "acrescimos": 0.9642857142857143,
+        "total": 0.9983766233766235,
+        "desconto": 0.9642857142857143
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 317.1557
+        },
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "reread",
+          "elapsed_ms": 860.9556,
+          "fields": [
+            "desconto"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invoice-013",
+      "variant": "clean",
+      "latency_ms": 498.4454,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 496.7112
+        }
+      ]
+    },
+    {
+      "id": "invoice-014",
+      "variant": "low_contrast",
+      "latency_ms": 543.6346,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 542.3321
+        }
+      ]
+    },
+    {
+      "id": "invoice-015",
+      "variant": "mild_blur",
+      "latency_ms": 477.176,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "desconto": 0.9642857142857143,
+        "acrescimos": 0.9642857142857143,
+        "total": 0.9983766233766235
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 475.5844
+        }
+      ]
+    },
+    {
+      "id": "invoice-016",
+      "variant": "compressed",
+      "latency_ms": 1427.9621,
+      "correctness": {
+        "cnpj": true,
+        "numero": true,
+        "data_emissao": true,
+        "subtotal": true,
+        "desconto": true,
+        "acrescimos": true,
+        "total": true
+      },
+      "validation_ok": true,
+      "validation_errors": [],
+      "confidence": {
+        "cnpj": 0.9642857142857143,
+        "numero": 0.9983766233766235,
+        "data_emissao": 0.9983766233766235,
+        "subtotal": 0.9983766233766235,
+        "acrescimos": 0.9983766233766235,
+        "total": 0.9983766233766235,
+        "desconto": 0.9642857142857143
+      },
+      "provider_runs": [
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "default",
+          "elapsed_ms": 544.7715
+        },
+        {
+          "provider": "vision.ocr.tesseract",
+          "profile": "reread",
+          "elapsed_ms": 878.1318,
+          "fields": [
+            "desconto"
+          ]
+        }
+      ]
+    }
+  ]
+}

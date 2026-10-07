@@ -2,6 +2,7 @@
 
 Project: TIMED-MISSION-AGENT
 Canonical root: `D:\TIMED-MISSION-AGENT`
+GitHub: `https://github.com/andrebarros78/Worker-universal.git`
 
 ## Sovereign objective
 
@@ -20,7 +21,6 @@ Machine-readable execution pointer:
 ## Closed baselines
 
 ### F00 — POLYGLOT_V0_2 — CLOSED
-- commit: `b2e0d814acefcc8dbc31323d77e5e9671aa7b15c`
 - tag: `v0.2.0-polyglot-baseline`
 - proof: `docs\PROOF_POLYGLOT_V0_2.md`
 
@@ -29,52 +29,60 @@ Machine-readable execution pointer:
 - proof: `docs\PROOF_F01_EXECUTIVE_CONTINUITY.md`
 
 ### F02 — CAPABILITY_FOUNDATION — CLOSED
-- complete conceptual map: CAP-001..CAP-045;
-- provider-neutral Rust foundation;
-- Registry/Discovery/Resolver/Lifecycle/Policy;
-- Secrets/Artifacts/Sessions;
-- Tool Bus + invocation/result/error contracts;
-- Adapter SDK surfaces for Go/TypeScript/Python;
-- providerless/offline boot proven;
-- Rust core purity proven;
-- `F02_VERIFY=PASS`;
+- tag: `v0.2.2-capability-foundation`
+- proof: `docs\PROOF_F02_CAPABILITY_FOUNDATION.md`
+
+### F03 — VISION_OCR_DOCUMENT_INTELLIGENCE — CLOSED
+- complete requirement map: VIS-001..VIS-035;
+- local Tesseract OCR provider;
+- provider-neutral OCR/document interfaces;
+- image preprocessing + selective reread;
+- multi-source field reconciliation;
+- confidence calibration;
+- deterministic CNPJ/date/currency/arithmetic validation;
+- versioned 16-case / 4-variant corpus;
+- 112/112 benchmark fields correct;
+- validation 16/16;
+- final observed p99 1427.96 ms;
+- calibration ECE 0.0496 → 0.0250;
+- 4 selective-reread cases;
+- `F03_VERIFY=PASS`;
 - full `BASELINE_VERIFY=PASS`;
-- proof: `docs\PROOF_F02_CAPABILITY_FOUNDATION.md`;
-- release tag: `v0.2.2-capability-foundation`.
+- proof: `docs\PROOF_F03_VISION_OCR.md`;
+- release tag: `v0.3.0-vision-ocr`.
 
 ## Current phase
 
-`F03 — VISION_OCR_DOCUMENT_INTELLIGENCE — IN_PROGRESS`
+`F04 — ISOLATED_BROWSER_COMPUTER_WORKER — IN_PROGRESS`
 
 Objective:
-Build image ingestion, OCR/vision ensemble and provider interfaces, document/invoice extraction, field reconciliation, confidence calibration, selective re-read and a benchmark corpus.
+Build isolated browser/computer execution without taking over the operator's main desktop.
 
 Required deliverables:
-- image ingestion and normalization;
-- OCR provider interface through F02 capabilities;
-- local OCR adapter;
-- optional remote vision adapter interface;
-- invoice/document field schema;
-- multi-source field conflict resolver;
-- confidence calibration;
-- selective re-read for uncertain fields;
-- versioned labeled benchmark corpus;
-- accuracy/latency/reliability report.
+- Playwright browser process;
+- isolated browser profiles;
+- DOM observation;
+- semantic element locator;
+- click/type/form/upload/download;
+- screenshot/DOM evidence;
+- session persistence;
+- layout-drift recovery;
+- Computer Worker contract for isolated Windows/VM session.
 
 Exit gate:
-- benchmark corpus versioned;
-- field accuracy threshold defined and met;
-- p50/p95/p99 measured;
-- invalid CNPJ/date/arithmetic caught;
-- calibration evaluated;
-- provider outage/fallback tested;
-- no OCR/LLM provider becomes mission authority;
+- synthetic sites/forms;
+- upload/download proof;
+- browser crash recovery;
+- session restore;
+- moved-element recovery;
+- deadline enforcement;
+- operator desktop remains independent;
 - full baseline remains PASS;
-- F03 proof + clean commit + state advancement exist.
+- F04 proof + clean commit + state advancement exist.
 
 ## Next phase
 
-`F04 — ISOLATED_BROWSER_COMPUTER_WORKER — PLANNED`
+`F05 — DURABLE_MISSION_RUNTIME — PLANNED`
 
 ## Terminal phase
 

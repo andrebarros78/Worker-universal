@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "vision.ocr.tesseract",
+  "kind": "vision",
+  "provider": "tesseract",
+  "contract_version": "1.0.0",
+  "dependencies": [],
+  "permissions": [],
+  "fallbacks": [],
+  "lifecycle": "healthy",
+  "readiness": "operational",
+  "promotion": "qualified",
+  "side_effect": "read",
+  "idempotency": "safe",
+  "max_concurrency": 4,
+  "resource_locks": [],
+  "cost_microunits": 0,
+  "p95_ms": 1500,
+  "reliability_bps": 9900,
+  "evidence_types": ["ocr_text", "field_confidence"],
+  "transport": "native",
+  "config_ref": null
+}

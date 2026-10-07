@@ -25,6 +25,20 @@ class ValidatorTests(unittest.TestCase):
         })
         self.assertTrue(result.ok, result.errors)
 
+    def test_invalid_date(self):
+        fields = {
+            "cnpj": "11.222.333/0001-81",
+            "numero": "123",
+            "data_emissao": "31/02/2026",
+            "subtotal": "100,00",
+            "desconto": "0,00",
+            "acrescimos": "0,00",
+            "total": "100,00",
+        }
+        result = validate_invoice(fields)
+        self.assertFalse(result.ok)
+        self.assertIn("invalid:data_emissao", result.errors)
+
     def test_invoice_mismatch(self):
         result = validate_invoice({
             "cnpj": "04.252.011/0001-10",
