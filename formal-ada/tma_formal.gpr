@@ -1,0 +1,4 @@
+project Tma_Formal is
+   for Source_Dirs use (".");
+   for Object_Dir use "obj";
+end Tma_Formal;

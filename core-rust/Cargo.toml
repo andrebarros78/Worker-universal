@@ -1,0 +1,13 @@
+[package]
+name = "tma-core"
+version = "0.2.0"
+edition = "2024"
+description = "Deterministic state, SLA and invariant core for Timed Mission Agent."
+
+[lib]
+name = "tma_core"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tma-core"
+path = "src/main.rs"

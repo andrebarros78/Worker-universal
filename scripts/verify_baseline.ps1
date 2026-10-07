@@ -1,0 +1,80 @@
+$ErrorActionPreference = 'Continue'
+$root = Split-Path -Parent $PSScriptRoot
+$fail = 0
+
+function Run-Step {
+    param(
+        [string]$Name,
+        [scriptblock]$Command
+    )
+    Write-Output "=== $Name ==="
+    & $Command
+    if ($LASTEXITCODE -ne 0) {
+        Write-Output "FAILED_STEP=$Name EXIT=$LASTEXITCODE"
+        $script:fail = 1
+    }
+}
+
+$env:RUSTUP_HOME = 'C:\Users\andre\.rustup'
+$env:CARGO_HOME = 'C:\Users\andre\.cargo'
+$env:PATH = "C:\Users\andre\.cargo\bin;C:\Program Files\Erlang OTP\bin;C:\Program Files\Elixir\bin;$env:PATH"
+
+$cargo = 'C:\Users\andre\.cargo\bin\cargo.exe'
+$go = 'C:\Program Files\Go\bin\go.exe'
+$node = 'C:\Program Files\Volta\node.exe'
+$python = Join-Path $root '.venv\Scripts\python.exe'
+$mix = 'C:\Program Files\Elixir\bin\mix.bat'
+
+Push-Location (Join-Path $root 'core-rust')
+Run-Step 'RUST_FMT' { & $cargo fmt --check }
+Run-Step 'RUST_CLIPPY' { & $cargo clippy --all-targets -- -D warnings }
+Run-Step 'RUST_TEST' { & $cargo test }
+Run-Step 'RUST_SELF_TEST' { & $cargo run --quiet -- self-test }
+Pop-Location
+
+Push-Location (Join-Path $root 'supervisor-go')
+Run-Step 'GO_FMT' {
+    $unformatted = & $go fmt ./...
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($unformatted) {
+        Write-Output $unformatted
+        Write-Output 'GO_FMT_MODIFIED_FILES'
+        exit 3
+    }
+}
+Run-Step 'GO_VET' { & $go vet ./... }
+Run-Step 'GO_TEST' { & $go test ./... }
+Run-Step 'GO_SELF_TEST' { & $go run ./cmd/tma-supervisor self-test }
+Pop-Location
+
+Push-Location (Join-Path $root 'web-worker')
+Run-Step 'NODE_TS_TEST' { & $node --test test/worker.test.ts }
+Run-Step 'NODE_SELF_TEST' { & $node src/worker.ts self-test }
+Pop-Location
+
+$env:PYTHONPATH = Join-Path $root 'src'
+Run-Step 'PYTHON_COMPILE' { & $python -m compileall -q (Join-Path $root 'src') }
+Run-Step 'PYTHON_TEST' { & $python -m unittest discover -s (Join-Path $root 'tests') -v }
+Run-Step 'CONTRACT_TEST' { & $python (Join-Path $root 'scripts\verify_contracts.py') }
+
+Push-Location (Join-Path $root 'availability-elixir')
+Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }
+Run-Step 'ELIXIR_TEST' { & $mix test }
+Pop-Location
+
+$gnatprove = Get-Command gnatprove.exe -ErrorAction SilentlyContinue
+if ($gnatprove) {
+    Push-Location (Join-Path $root 'formal-ada')
+    Run-Step 'SPARK_PROOF' { & $gnatprove.Source -P tma_formal.gpr --level=2 }
+    Pop-Location
+} else {
+    Write-Output '=== SPARK_PROOF ==='
+    Write-Output 'SPARK_STATUS=SOURCE_READY_NOT_PROVEN GNATPROVE_NOT_INSTALLED'
+}
+
+if ($fail -eq 0) {
+    Write-Output 'BASELINE_VERIFY=PASS'
+} else {
+    Write-Output 'BASELINE_VERIFY=FAIL'
+}
+exit $fail

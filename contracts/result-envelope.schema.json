@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/result-envelope.schema.json",
+  "title": "Timed Mission Result",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "task_id", "status", "elapsed_ms", "confidence", "errors"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mission_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "status": {"enum": ["succeeded", "failed", "deadline_exceeded", "needs_review"]},
+    "elapsed_ms": {"type": "number", "minimum": 0},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "fields": {"type": "object"},
+    "errors": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "timed-mission-agent"
+version = "0.1.0"
+description = "Timed microtask execution core with SLA, validation, recovery and evidence."
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+timed-mission-agent = "timed_mission_agent.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

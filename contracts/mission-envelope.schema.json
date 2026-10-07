@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/mission-envelope.schema.json",
+  "title": "Timed Mission Envelope",
+  "type": "object",
+  "required": ["schema_version", "mission_id", "task_id", "deadline_ms", "kind", "payload"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "deadline_ms": {"type": "integer", "minimum": 1},
+    "kind": {"type": "string", "minLength": 1},
+    "payload": {},
+    "expected_fields": {"type": ["object", "null"]},
+    "trace_id": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

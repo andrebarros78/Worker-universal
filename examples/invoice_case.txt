@@ -1,0 +1,7 @@
+CNPJ: 04.252.011/0001-10
+Numero: 1001
+Data: 07/10/2026
+Subtotal: 1.250,00
+Desconto: 50,00
+Acrescimos: 0,00
+Total: 1.200,00
