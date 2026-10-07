@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CORPUS = ROOT / "benchmarks" / "f03_corpus"
 MANIFEST = CORPUS / "manifest.json"
-REPORT = ROOT / "benchmarks" / "f03_benchmark_report.json"
+REPORT = Path(os.environ.get("TMA_F03_REPORT_PATH", str(ROOT / "benchmarks" / "f03_benchmark_report.json")))
 
 manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
 report = json.loads(REPORT.read_text(encoding="utf-8"))

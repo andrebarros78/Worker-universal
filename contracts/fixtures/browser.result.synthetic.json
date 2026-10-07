@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "status": "succeeded",
+  "completed_steps": ["goto"],
+  "elapsed_ms": 100,
+  "recovery_count": 0,
+  "session_restored": false,
+  "browser_pids": [1234],
+  "evidence": [],
+  "error": null
+}

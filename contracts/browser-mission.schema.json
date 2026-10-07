@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/browser-mission.schema.json",
+  "title": "Browser Mission",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mission_id",
+    "task_id",
+    "deadline_ms",
+    "evidence_dir",
+    "session_state_path",
+    "steps"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "deadline_ms": {"type": "integer", "minimum": 1},
+    "evidence_dir": {"type": "string", "minLength": 1},
+    "session_state_path": {"type": "string", "minLength": 1},
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "timeout_ms"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {
+            "enum": [
+              "goto",
+              "observe",
+              "fill",
+              "click",
+              "upload",
+              "download",
+              "assert_text",
+              "save_session",
+              "wait"
+            ]
+          },
+          "timeout_ms": {"type": "integer", "minimum": 1},
+          "replay_safe": {"type": "boolean"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

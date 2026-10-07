@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "mission_id": "mission-f04",
+  "task_id": "browser-task",
+  "deadline_ms": 10000,
+  "evidence_dir": "runtime/f04/evidence",
+  "session_state_path": "runtime/f04/session.json",
+  "steps": [
+    {
+      "id": "goto",
+      "kind": "goto",
+      "timeout_ms": 2000,
+      "replay_safe": true
+    }
+  ]
+}

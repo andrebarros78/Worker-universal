@@ -92,6 +92,9 @@ Implementation/proof mapping: `docs/F03_IMPLEMENTATION_MATRIX.md`.
 ### Objective
 Execute web/GUI work without taking the operator desktop.
 
+Complete requirement authority: `docs/F04_BROWSER_COMPUTER_MAP.md` (BRC-001..BRC-040).
+Implementation/proof mapping: `docs/F04_IMPLEMENTATION_MATRIX.md`.
+
 ### Deliverables
 - Playwright browser process;
 - isolated browser profiles;

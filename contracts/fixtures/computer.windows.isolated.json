@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "capability_id": "computer.windows.isolated",
+  "mode": "isolated_windows_session",
+  "dedicated_session": true,
+  "native_input_isolation": "no_operator_mouse_keyboard",
+  "session_ref": null,
+  "max_runtime_ms": 60000,
+  "evidence_required": true
+}

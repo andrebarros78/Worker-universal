@@ -10,20 +10,20 @@
     "proof": "docs/PROOF_POLYGLOT_V0_2.md"
   },
   "last_closed_phase": {
-    "id": "F03",
-    "name": "VISION_OCR_DOCUMENT_INTELLIGENCE",
-    "proof": "docs/PROOF_F03_VISION_OCR.md",
-    "release_tag": "v0.3.0-vision-ocr"
-  },
-  "current_phase": {
     "id": "F04",
     "name": "ISOLATED_BROWSER_COMPUTER_WORKER",
-    "status": "IN_PROGRESS",
-    "objective": "Build isolated browser and computer-worker execution with DOM observation, semantic locators, form actions, upload/download, session persistence, evidence capture, layout-drift recovery and operator-desktop isolation."
+    "proof": "docs/PROOF_F04_BROWSER_COMPUTER.md",
+    "release_tag": "v0.4.0-isolated-browser-worker"
   },
-  "next_phase": {
+  "current_phase": {
     "id": "F05",
     "name": "DURABLE_MISSION_RUNTIME",
+    "status": "IN_PROGRESS",
+    "objective": "Make canonical mission execution survive worker/process and machine restart boundaries through durable queue/state, append-only events, checkpoints, idempotency keys, leases/fencing, duplicate rejection and deterministic reconciliation."
+  },
+  "next_phase": {
+    "id": "F06",
+    "name": "PLANNER_ROUTER_KNOWLEDGE",
     "status": "PLANNED"
   },
   "terminal_phase": {
@@ -46,5 +46,5 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-07T19:24:10-03:00"
+  "updated_at": "2026-10-07T19:56:15-03:00"
 }

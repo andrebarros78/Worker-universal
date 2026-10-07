@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/computer-worker.schema.json",
+  "title": "Isolated Computer Worker Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "capability_id",
+    "mode",
+    "dedicated_session",
+    "native_input_isolation",
+    "max_runtime_ms",
+    "evidence_required"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "capability_id": {"type": "string", "minLength": 1},
+    "mode": {"enum": ["isolated_windows_session", "vm"]},
+    "dedicated_session": {"const": true},
+    "native_input_isolation": {"const": "no_operator_mouse_keyboard"},
+    "session_ref": {"type": ["string", "null"]},
+    "max_runtime_ms": {"type": "integer", "minimum": 1},
+    "evidence_required": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

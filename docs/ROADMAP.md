@@ -1,6 +1,6 @@
 # Canonical Roadmap
 
-The detailed authority is `docs/EXECUTION_PHASES.md`. This file is the compact release view.
+The detailed authority is docs/EXECUTION_PHASES.md. This file is the compact release view.
 
 | Phase | Target | Result |
 |---|---|---|
@@ -8,8 +8,8 @@ The detailed authority is `docs/EXECUTION_PHASES.md`. This file is the compact r
 | F01 | v0.2.1 | Concept/executive continuity — CLOSED |
 | F02 | v0.2.2 | Capability foundation — CLOSED |
 | F03 | v0.3.0 | Vision/OCR/document intelligence — CLOSED |
-| F04 | v0.4.x | Isolated Browser/Computer Worker — IN_PROGRESS |
-| F05 | v0.5.x | Durable mission runtime |
+| F04 | v0.4.0 | Isolated Browser/Computer Worker — CLOSED |
+| F05 | v0.5.x | Durable mission runtime — IN_PROGRESS |
 | F06 | v0.5.x | Planner/Router/Knowledge |
 | F07 | v0.5.x | Independent Validation + Recovery |
 | F08 | v0.6.x | Training/Benchmark/Qualification gates |

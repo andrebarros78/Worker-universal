@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "browser.playwright",
+  "kind": "browser",
+  "provider": "playwright",
+  "contract_version": "1.0.0",
+  "dependencies": [],
+  "permissions": ["network.local_fixture"],
+  "fallbacks": [],
+  "lifecycle": "healthy",
+  "readiness": "operational",
+  "promotion": "qualified",
+  "side_effect": "external_effect",
+  "idempotency": "conditional",
+  "max_concurrency": 4,
+  "resource_locks": [],
+  "cost_microunits": 0,
+  "p95_ms": 2500,
+  "reliability_bps": 9900,
+  "evidence_types": ["dom", "screenshot", "download"],
+  "transport": "browser",
+  "config_ref": null
+}

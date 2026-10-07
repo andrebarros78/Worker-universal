@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from pathlib import Path
 
@@ -19,7 +20,7 @@ from timed_mission_agent.validators import validate_invoice
 
 ROOT = Path(__file__).resolve().parents[1]
 CORPUS = ROOT / "benchmarks" / "f03_corpus"
-REPORT = ROOT / "benchmarks" / "f03_benchmark_report.json"
+REPORT = Path(os.environ.get("TMA_F03_REPORT_PATH", str(ROOT / "benchmarks" / "f03_benchmark_report.json")))
 
 FIELD_ACCURACY_THRESHOLD = 0.97
 VALIDATION_PASS_THRESHOLD = 0.95

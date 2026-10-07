@@ -20,6 +20,10 @@ function Run-F03Step {
 $python = Join-Path $root '.venv\Scripts\python.exe'
 $env:PYTHONPATH = Join-Path $root 'src'
 $tesseract = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
+$previousF03ReportPath = $env:TMA_F03_REPORT_PATH
+$f03RuntimeDir = 'C:\ProgramData\SentinelX\workspace\tma-f03-runtime'
+New-Item -ItemType Directory -Force -Path $f03RuntimeDir | Out-Null
+$env:TMA_F03_REPORT_PATH = Join-Path $f03RuntimeDir 'benchmark-report.json'
 
 Run-F03Step 'DEPENDENCIES' {
     if (-not (Test-Path -LiteralPath $tesseract)) {
@@ -85,5 +89,11 @@ if ($fail -eq 0) {
     Write-Output 'F03_VERIFY=PASS'
 } else {
     Write-Output 'F03_VERIFY=FAIL'
+}
+
+if ($null -eq $previousF03ReportPath) {
+    Remove-Item Env:TMA_F03_REPORT_PATH -ErrorAction SilentlyContinue
+} else {
+    $env:TMA_F03_REPORT_PATH = $previousF03ReportPath
 }
 exit $fail

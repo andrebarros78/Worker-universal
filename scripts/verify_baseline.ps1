@@ -59,6 +59,7 @@ Run-Step 'CONTRACT_TEST' { & $python (Join-Path $root 'scripts\verify_contracts.
 Run-Step 'CONTINUITY_TEST' { & $python (Join-Path $root 'scripts\verify_continuity.py') }
 Run-Step 'F02_FOUNDATION' { & (Join-Path $root 'scripts\verify_f02.ps1') }
 Run-Step 'F03_VISION_OCR' { & (Join-Path $root 'scripts\verify_f03.ps1') }
+Run-Step 'F04_BROWSER_COMPUTER' { & (Join-Path $root 'scripts\verify_f04.ps1') }
 
 Push-Location (Join-Path $root 'availability-elixir')
 Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }

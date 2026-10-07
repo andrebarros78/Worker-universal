@@ -40,8 +40,8 @@ Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STA
 
 ## Current canonical phase
 
-F03 Vision/OCR & Document Intelligence is closed and proven under `docs/PROOF_F03_VISION_OCR.md`.
+F04 Isolated Browser/Computer Worker is closed and proven under `docs/PROOF_F04_BROWSER_COMPUTER.md`.
 
-Current construction lane: `F04 ISOLATED_BROWSER_COMPUTER_WORKER`.
+Current construction lane: `F05 DURABLE_MISSION_RUNTIME`.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

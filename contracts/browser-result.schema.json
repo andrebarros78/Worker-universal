@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/browser-result.schema.json",
+  "title": "Browser Worker Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "completed_steps",
+    "elapsed_ms",
+    "recovery_count",
+    "session_restored",
+    "browser_pids",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "status": {"enum": ["succeeded", "failed", "deadline_exceeded"]},
+    "completed_steps": {"type": "array", "items": {"type": "string"}},
+    "elapsed_ms": {"type": "number", "minimum": 0},
+    "recovery_count": {"type": "integer", "minimum": 0},
+    "session_restored": {"type": "boolean"},
+    "browser_pids": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+    "evidence": {"type": "array"},
+    "error": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}

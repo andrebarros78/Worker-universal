@@ -8,8 +8,8 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | F01 | v0.2.1 | Concept + executive continuity baseline | CLOSED | F00 | PROOF_F01_EXECUTIVE_CONTINUITY.md |
 | F02 | v0.2.2 | Capability foundation | CLOSED | F01 | PROOF_F02_CAPABILITY_FOUNDATION.md |
 | F03 | v0.3.0 | Vision/OCR & document intelligence | CLOSED | F02 | PROOF_F03_VISION_OCR.md |
-| F04 | v0.4.x | Isolated Browser/Computer Worker | IN_PROGRESS | F02 | browser sandbox + DOM/form/download/upload + evidence + recovery |
-| F05 | v0.5.x | Durable mission runtime | PLANNED | F02,F04 | queue + idempotency + leases/fencing + reboot/restart recovery |
+| F04 | v0.4.0 | Isolated Browser/Computer Worker | CLOSED | F02 | PROOF_F04_BROWSER_COMPUTER.md |
+| F05 | v0.5.x | Durable mission runtime | IN_PROGRESS | F02,F04 | queue + idempotency + leases/fencing + reboot/restart recovery |
 | F06 | v0.5.x | Planner/Router/Knowledge | PLANNED | F02,F03,F04,F05 | capability routing + deterministic fallbacks + research contracts |
 | F07 | v0.5.x | Independent Validation + Recovery | PLANNED | F03,F04,F05,F06 | validator proofs + failure taxonomy + recovery matrix |
 | F08 | v0.6.x | Training/Benchmark/Qualification gates | PLANNED | F03,F04,F07 | timed benchmark harness + pre/post registration state machines |
@@ -19,10 +19,18 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | F12 | v0.9.x | Security/formal/operational hardening | PLANNED | F11 | secret isolation + audit + GNATprove when available + recovery drills |
 | F13 | v1.0.0 | Personal production release | PLANNED | F12 | end-to-end production proof + clean runbook + MISSION_PROVEN |
 
+## Remediation records
+
+| ID | References | Status | Evidence |
+|---|---|---|---|
+| R03-01 | F03 | CLOSED | REMEDIATION_F03R1_REGRESSION_GATE_HYGIENE.md |
+
+Remediation records do not reopen a closed phase and do not create a second active construction lane.
+
 ## Current authority
 
 Exactly one phase is active:
 
-`F04 — ISOLATED_BROWSER_COMPUTER_WORKER — IN_PROGRESS`
+F05 — DURABLE_MISSION_RUNTIME — IN_PROGRESS
 
-Do not begin F05 as the main lane until F04 exit gate is proven and F04 is CLOSED.
+Do not begin F06 as the main lane until F05 exit gate is proven and F05 is CLOSED.
