@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "project": "TIMED-MISSION-AGENT",
+  "canonical_root": "D:\\TIMED-MISSION-AGENT",
+  "sovereign_objective": "Generate dependable personal income by converting eligible automatable work into completed, validated missions with minimal operator burden.",
+  "technical_baseline": {
+    "name": "POLYGLOT_V0_2",
+    "commit": "b2e0d814acefcc8dbc31323d77e5e9671aa7b15c",
+    "tag": "v0.2.0-polyglot-baseline",
+    "proof": "docs/PROOF_POLYGLOT_V0_2.md"
+  },
+  "last_closed_phase": {
+    "id": "F01",
+    "name": "CONCEPT_EXECUTIVE_CONTINUITY_BASELINE",
+    "proof": "docs/PROOF_F01_EXECUTIVE_CONTINUITY.md",
+    "release_tag": "v0.2.1-executive-baseline"
+  },
+  "current_phase": {
+    "id": "F02",
+    "name": "CAPABILITY_FOUNDATION",
+    "status": "IN_PROGRESS",
+    "objective": "Build the clean extension plane: capability registry, adapter contracts, policy/eligibility, secret interface, artifact store, session manager and tool-bus descriptors without contaminating the Rust domain core."
+  },
+  "next_phase": {
+    "id": "F03",
+    "name": "VISION_OCR_DOCUMENT_INTELLIGENCE",
+    "status": "PLANNED"
+  },
+  "terminal_phase": {
+    "id": "F13",
+    "name": "PERSONAL_PRODUCTION_V1_0",
+    "terminal_label": "MISSION_PROVEN"
+  },
+  "phase_ledger": "docs/PHASE_LEDGER.md",
+  "executive_project": "docs/EXECUTIVE_PROJECT.md",
+  "concept_project": "docs/PROJECT_CONCEPT.md",
+  "execution_phases": "docs/EXECUTION_PHASES.md",
+  "canonical_state": "docs/CANONICAL_STATE.md",
+  "continuity_entrypoint": "00_START_HERE.md",
+  "rules": "AGENTS.md",
+  "invariants": {
+    "single_canonical_root": true,
+    "single_current_phase": true,
+    "closed_phase_immutable": true,
+    "rust_core_vendor_free": true,
+    "external_capabilities_optional": true,
+    "evidence_required_for_close": true
+  },
+  "updated_at": "2026-10-07T17:58:53-03:00"
+}

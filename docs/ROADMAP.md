@@ -1,25 +1,22 @@
-# Roadmap
+# Canonical Roadmap
 
-## V0.2 — Polyglot deterministic baseline
-Rust + Go + TypeScript + Python + Elixir sources/tests; SPARK formal source; unified contracts.
+The detailed authority is `docs/EXECUTION_PHASES.md`. This file is the compact release view.
 
-## V0.3 — Vision/OCR
-Image ingestion, field ensemble, confidence calibration, invoice benchmark corpus and deterministic reconciliation.
+| Phase | Target | Result |
+|---|---|---|
+| F00 | v0.2.0 | Polyglot deterministic baseline — CLOSED |
+| F01 | v0.2.1 | Concept/executive continuity — CLOSED |
+| F02 | v0.2.x | Capability foundation — IN_PROGRESS |
+| F03 | v0.3.x | Vision/OCR/document intelligence |
+| F04 | v0.4.x | Isolated Browser/Computer Worker |
+| F05 | v0.5.x | Durable mission runtime |
+| F06 | v0.5.x | Planner/Router/Knowledge |
+| F07 | v0.5.x | Independent Validation + Recovery |
+| F08 | v0.6.x | Training/Benchmark/Qualification gates |
+| F09 | v0.6.x | Platform adapters |
+| F10 | v0.7.x | Economic Controller + Scheduler |
+| F11 | v0.8.x | Availability/concurrency hardening |
+| F12 | v0.9.x | Security/formal/operational hardening |
+| F13 | v1.0.0 | Personal production release — MISSION_PROVEN |
 
-## V0.4 — Isolated browser worker
-Remote browser process, DOM/screenshot observation, form map, per-step timeout, session persistence and evidence.
-
-## V0.5 — Durable mission runtime
-Persistent queue, idempotency keys, leases/fencing, restart/reboot reconciliation and duplicate-result rejection.
-
-## V0.6 — Economic scheduler
-Opportunity intake, expected-value scoring, cost ledger, prioritization and income/reporting dashboard.
-
-## V0.7 — Availability hardening
-Elixir/OTP outer supervision, chaos/fault injection, worker replacement, long-duration soak tests.
-
-## V0.8 — Formal invariant gate
-Install GNATprove/SPARK toolchain and prove selected deadline/state/economic invariants.
-
-## V1.0 — Personal production release
-End-to-end adapters, health/recovery, evidence, cost control and operator handoff only where externally necessary.
+Progress is phase-gated. Code presence does not equal phase completion.

@@ -56,6 +56,7 @@ $env:PYTHONPATH = Join-Path $root 'src'
 Run-Step 'PYTHON_COMPILE' { & $python -m compileall -q (Join-Path $root 'src') }
 Run-Step 'PYTHON_TEST' { & $python -m unittest discover -s (Join-Path $root 'tests') -v }
 Run-Step 'CONTRACT_TEST' { & $python (Join-Path $root 'scripts\verify_contracts.py') }
+Run-Step 'CONTINUITY_TEST' { & $python (Join-Path $root 'scripts\verify_continuity.py') }
 
 Push-Location (Join-Path $root 'availability-elixir')
 Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }

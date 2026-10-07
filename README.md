@@ -1,5 +1,7 @@
 # TIMED MISSION AGENT
 
+> New AI/chat/operator: read `00_START_HERE.md` before any implementation. The machine-readable continuation pointer is `state/EXECUTION_STATE.json`.
+
 Canonical root: `D:\TIMED-MISSION-AGENT`
 
 Personal autonomous work-execution platform for timed microtasks and future multi-step missions.

@@ -1,16 +1,32 @@
-# Baseline status
+# Baseline Status
 
-Baseline: POLYGLOT_V0_2
-Canonical root: D:\TIMED-MISSION-AGENT
+## Proven technical baseline
 
-## Required proof before sealing
+`POLYGLOT_V0_2`
 
-- Rust core compiles and tests pass.
-- Rust self-test succeeds.
-- Go supervisor tests pass.
-- Go supervisor self-test succeeds.
-- Node executes the TypeScript worker and its tests pass.
-- Python regression suite passes.
-- Elixir retry/supervision tests pass when toolchain is present.
-- Ada/SPARK source exists; formal proof is only marked proven after GNATprove is installed and run.
-- Git worktree is clean after the baseline commit and tag.
+- commit: `b2e0d814acefcc8dbc31323d77e5e9671aa7b15c`
+- tag: `v0.2.0-polyglot-baseline`
+- proof: `docs/PROOF_POLYGLOT_V0_2.md`
+
+## Proven continuity baseline
+
+`F01 CONCEPT_EXECUTIVE_CONTINUITY_BASELINE`
+
+- conceptual product definition persisted;
+- executive project persisted;
+- phase model F00→F13 persisted;
+- machine-readable execution state persisted;
+- continuity verification integrated into `scripts/verify_baseline.ps1`;
+- proof: `docs/PROOF_F01_EXECUTIVE_CONTINUITY.md`;
+- release tag: `v0.2.1-executive-baseline`.
+
+## Active construction lane
+
+`F02 CAPABILITY_FOUNDATION`
+
+No other phase is authorized as the main construction lane until F02 closes.
+
+## Formal proof status
+
+Ada/SPARK sources exist, but GNATprove is not installed. Status remains:
+`SOURCE_READY_NOT_PROVEN`.
