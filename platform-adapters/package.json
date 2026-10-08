@@ -1,0 +1,7 @@
+{
+  "name":"tma-platform-adapters",
+  "private":true,
+  "version":"0.6.1",
+  "type":"module",
+  "scripts":{"test":"node --test test/platform.test.ts test/sdk.test.ts","self-test":"node src/self_test.ts"}
+}

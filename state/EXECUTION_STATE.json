@@ -10,20 +10,20 @@
     "proof": "docs/PROOF_POLYGLOT_V0_2.md"
   },
   "last_closed_phase": {
-    "id": "F08",
-    "name": "TRAINING_BENCHMARK_QUALIFICATION_GATES",
-    "proof": "docs/PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md",
-    "release_tag": "v0.6.0-training-qualification"
-  },
-  "current_phase": {
     "id": "F09",
     "name": "PLATFORM_ADAPTERS",
-    "status": "IN_PROGRESS",
-    "objective": "Connect real work sources through provider-neutral adapters while preserving capability, qualification, policy, validation and durable-runtime authority boundaries."
+    "proof": "docs/PROOF_F09_PLATFORM_ADAPTERS.md",
+    "release_tag": "v0.6.1-platform-adapters"
   },
-  "next_phase": {
+  "current_phase": {
     "id": "F10",
     "name": "ECONOMIC_CONTROLLER_SCHEDULER",
+    "status": "IN_PROGRESS",
+    "objective": "Optimize dependable net income through durable revenue/cost accounting, expected-value scheduling, concurrency allocation, stop-loss and minimum margins."
+  },
+  "next_phase": {
+    "id": "F11",
+    "name": "AVAILABILITY_CONCURRENCY_HARDENING",
     "status": "PLANNED"
   },
   "terminal_phase": {
@@ -46,5 +46,5 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-08T08:27:04-03:00"
+  "updated_at": "2026-10-08T17:55:41-03:00"
 }

@@ -132,11 +132,30 @@ F08 TRAINING_BENCHMARK_QUALIFICATION_GATES
 - proof: docs/PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md;
 - tag target: v0.6.0-training-qualification.
 
-## Active construction lane
+## Proven Initial Platform Adapters
 
 F09 PLATFORM_ADAPTERS
+- generic_web, generic_form, generic_invoice, homeocta, 99freelas;
+- F02 Adapter SDK integration and real F04 headless browser;
+- 5/5 synthetic executions and 5/5 crash/recovery drills PASS;
+- F03 OCR / F06 research capability delegation;
+- F07-compatible DOM/screenshot integrity checks;
+- F08 Experimental/Configured quarantine;
+- live external requests, assessment and proposal submission denied;
+- 8 focused Node tests PASS;
+- F09_CONTRACTS_OK fixtures=8;
+- F09_MAP_OK requirements=50 mapped=50;
+- F09_PURITY_OK;
+- F09_VERIFY=PASS;
+- full BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F09_PLATFORM_ADAPTERS.md;
+- live provider integration NOT claimed.
 
-No other phase is authorized as the main construction lane until F09 closes.
+## Active construction lane
+
+F10 ECONOMIC_CONTROLLER_SCHEDULER
+
+No other phase is authorized as the main construction lane until F10 closes.
 
 ## Formal proof status
 

@@ -40,8 +40,8 @@ Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STA
 
 ## Current canonical phase
 
-F08 Training/Benchmark/Qualification Gates is closed and proven under `docs/PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md`.
+F09 initial governed simulation-only platform adapters are closed and proven in docs/PROOF_F09_PLATFORM_ADAPTERS.md. No live OCTA/99Freelas production integration is claimed.
 
-Current construction lane: `F09 PLATFORM_ADAPTERS`.
+Current construction lane: F10 ECONOMIC_CONTROLLER_SCHEDULER.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

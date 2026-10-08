@@ -226,6 +226,10 @@ Implementation/proof mapping: `docs/F08_IMPLEMENTATION_MATRIX.md`.
 ### Objective
 Connect real work sources without coupling them to the core.
 
+Initial adapter authority: docs/F09_PLATFORM_ADAPTERS_MAP.md (PAD-001..PAD-050).
+Implementation matrix: docs/F09_IMPLEMENTATION_MATRIX.md.
+Initial platform adapters are simulation-only; live integration requires separate authorization.
+
 ### Deliverables
 - generic_web;
 - generic_form;

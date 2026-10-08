@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "adapter_id": "99freelas",
+  "adapter_version": "0.6.1",
+  "sdk_contract_version": "1.0.0",
+  "capabilities": [
+    "browser.read",
+    "research.opportunity"
+  ],
+  "config_schema_ref": "contracts/platform-adapter-config.schema.json",
+  "secret_refs": [],
+  "simulation_supported": true
+}

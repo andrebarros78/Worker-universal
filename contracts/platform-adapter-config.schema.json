@@ -1,0 +1,20 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://timed-mission-agent.local/contracts/platform-adapter-config.schema.json",
+ "title":"Platform Adapter Policy",
+ "type":"object",
+ "required":["schemaVersion","adapterId","mode","grantedScopes","origin","eligibilityVerified","authorizationVerified","productionQualified","humanReviewed","externalEffectsApproved"],
+ "properties":{
+  "schemaVersion":{"const":1},
+  "adapterId":{"enum":["generic_web","generic_form","generic_invoice","homeocta","99freelas"]},
+  "mode":{"enum":["simulation","read_only"]},
+  "grantedScopes":{"type":"array","items":{"type":"string"}},
+  "origin":{"type":"string","minLength":1},
+  "eligibilityVerified":{"type":"boolean"},
+  "authorizationVerified":{"type":"boolean"},
+  "productionQualified":{"type":"boolean"},
+  "humanReviewed":{"type":"boolean"},
+  "externalEffectsApproved":{"type":"boolean"}
+ },
+ "additionalProperties":false
+}

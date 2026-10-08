@@ -1,0 +1,25 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://timed-mission-agent.local/contracts/platform-adapter-outcome.schema.json",
+ "title":"Platform Simulation Outcome",
+ "type":"object",
+ "required":["adapterId","status","reason","declaredSuccess","validatedEvidence","requiredEvidence","evidence","recoveryCount","executionMode","missionId","externalEffect"],
+ "properties":{
+  "adapterId":{"enum":["generic_web","generic_form","generic_invoice","homeocta","99freelas"]},
+  "status":{"enum":["simulated","rejected","failed","deadline_exceeded"]},
+  "reason":{"type":"string","minLength":1},
+  "declaredSuccess":{"type":"boolean"},
+  "validatedEvidence":{"type":"boolean"},
+  "requiredEvidence":{"type":"array","items":{"type":"string"}},
+  "evidence":{"type":"array","items":{"type":"object","required":["kind","sha256","bytes"],"properties":{
+   "kind":{"type":"string"},
+   "sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+   "bytes":{"type":"integer","minimum":1}
+  },"additionalProperties":false}},
+  "recoveryCount":{"type":"integer","minimum":0},
+  "executionMode":{"enum":["simulation","read_only"]},
+  "missionId":{"type":"string","minLength":1},
+  "externalEffect":{"const":false}
+ },
+ "additionalProperties":false
+}

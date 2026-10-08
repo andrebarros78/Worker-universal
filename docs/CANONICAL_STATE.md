@@ -143,33 +143,42 @@ Post-release remediation:
 - proof: docs\PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md;
 - release tag: v0.6.0-training-qualification.
 
+### F09 — PLATFORM_ADAPTERS — CLOSED
+- five initial adapters and F02 Adapter SDK;
+- F04 isolated browser and F03/F06 capability delegation;
+- F07-compatible SHA-256 evidence and F08 quarantine;
+- 5 synthetic Chromium runs PASS; 5 process crash recoveries PASS;
+- 8 focused Node tests PASS; contracts=8; map=50/50;
+- F09_VERIFY=PASS and BASELINE_VERIFY=PASS;
+- initial simulation-only scope, no live platform integration claimed;
+- proof: docs/PROOF_F09_PLATFORM_ADAPTERS.md;
+- release: v0.6.1-platform-adapters.
+
 ## Current phase
 
-F09 — PLATFORM_ADAPTERS — IN_PROGRESS
+F10 — ECONOMIC_CONTROLLER_SCHEDULER — IN_PROGRESS
 
 Objective:
-Connect real work sources through provider-neutral adapters without coupling any platform to the core.
+Optimize dependable net income with durable accounting and economic scheduling.
 
 Required deliverables:
-- generic_web;
-- generic_form;
-- generic_invoice;
-- initial platform adapters;
-- adapter configuration schema;
-- adapter-specific validation/evidence rules;
-- simulation, policy and eligibility gates.
+- opportunity record;
+- revenue/cost ledger;
+- observed success probability;
+- expected-value calculation;
+- priority queue and concurrency allocation;
+- stop-loss and minimum margin configuration;
+- income dashboard/report.
 
 Exit gate:
-- each adapter passes contract and simulation independently;
-- failure/recovery path proven;
-- F08 qualification gate cannot be bypassed;
-- platform-specific code remains outside core;
-- full baseline PASS;
-- F09 proof + clean commit + state advancement.
+- deterministic accounting and no double counting;
+- scheduler fixtures and cost-spike ranking;
+- negative-value jobs rejected before expensive execution;
+- full baseline and F10 proof, release, and state advancement.
 
 ## Next phase
 
-F10 — ECONOMIC_CONTROLLER_SCHEDULER — PLANNED
+F11 — AVAILABILITY_CONCURRENCY_HARDENING — PLANNED
 
 ## Terminal phase
 

@@ -13,8 +13,8 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | F06 | v0.5.1 | Planner/Router/Knowledge | CLOSED | F02,F03,F04,F05 | PROOF_F06_PLANNER_ROUTER_KNOWLEDGE.md |
 | F07 | v0.5.2 | Independent Validation + Recovery | CLOSED | F03,F04,F05,F06 | PROOF_F07_VALIDATION_RECOVERY.md |
 | F08 | v0.6.0 | Training/Benchmark/Qualification gates | CLOSED | F03,F04,F07 | PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md |
-| F09 | v0.6.x | Platform adapters | IN_PROGRESS | F08 | generic adapters + initial platform adapters with isolation tests |
-| F10 | v0.7.x | Economic Controller + Scheduler | PLANNED | F05,F09 | cost/revenue ledger + expected-value scheduling |
+| F09 | v0.6.1 | Platform adapters | CLOSED | F08 | PROOF_F09_PLATFORM_ADAPTERS.md (simulation-only initial adapters) |
+| F10 | v0.7.x | Economic Controller + Scheduler | IN_PROGRESS | F05,F09 | cost/revenue ledger + expected-value scheduling |
 | F11 | v0.8.x | Availability + concurrency hardening | PLANNED | F05,F07,F10 | 1→4→8→16 concurrency + chaos/soak/restart tests |
 | F12 | v0.9.x | Security/formal/operational hardening | PLANNED | F11 | secret isolation + audit + GNATprove when available + recovery drills |
 | F13 | v1.0.0 | Personal production release | PLANNED | F12 | end-to-end production proof + clean runbook + MISSION_PROVEN |
@@ -35,6 +35,6 @@ Remediation records do not reopen a closed phase and do not create a second acti
 
 Exactly one phase is active:
 
-F09 — PLATFORM_ADAPTERS — IN_PROGRESS
+F10 — ECONOMIC_CONTROLLER_SCHEDULER — IN_PROGRESS
 
-Do not begin F10 as the main lane until F09 exit gate is proven and F09 is CLOSED.
+Do not begin F11 as the main lane until F10 exit gate is proven and F10 is CLOSED.

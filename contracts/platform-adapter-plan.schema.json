@@ -1,0 +1,32 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://timed-mission-agent.local/contracts/platform-adapter-plan.schema.json",
+ "title":"Simulated Platform Plan",
+ "type":"object",
+ "required":["adapterId","capabilities","requiredEvidence","status","mission"],
+ "properties":{
+  "adapterId":{"enum":["generic_web","generic_form","generic_invoice","homeocta","99freelas"]},
+  "capabilities":{"type":"array","minItems":1,"items":{"type":"string"}},
+  "requiredEvidence":{"type":"array","minItems":2,"items":{"enum":["dom","screenshot"]}},
+  "status":{"const":"simulation_ready"},
+  "delegatedCapability":{"type":"string"},
+  "mission":{"type":"object","required":["schemaVersion","missionId","taskId","deadlineMs","evidenceDir","sessionStatePath","steps"],"properties":{
+   "schemaVersion":{"const":1},
+   "missionId":{"type":"string","minLength":1},
+   "taskId":{"type":"string","minLength":1},
+   "deadlineMs":{"type":"integer","minimum":1},
+   "evidenceDir":{"type":"string","minLength":1},
+   "sessionStatePath":{"type":"string","minLength":1},
+   "steps":{"type":"array","minItems":2,"items":{"type":"object","required":["id","kind","timeoutMs"],"properties":{
+    "id":{"type":"string","minLength":1},
+    "kind":{"enum":["goto","observe","fill"]},
+    "timeoutMs":{"type":"integer","minimum":1},
+    "replaySafe":{"type":"boolean"},
+    "url":{"type":"string"},
+    "target":{"type":"object"},
+    "value":{"type":"string"}
+   },"additionalProperties":false}}
+  },"additionalProperties":false}
+ },
+ "additionalProperties":false
+}
