@@ -1,0 +1,18 @@
+[package]
+name = "tma-planner"
+version = "0.5.1"
+edition = "2024"
+description = "Deterministic planner/router/knowledge orchestration for Timed Mission Agent."
+
+[lib]
+name = "tma_planner"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tma-planner"
+path = "src/main.rs"
+
+[dependencies]
+sha2 = "0.10.9"
+tma-foundation = { path = "../foundation-rust" }
+tma-core = { path = "../core-rust" }

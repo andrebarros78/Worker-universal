@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/knowledge-query.schema.json",
+  "title": "Knowledge Query",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "query_id",
+    "question",
+    "max_sources",
+    "deadline_ms",
+    "cost_budget_microunits"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "query_id": {"type": "string", "minLength": 1},
+    "question": {"type": "string", "minLength": 1},
+    "max_sources": {"type": "integer", "minimum": 1},
+    "deadline_ms": {"type": "integer", "minimum": 1},
+    "cost_budget_microunits": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": false
+}

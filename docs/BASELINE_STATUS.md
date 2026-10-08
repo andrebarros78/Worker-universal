@@ -58,11 +58,34 @@ F05 DURABLE_MISSION_RUNTIME
 - proof: docs/PROOF_F05_DURABLE_RUNTIME.md;
 - tag: v0.5.0-durable-runtime.
 
-## Active construction lane
+## Proven Planner/Router/Knowledge
 
 F06 PLANNER_ROUTER_KNOWLEDGE
+- map: PLN-001..PLN-050;
+- separate tma-planner Rust orchestration crate;
+- deterministic mission classifier and execution DAG;
+- F02 CapabilityRegistry/Policy integration;
+- deterministic provider preference/fallback/tie-break;
+- API/MCP/browser/vision routing fixtures PASS;
+- provider-outage and missing-dependency handling PASS;
+- local/no-LLM deterministic fallback PASS;
+- Knowledge/Research and Reasoner abstractions;
+- stable SHA-256 plan fingerprint;
+- F05 durable checkpoint/restart integration PASS;
+- 16 focused Rust tests PASS;
+- F06_CONTRACTS_OK fixtures=4;
+- F06_MAP_OK requirements=50 mapped=50;
+- F06_PURITY_OK;
+- F06_VERIFY=PASS;
+- full product gate: BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F06_PLANNER_ROUTER_KNOWLEDGE.md;
+- tag target: v0.5.1-planner-router-knowledge.
 
-No other phase is authorized as the main construction lane until F06 closes.
+## Active construction lane
+
+F07 INDEPENDENT_VALIDATION_RECOVERY
+
+No other phase is authorized as the main construction lane until F07 closes.
 
 ## Formal proof status
 

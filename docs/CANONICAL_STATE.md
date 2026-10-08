@@ -74,34 +74,54 @@ Remediation discovered during F05:
 - proof: docs\PROOF_F05_DURABLE_RUNTIME.md;
 - release tag: v0.5.0-durable-runtime.
 
+### F06 — PLANNER_ROUTER_KNOWLEDGE — CLOSED
+- map: PLN-001..PLN-050;
+- tma-planner Rust orchestration crate;
+- deterministic MissionClassifier + Planner;
+- bounded execution DAG with cycle/dependency/budget validation;
+- routing through F02 CapabilityRegistry + PolicyEngine;
+- health/readiness/dependency/promotion/reliability/cost/latency filtering;
+- provider preference and deterministic fallback;
+- API/MCP/browser/vision fixtures;
+- local/no-LLM deterministic fallback;
+- Knowledge/Research + Reasoner provider abstractions;
+- stable SHA-256 plan fingerprint;
+- F05 durable plan checkpoint/restart integration;
+- 16 focused Rust tests PASS;
+- F06_CONTRACTS_OK;
+- F06_MAP_OK 50/50;
+- F06_PURITY_OK;
+- F06_VERIFY=PASS;
+- full BASELINE_VERIFY=PASS;
+- proof: docs\PROOF_F06_PLANNER_ROUTER_KNOWLEDGE.md;
+- release tag: v0.5.1-planner-router-knowledge.
+
 ## Current phase
 
-F06 — PLANNER_ROUTER_KNOWLEDGE — IN_PROGRESS
+F07 — INDEPENDENT_VALIDATION_RECOVERY — IN_PROGRESS
 
 Objective:
-Convert a high-level mission into a bounded executable plan and choose the best available capability.
+Never confuse executor-returned success with independently proven success.
 
 Required deliverables:
-- mission classifier;
-- planner interface;
-- capability requirements;
-- Router scoring;
-- deterministic fallback policy;
-- Knowledge/Research interface;
-- LLM provider abstraction;
-- local/no-LLM fallback for deterministic mission classes.
+- Validation Agent;
+- proof strategies per capability;
+- failure taxonomy;
+- Recovery Agent;
+- bounded retry budget;
+- recovery state transitions;
+- evidence completeness gate.
 
 Exit gate:
-- no provider lock-in;
-- API/MCP/browser selection fixtures;
-- provider outage fallback;
-- plan bounded by deadline/cost/policy;
-- deterministic task works without LLM/API;
-- F06 proof + clean commit + state advancement.
+- inject every named failure class;
+- prove expected recovery or terminal state;
+- independent validation cannot be bypassed by executor success;
+- full baseline PASS;
+- F07 proof + clean commit + state advancement.
 
 ## Next phase
 
-F07 — INDEPENDENT_VALIDATION_RECOVERY — PLANNED
+F08 — TRAINING_BENCHMARK_QUALIFICATION_GATES — PLANNED
 
 ## Terminal phase
 

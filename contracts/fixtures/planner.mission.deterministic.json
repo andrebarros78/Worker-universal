@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "mission_id": "mission-001",
+  "objective": "deterministic transform",
+  "deadline_budget_ms": 1000,
+  "cost_budget_microunits": 100,
+  "granted_scopes": [],
+  "denied_capabilities": [],
+  "allow_llm": false,
+  "allow_degraded": false
+}

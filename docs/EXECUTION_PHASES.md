@@ -151,6 +151,9 @@ Implementation/proof mapping: `docs/F05_IMPLEMENTATION_MATRIX.md`.
 ### Objective
 Convert a high-level mission into a bounded executable plan and choose the best capability.
 
+Complete requirement authority: `docs/F06_PLANNER_ROUTER_KNOWLEDGE_MAP.md` (PLN-001..PLN-050).
+Implementation/proof mapping: `docs/F06_IMPLEMENTATION_MATRIX.md`.
+
 ### Deliverables
 - mission classifier;
 - planner interface;

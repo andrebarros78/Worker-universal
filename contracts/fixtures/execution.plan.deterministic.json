@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "mission_id": "mission-001",
+  "class": "deterministic",
+  "fingerprint": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "steps": [
+    {
+      "id": "transform",
+      "task_kind": "transform",
+      "depends_on": [],
+      "capability_kind": "native",
+      "replay_safe": true,
+      "budget_cost_microunits": 50,
+      "budget_latency_ms": 500
+    },
+    {
+      "id": "validate",
+      "task_kind": "validate",
+      "depends_on": ["transform"],
+      "capability_kind": "native",
+      "replay_safe": true,
+      "budget_cost_microunits": 50,
+      "budget_latency_ms": 500
+    }
+  ]
+}

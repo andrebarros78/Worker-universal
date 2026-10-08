@@ -10,8 +10,8 @@ The detailed authority is docs/EXECUTION_PHASES.md. This file is the compact rel
 | F03 | v0.3.0 | Vision/OCR/document intelligence — CLOSED |
 | F04 | v0.4.0 | Isolated Browser/Computer Worker — CLOSED |
 | F05 | v0.5.0 | Durable mission runtime — CLOSED |
-| F06 | v0.5.x | Planner/Router/Knowledge — IN_PROGRESS |
-| F07 | v0.5.x | Independent Validation + Recovery |
+| F06 | v0.5.1 | Planner/Router/Knowledge — CLOSED |
+| F07 | v0.5.x | Independent Validation + Recovery — IN_PROGRESS |
 | F08 | v0.6.x | Training/Benchmark/Qualification gates |
 | F09 | v0.6.x | Platform adapters |
 | F10 | v0.7.x | Economic Controller + Scheduler |

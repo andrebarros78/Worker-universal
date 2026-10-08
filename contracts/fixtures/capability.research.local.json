@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "research.local",
+  "kind": "research",
+  "provider": "local",
+  "contract_version": "1.0.0",
+  "dependencies": [],
+  "permissions": [],
+  "fallbacks": [],
+  "lifecycle": "healthy",
+  "readiness": "operational",
+  "promotion": "qualified",
+  "side_effect": "read",
+  "idempotency": "safe",
+  "max_concurrency": 8,
+  "resource_locks": [],
+  "cost_microunits": 0,
+  "p95_ms": 50,
+  "reliability_bps": 10000,
+  "evidence_types": ["sources"],
+  "transport": "native",
+  "config_ref": null
+}

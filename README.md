@@ -40,8 +40,8 @@ Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STA
 
 ## Current canonical phase
 
-F05 Durable Mission Runtime is closed and proven under `docs/PROOF_F05_DURABLE_RUNTIME.md`.
+F06 Planner/Router/Knowledge is closed and proven under `docs/PROOF_F06_PLANNER_ROUTER_KNOWLEDGE.md`.
 
-Current construction lane: `F06 PLANNER_ROUTER_KNOWLEDGE`.
+Current construction lane: `F07 INDEPENDENT_VALIDATION_RECOVERY`.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

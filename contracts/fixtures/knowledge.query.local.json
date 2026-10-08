@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "query_id": "q-001",
+  "question": "durable mission runtime",
+  "max_sources": 3,
+  "deadline_ms": 1000,
+  "cost_budget_microunits": 0
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/planner-mission.schema.json",
+  "title": "Planner Mission Request",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mission_id",
+    "objective",
+    "deadline_budget_ms",
+    "cost_budget_microunits",
+    "granted_scopes",
+    "denied_capabilities",
+    "allow_llm",
+    "allow_degraded"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 1},
+    "deadline_budget_ms": {"type": "integer", "minimum": 1},
+    "cost_budget_microunits": {"type": "integer", "minimum": 0},
+    "granted_scopes": {"type": "array", "items": {"type": "string"}},
+    "denied_capabilities": {"type": "array", "items": {"type": "string"}},
+    "allow_llm": {"type": "boolean"},
+    "allow_degraded": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}
