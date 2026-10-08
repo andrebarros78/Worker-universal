@@ -3,7 +3,9 @@ $root = Split-Path -Parent $PSScriptRoot
 if (Test-Path -LiteralPath 'C:\msys64\ucrt64\bin\gcc.exe') { $env:PATH = 'C:\msys64\ucrt64\bin;' + $env:PATH }
 $fail = 0
 $previousPycachePrefix = $env:PYTHONPYCACHEPREFIX
-$baselinePycacheDir = Join-Path 'C:\ProgramData\SentinelX\workspace	ma-pycache' ("baseline-" + $PID)
+$baselineRunId = [guid]::NewGuid().ToString('N')
+$baselinePycacheRoot = 'C:\ProgramData\SentinelX\workspace\tma-pycache'
+$baselinePycacheDir = Join-Path $baselinePycacheRoot ("baseline-" + $baselineRunId)
 New-Item -ItemType Directory -Force -Path $baselinePycacheDir | Out-Null
 $env:PYTHONPYCACHEPREFIX = $baselinePycacheDir
 

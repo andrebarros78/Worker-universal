@@ -1,6 +1,17 @@
 $ErrorActionPreference = 'Continue'
 $root = Split-Path -Parent $PSScriptRoot
 $fail = 0
+$f03GateMutex = [System.Threading.Mutex]::new($false, 'Global\TMA_F03_VERIFY_GATE')
+$f03GateAcquired = $false
+try {
+    $f03GateAcquired = $f03GateMutex.WaitOne([TimeSpan]::FromMinutes(10))
+} catch [System.Threading.AbandonedMutexException] {
+    $f03GateAcquired = $true
+}
+if (-not $f03GateAcquired) {
+    throw 'F03_GATE_MUTEX_TIMEOUT'
+}
+Write-Output 'F03_GATE_MUTEX=ACQUIRED'
 
 function Run-F03Step {
     param([string]$Name, [scriptblock]$Command)
@@ -21,9 +32,14 @@ $python = Join-Path $root '.venv\Scripts\python.exe'
 $env:PYTHONPATH = Join-Path $root 'src'
 $tesseract = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
 $previousF03ReportPath = $env:TMA_F03_REPORT_PATH
-$f03RuntimeDir = 'C:\ProgramData\SentinelX\workspace\tma-f03-runtime'
+$previousPycachePrefix = $env:PYTHONPYCACHEPREFIX
+$f03RunId = [guid]::NewGuid().ToString('N')
+$f03RuntimeRoot = 'C:\ProgramData\SentinelX\workspace\tma-f03-runtime'
+$f03RuntimeDir = Join-Path $f03RuntimeRoot $f03RunId
 New-Item -ItemType Directory -Force -Path $f03RuntimeDir | Out-Null
 $env:TMA_F03_REPORT_PATH = Join-Path $f03RuntimeDir 'benchmark-report.json'
+$env:PYTHONPYCACHEPREFIX = Join-Path $f03RuntimeDir 'pycache'
+Write-Output ("F03_RUNTIME=" + $f03RunId)
 
 Run-F03Step 'DEPENDENCIES' {
     if (-not (Test-Path -LiteralPath $tesseract)) {
@@ -96,4 +112,15 @@ if ($null -eq $previousF03ReportPath) {
 } else {
     $env:TMA_F03_REPORT_PATH = $previousF03ReportPath
 }
+if ($null -eq $previousPycachePrefix) {
+    Remove-Item Env:PYTHONPYCACHEPREFIX -ErrorAction SilentlyContinue
+} else {
+    $env:PYTHONPYCACHEPREFIX = $previousPycachePrefix
+}
+Remove-Item -LiteralPath $f03RuntimeDir -Recurse -Force -ErrorAction SilentlyContinue
+if ($f03GateAcquired) {
+    $f03GateMutex.ReleaseMutex()
+}
+$f03GateMutex.Dispose()
+Write-Output 'F03_GATE_MUTEX=RELEASED'
 exit $fail

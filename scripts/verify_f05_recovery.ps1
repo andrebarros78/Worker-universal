@@ -1,7 +1,10 @@
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $probe = 'C:\ProgramData\SentinelX\workspace\tma-build\core-rust\debug\tma-durable-probe.exe'
-$runtime = 'C:\ProgramData\SentinelX\workspace\tma-f05-recovery'
+$runtimeRoot = 'C:\ProgramData\SentinelX\workspace\tma-f05-recovery'
+$runId = [guid]::NewGuid().ToString('N')
+$runtime = Join-Path $runtimeRoot $runId
+Write-Output ("F05_RECOVERY_RUNTIME=" + $runId)
 
 if (-not (Test-Path -LiteralPath $probe)) { throw "durable probe not built: $probe" }
 New-Item -ItemType Directory -Force -Path $runtime | Out-Null
@@ -37,3 +40,4 @@ foreach ($state in @('planned','running','validating')) {
 }
 
 Write-Output 'F05_PROCESS_RECOVERY=PASS'
+Remove-Item -LiteralPath $runtime -Recurse -Force -ErrorAction SilentlyContinue
