@@ -40,8 +40,8 @@ Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STA
 
 ## Current canonical phase
 
-F07 Independent Validation + Recovery is closed and proven under `docs/PROOF_F07_VALIDATION_RECOVERY.md`.
+F08 Training/Benchmark/Qualification Gates is closed and proven under `docs/PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md`.
 
-Current construction lane: `F08 TRAINING_BENCHMARK_QUALIFICATION_GATES`.
+Current construction lane: `F09 PLATFORM_ADAPTERS`.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

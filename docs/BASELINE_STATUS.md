@@ -107,11 +107,36 @@ F07 INDEPENDENT_VALIDATION_RECOVERY
 - proof: docs/PROOF_F07_VALIDATION_RECOVERY.md;
 - tag target: v0.5.2-independent-validation-recovery.
 
-## Active construction lane
+## Proven Training/Benchmark/Qualification Gates
 
 F08 TRAINING_BENCHMARK_QUALIFICATION_GATES
+- map: QUA-001..QUA-060;
+- qualification-rust v0.6.0;
+- training and benchmark modes;
+- deterministic synthetic benchmark harness;
+- real wall-clock deadline harness;
+- success/accuracy/F07-validation/p95/recovery thresholds;
+- p50/p95/p99 scorecards;
+- dataset/version/seed binding;
+- 5-run reproducibility PASS;
+- PRE_REGISTRATION → REGISTERED → POST_REGISTRATION → PRODUCTION_READY lifecycle;
+- sequential promotion Experimental → Tested → Qualified → Production;
+- R02-01 direct promotion skip closed;
+- benchmark samples bound to F07 ValidationReport;
+- 19 focused Rust tests PASS;
+- F08_CONTRACTS_OK fixtures=4;
+- F08_MAP_OK requirements=60 mapped=60;
+- F08_PURITY_OK;
+- F08_VERIFY=PASS;
+- full product gate: BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md;
+- tag target: v0.6.0-training-qualification.
 
-No other phase is authorized as the main construction lane until F08 closes.
+## Active construction lane
+
+F09 PLATFORM_ADAPTERS
+
+No other phase is authorized as the main construction lane until F09 closes.
 
 ## Formal proof status
 

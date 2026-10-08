@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "capability_id": "native.cap",
+  "registration_state": "production_ready",
+  "training_scorecard": "1111111111111111111111111111111111111111111111111111111111111111",
+  "benchmark_scorecard": "2222222222222222222222222222222222222222222222222222222222222222",
+  "post_registration_scorecard": "3333333333333333333333333333333333333333333333333333333333333333",
+  "recovery_drill_passed": true
+}

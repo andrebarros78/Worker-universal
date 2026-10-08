@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "capability_id": "native.cap",
+  "mode": "benchmark",
+  "dataset_id": "qualification-synthetic",
+  "dataset_version": "1.0.0",
+  "seed": 42,
+  "runs": 8,
+  "success_bps": 10000,
+  "accuracy_bps": 9900,
+  "validation_bps": 10000,
+  "p50_ms": 13,
+  "p95_ms": 17,
+  "p99_ms": 17,
+  "recovered_runs": 1,
+  "recovery_passed": true,
+  "passed": true,
+  "failures": [],
+  "fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

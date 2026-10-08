@@ -123,34 +123,53 @@ Post-release remediation:
 - F03/F05/F07 temporary verification state is invocation-isolated;
 - proof: docs\REMEDIATION_F07R1_CONCURRENT_VERIFICATION_ISOLATION.md.
 
+### F08 — TRAINING_BENCHMARK_QUALIFICATION_GATES — CLOSED
+- map: QUA-001..QUA-060;
+- qualification-rust v0.6.0;
+- Training + Benchmark modes;
+- deterministic synthetic and wall-clock harnesses;
+- success/accuracy/validation/p95/recovery qualification thresholds;
+- deterministic scorecards and receipts;
+- synthetic PRE_REGISTRATION → REGISTERED → POST_REGISTRATION → PRODUCTION_READY lifecycle;
+- sequential capability promotion gate;
+- R02-01 closes direct promotion skip;
+- benchmark samples bound to F07 ValidationReport;
+- 19 focused Rust tests PASS;
+- F08_CONTRACTS_OK;
+- F08_MAP_OK 60/60;
+- F08_PURITY_OK;
+- F08_VERIFY=PASS;
+- full BASELINE_VERIFY=PASS;
+- proof: docs\PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md;
+- release tag: v0.6.0-training-qualification.
+
 ## Current phase
 
-F08 — TRAINING_BENCHMARK_QUALIFICATION_GATES — IN_PROGRESS
+F09 — PLATFORM_ADAPTERS — IN_PROGRESS
 
 Objective:
-Use the production execution engine in controlled training/benchmark flows before release.
+Connect real work sources through provider-neutral adapters without coupling any platform to the core.
 
 Required deliverables:
-- timed mission harness;
-- training mode;
-- benchmark mode;
-- PRE-REGISTRATION state machine;
-- POST-REGISTRATION state machine;
-- promotion criteria;
-- capability scorecards.
+- generic_web;
+- generic_form;
+- generic_invoice;
+- initial platform adapters;
+- adapter configuration schema;
+- adapter-specific validation/evidence rules;
+- simulation, policy and eligibility gates.
 
 Exit gate:
-- reproducible timed runs;
-- accuracy/latency thresholds;
-- synthetic registration lifecycle;
-- recovery before PRODUCTION_READY;
-- no adapter skips promotion gate;
+- each adapter passes contract and simulation independently;
+- failure/recovery path proven;
+- F08 qualification gate cannot be bypassed;
+- platform-specific code remains outside core;
 - full baseline PASS;
-- F08 proof + clean commit + state advancement.
+- F09 proof + clean commit + state advancement.
 
 ## Next phase
 
-F09 — PLATFORM_ADAPTERS — PLANNED
+F10 — ECONOMIC_CONTROLLER_SCHEDULER — PLANNED
 
 ## Terminal phase
 

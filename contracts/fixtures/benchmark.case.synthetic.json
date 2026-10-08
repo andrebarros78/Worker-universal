@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "case_id": "case-00",
+  "dataset_id": "qualification-synthetic",
+  "dataset_version": "1.0.0",
+  "seed": 42,
+  "deadline_ms": 100,
+  "expected_accuracy_bps": 9900,
+  "should_recover": true
+}

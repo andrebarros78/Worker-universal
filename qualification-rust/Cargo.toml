@@ -1,0 +1,18 @@
+[package]
+name = "tma-qualification"
+version = "0.6.0"
+edition = "2024"
+description = "Training, benchmark, qualification and promotion gates for Timed Mission Agent."
+
+[lib]
+name = "tma_qualification"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tma-qualification"
+path = "src/main.rs"
+
+[dependencies]
+sha2 = "0.10.9"
+tma-foundation = { path = "../foundation-rust" }
+tma-validation = { path = "../validation-rust" }

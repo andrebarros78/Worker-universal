@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/benchmark-case.schema.json",
+  "title": "Qualification Benchmark Case",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "case_id",
+    "dataset_id",
+    "dataset_version",
+    "seed",
+    "deadline_ms",
+    "expected_accuracy_bps",
+    "should_recover"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "case_id": {"type": "string", "minLength": 1},
+    "dataset_id": {"type": "string", "minLength": 1},
+    "dataset_version": {"type": "string", "minLength": 1},
+    "seed": {"type": "integer", "minimum": 0},
+    "deadline_ms": {"type": "integer", "minimum": 1},
+    "expected_accuracy_bps": {"type": "integer", "minimum": 0, "maximum": 10000},
+    "should_recover": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

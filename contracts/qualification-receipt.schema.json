@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/qualification-receipt.schema.json",
+  "title": "Qualification Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "capability_id",
+    "from",
+    "to",
+    "registration_state",
+    "scorecard_fingerprint",
+    "accepted",
+    "reason"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "receipt_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "capability_id": {"type": "string", "minLength": 1},
+    "from": {"enum": ["experimental", "tested", "qualified", "production"]},
+    "to": {"enum": ["experimental", "tested", "qualified", "production"]},
+    "registration_state": {
+      "enum": ["pre_registration", "registered", "post_registration", "production_ready"]
+    },
+    "scorecard_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "accepted": {"type": "boolean"},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

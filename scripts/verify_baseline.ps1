@@ -77,6 +77,7 @@ Run-Step 'F04_BROWSER_COMPUTER' { & (Join-Path $root 'scripts\verify_f04.ps1') }
 Run-Step 'F05_DURABLE_RUNTIME' { & (Join-Path $root 'scripts\verify_f05.ps1') }
 Run-Step 'F06_PLANNER_ROUTER_KNOWLEDGE' { & (Join-Path $root 'scripts\verify_f06.ps1') }
 Run-Step 'F07_INDEPENDENT_VALIDATION_RECOVERY' { & (Join-Path $root 'scripts\verify_f07.ps1') }
+Run-Step 'F08_TRAINING_BENCHMARK_QUALIFICATION' { & (Join-Path $root 'scripts\verify_f08.ps1') }
 
 Push-Location (Join-Path $root 'availability-elixir')
 Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }

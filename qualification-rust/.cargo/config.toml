@@ -1,0 +1,3 @@
+[env]
+CC_x86_64_pc_windows_gnu = { value = "C:\\msys64\\ucrt64\\bin\\gcc.exe", force = true }
+AR_x86_64_pc_windows_gnu = { value = "C:\\msys64\\ucrt64\\bin\\gcc-ar.exe", force = true }

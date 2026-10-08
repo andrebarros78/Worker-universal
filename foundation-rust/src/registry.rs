@@ -194,6 +194,22 @@ impl CapabilityRegistry {
             .entries
             .get_mut(id)
             .ok_or_else(|| format!("unknown capability: {id}"))?;
+
+        if promotion > item.promotion {
+            let allowed_next = match item.promotion {
+                PromotionState::Experimental => PromotionState::Tested,
+                PromotionState::Tested => PromotionState::Qualified,
+                PromotionState::Qualified => PromotionState::Production,
+                PromotionState::Production => PromotionState::Production,
+            };
+            if promotion != allowed_next {
+                return Err(format!(
+                    "promotion skip rejected: {:?} -> {:?}",
+                    item.promotion, promotion
+                ));
+            }
+        }
+
         item.promotion = promotion;
         Ok(())
     }

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "receipt_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "capability_id": "native.cap",
+  "from": "qualified",
+  "to": "production",
+  "registration_state": "production_ready",
+  "scorecard_fingerprint": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "accepted": true,
+  "reason": "production_ready"
+}

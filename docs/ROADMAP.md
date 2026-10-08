@@ -12,8 +12,8 @@ The detailed authority is docs/EXECUTION_PHASES.md. This file is the compact rel
 | F05 | v0.5.0 | Durable mission runtime — CLOSED |
 | F06 | v0.5.1 | Planner/Router/Knowledge — CLOSED |
 | F07 | v0.5.2 | Independent Validation + Recovery — CLOSED |
-| F08 | v0.6.x | Training/Benchmark/Qualification gates — IN_PROGRESS |
-| F09 | v0.6.x | Platform adapters |
+| F08 | v0.6.0 | Training/Benchmark/Qualification gates — CLOSED |
+| F09 | v0.6.x | Platform adapters — IN_PROGRESS |
 | F10 | v0.7.x | Economic Controller + Scheduler |
 | F11 | v0.8.x | Availability/concurrency hardening |
 | F12 | v0.9.x | Security/formal/operational hardening |

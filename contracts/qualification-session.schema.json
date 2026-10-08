@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/qualification-session.schema.json",
+  "title": "Qualification Session",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "capability_id",
+    "registration_state",
+    "training_scorecard",
+    "benchmark_scorecard",
+    "post_registration_scorecard",
+    "recovery_drill_passed"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "capability_id": {"type": "string", "minLength": 1},
+    "registration_state": {
+      "enum": ["pre_registration", "registered", "post_registration", "production_ready"]
+    },
+    "training_scorecard": {"type": ["string", "null"]},
+    "benchmark_scorecard": {"type": ["string", "null"]},
+    "post_registration_scorecard": {"type": ["string", "null"]},
+    "recovery_drill_passed": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

@@ -200,6 +200,9 @@ Inject every named failure class and prove expected recovery/terminal state.
 ### Objective
 Use the production execution engine in controlled training/benchmark flows before release.
 
+Complete requirement authority: `docs/F08_TRAINING_BENCHMARK_QUALIFICATION_MAP.md` (QUA-001..QUA-060).
+Implementation/proof mapping: `docs/F08_IMPLEMENTATION_MATRIX.md`.
+
 ### Deliverables
 - timed mission harness;
 - training mode;

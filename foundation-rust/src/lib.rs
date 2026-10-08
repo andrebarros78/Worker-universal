@@ -225,6 +225,50 @@ mod tests {
     }
 
     #[test]
+    fn promotion_cannot_skip_forward_states() {
+        let mut registry = CapabilityRegistry::new();
+        let mut item = descriptor("native.promotion", "local", 9990, 1, 2);
+        item.promotion = PromotionState::Experimental;
+        registry.register(item).unwrap();
+
+        assert!(
+            registry
+                .set_promotion("native.promotion", PromotionState::Production)
+                .is_err()
+        );
+
+        registry
+            .set_promotion("native.promotion", PromotionState::Tested)
+            .unwrap();
+        registry
+            .set_promotion("native.promotion", PromotionState::Qualified)
+            .unwrap();
+        registry
+            .set_promotion("native.promotion", PromotionState::Production)
+            .unwrap();
+
+        assert_eq!(
+            registry.get("native.promotion").unwrap().promotion,
+            PromotionState::Production
+        );
+    }
+
+    #[test]
+    fn promotion_demotion_is_allowed_for_safety() {
+        let mut registry = CapabilityRegistry::new();
+        registry
+            .register(descriptor("native.demote", "local", 9990, 1, 2))
+            .unwrap();
+        registry
+            .set_promotion("native.demote", PromotionState::Tested)
+            .unwrap();
+        assert_eq!(
+            registry.get("native.demote").unwrap().promotion,
+            PromotionState::Tested
+        );
+    }
+
+    #[test]
     fn fallback_chain_uses_only_ready_capabilities() {
         let mut registry = CapabilityRegistry::new();
         let mut primary = descriptor("native.primary", "local", 9990, 1, 2);
