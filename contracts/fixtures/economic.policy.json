@@ -1,0 +1,1 @@
+{"now_ms":0,"minimum_remaining_ms":1000,"minimum_expected_profit_cents":100,"minimum_margin_bps":1000,"maximum_cost_per_mission_cents":2000,"maximum_daily_cost_cents":5000,"stop_loss_cents":3000,"max_concurrency":2,"available_slots":2}

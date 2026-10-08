@@ -249,6 +249,10 @@ Each adapter passes contract, simulation, failure-recovery and eligibility/polic
 ### Objective
 Optimize for dependable net income, not raw task count.
 
+Complete requirement map: docs/F10_ECONOMIC_CONTROLLER_MAP.md (ECO-001..ECO-055).
+Implementation matrix: docs/F10_IMPLEMENTATION_MATRIX.md.
+No bank or productive platform integration is claimed by this phase.
+
 ### Deliverables
 - opportunity record;
 - revenue/cost ledger;

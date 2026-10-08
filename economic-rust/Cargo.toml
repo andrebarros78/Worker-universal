@@ -1,0 +1,19 @@
+[package]
+name = "tma-economic"
+version = "0.7.0"
+edition = "2024"
+description = "Durable economic ledger and deterministic opportunity scheduler for Timed Mission Agent."
+
+[lib]
+name = "tma_economic"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tma-economic"
+path = "src/main.rs"
+
+[dependencies]
+rusqlite = { version = "0.32.1", features = ["bundled"] }
+sha2 = "0.10.9"
+tma-core = { path = "../core-rust" }
+tma-foundation = { path = "../foundation-rust" }

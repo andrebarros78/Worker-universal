@@ -154,31 +154,45 @@ Post-release remediation:
 - proof: docs/PROOF_F09_PLATFORM_ADAPTERS.md;
 - release: v0.6.1-platform-adapters.
 
+### F10 — ECONOMIC_CONTROLLER_SCHEDULER — CLOSED
+- economic-rust v0.7.0, fixed-point BRL-cent accounting;
+- durable SQLite WAL/FULL ledger, immutable hash chain and idempotent events;
+- F05 Succeeded + F07 validation required for verified earnings;
+- F02 Production/Operational capability gate for scheduler;
+- profitability, daily budget, margin, stop-loss, deadline, locks and slots;
+- accrued earnings/cash/receivables report; external settlement not independently reconciled;
+- 23 focused tests PASS; 16 concurrent idempotent writers PASS;
+- F10_CONTRACTS_OK fixtures=5;
+- F10_MAP_OK 55/55;
+- F10_PURITY_OK;
+- F10_VERIFY=PASS;
+- BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md;
+- tag: v0.7.0-economic-controller.
+
 ## Current phase
 
-F10 — ECONOMIC_CONTROLLER_SCHEDULER — IN_PROGRESS
+F11 — AVAILABILITY_CONCURRENCY_HARDENING — IN_PROGRESS
 
 Objective:
-Optimize dependable net income with durable accounting and economic scheduling.
+Prove availability, restart/recovery and safe scaling through 1 → 4 → 8 → 16 concurrent workers.
 
 Required deliverables:
-- opportunity record;
-- revenue/cost ledger;
-- observed success probability;
-- expected-value calculation;
-- priority queue and concurrency allocation;
-- stop-loss and minimum margin configuration;
-- income dashboard/report.
+- controlled concurrency matrix and availability benchmark;
+- deadlock, lost update, duplicate dispatch and corruption checks;
+- restart/crash/soak and recovery drills;
+- resource contention and queue recovery;
+- no mutation of prior-phase proofs.
 
 Exit gate:
-- deterministic accounting and no double counting;
-- scheduler fixtures and cost-spike ranking;
-- negative-value jobs rejected before expensive execution;
-- full baseline and F10 proof, release, and state advancement.
+- concurrency tiers 1/4/8/16 PASS;
+- failure injection and recovery PASS;
+- independent ledger checks PASS;
+- full baseline and F11 proof, release, state advancement.
 
 ## Next phase
 
-F11 — AVAILABILITY_CONCURRENCY_HARDENING — PLANNED
+F12 — SECURITY_FORMAL_OPERATIONAL_HARDENING — PLANNED
 
 ## Terminal phase
 

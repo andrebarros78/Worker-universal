@@ -1,0 +1,11 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","required":["currency","unit","verified_earnings","payments_recorded","costs","accrued_profit","cash_profit","accounts_receivable","entry_count"],
+ "properties":{
+ "currency":{"const":"BRL"},"unit":{"const":"cents"},
+ "verified_earnings":{"type":"integer"},"payments_recorded":{"type":"integer"},
+ "costs":{"type":"integer"},"accrued_profit":{"type":"integer"},
+ "cash_profit":{"type":"integer"},"accounts_receivable":{"type":"integer"},
+ "entry_count":{"type":"integer","minimum":0}
+ },"additionalProperties":false
+}

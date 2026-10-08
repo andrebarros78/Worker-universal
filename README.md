@@ -42,6 +42,8 @@ Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STA
 
 F09 initial governed simulation-only platform adapters are closed and proven in docs/PROOF_F09_PLATFORM_ADAPTERS.md. No live OCTA/99Freelas production integration is claimed.
 
-Current construction lane: F10 ECONOMIC_CONTROLLER_SCHEDULER.
+F10 Economic Controller + Scheduler is CLOSED; proof: docs/PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md. Monetary observations are not externally bank-reconciled.
+
+Current construction lane: F11 AVAILABILITY_CONCURRENCY_HARDENING.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

@@ -14,8 +14,8 @@ The detailed authority is docs/EXECUTION_PHASES.md. This file is the compact rel
 | F07 | v0.5.2 | Independent Validation + Recovery — CLOSED |
 | F08 | v0.6.0 | Training/Benchmark/Qualification gates — CLOSED |
 | F09 | v0.6.1 | Platform adapters — CLOSED (simulation-only initial adapters) |
-| F10 | v0.7.x | Economic Controller + Scheduler — IN_PROGRESS |
-| F11 | v0.8.x | Availability/concurrency hardening |
+| F10 | v0.7.0 | Economic Controller + Scheduler — CLOSED |
+| F11 | v0.8.x | Availability/concurrency hardening — IN_PROGRESS |
 | F12 | v0.9.x | Security/formal/operational hardening |
 | F13 | v1.0.0 | Personal production release — MISSION_PROVEN |
 

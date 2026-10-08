@@ -1,0 +1,1 @@
+{"opportunity_id":"synthetic-1","mission_id":"m1","reward_cents":5000,"estimated_cost_cents":1000,"success_probability_bps":8000,"expected_duration_ms":60000,"deadline_ms":1000000,"required_slots":1,"resource_locks":[],"eligible":true,"qualified":true}

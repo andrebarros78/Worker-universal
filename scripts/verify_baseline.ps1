@@ -79,6 +79,7 @@ Run-Step 'F06_PLANNER_ROUTER_KNOWLEDGE' { & (Join-Path $root 'scripts\verify_f06
 Run-Step 'F07_INDEPENDENT_VALIDATION_RECOVERY' { & (Join-Path $root 'scripts\verify_f07.ps1') }
 Run-Step 'F08_TRAINING_BENCHMARK_QUALIFICATION' { & (Join-Path $root 'scripts\verify_f08.ps1') }
 Run-Step 'F09_PLATFORM_ADAPTERS' { & (Join-Path $root 'scripts\verify_f09.ps1') }
+Run-Step 'F10_ECONOMIC_CONTROLLER_SCHEDULER' { & (Join-Path $root 'scripts\verify_f10.ps1') }
 
 Push-Location (Join-Path $root 'availability-elixir')
 Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }

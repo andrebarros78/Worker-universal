@@ -151,11 +151,32 @@ F09 PLATFORM_ADAPTERS
 - proof: docs/PROOF_F09_PLATFORM_ADAPTERS.md;
 - live provider integration NOT claimed.
 
-## Active construction lane
+## Proven Economic Controller and Scheduler
 
 F10 ECONOMIC_CONTROLLER_SCHEDULER
+- provider-neutral economic-rust v0.7.0;
+- BRL cents fixed-point expected value, margin and profit/hour;
+- F02 Production/Operational/Healthy capability gate;
+- F05 terminal mission success + F07 independent validation binding;
+- observed success probability from F05 states;
+- SQLite append-only WAL ledger and SHA-256 hash chain;
+- one earning per mission; one entry per external settlement reference;
+- payment, verified earned revenue and cost kept separate;
+- 16 concurrent idempotent cost writes PASS;
+- 23 focused Rust tests PASS;
+- F10_CONTRACTS_OK fixtures=5;
+- F10_MAP_OK requirements=55 mapped=55;
+- F10_PURITY_OK;
+- F10_VERIFY=PASS;
+- BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md;
+- no actual paid work or bank reconciliation claimed.
 
-No other phase is authorized as the main construction lane until F10 closes.
+## Active construction lane
+
+F11 AVAILABILITY_CONCURRENCY_HARDENING
+
+No other phase is authorized as the main construction lane until F11 closes.
 
 ## Formal proof status
 

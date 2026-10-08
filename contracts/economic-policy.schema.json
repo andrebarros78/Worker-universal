@@ -1,0 +1,11 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","required":["now_ms","minimum_remaining_ms","minimum_expected_profit_cents","minimum_margin_bps","maximum_cost_per_mission_cents","maximum_daily_cost_cents","stop_loss_cents","max_concurrency","available_slots"],
+ "properties":{
+ "now_ms":{"type":"integer"},"minimum_remaining_ms":{"type":"integer","minimum":0},
+ "minimum_expected_profit_cents":{"type":"integer","minimum":0},"minimum_margin_bps":{"type":"integer","minimum":0,"maximum":10000},
+ "maximum_cost_per_mission_cents":{"type":"integer","minimum":0},"maximum_daily_cost_cents":{"type":"integer","minimum":0},
+ "stop_loss_cents":{"type":"integer","minimum":0},"max_concurrency":{"type":"integer","minimum":1},
+ "available_slots":{"type":"integer","minimum":1}
+ },"additionalProperties":false
+}

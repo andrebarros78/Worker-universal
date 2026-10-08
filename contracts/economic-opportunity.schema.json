@@ -1,0 +1,12 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","required":["opportunity_id","mission_id","reward_cents","estimated_cost_cents","success_probability_bps","expected_duration_ms","deadline_ms","required_slots","resource_locks","eligible","qualified"],
+ "properties":{
+ "opportunity_id":{"type":"string","minLength":1},"mission_id":{"type":"string","minLength":1},
+ "reward_cents":{"type":"integer","minimum":0},"estimated_cost_cents":{"type":"integer","minimum":0},
+ "success_probability_bps":{"type":"integer","minimum":0,"maximum":10000},
+ "expected_duration_ms":{"type":"integer","minimum":1},"deadline_ms":{"type":"integer"},
+ "required_slots":{"type":"integer","minimum":1},"resource_locks":{"type":"array","items":{"type":"string"}},
+ "eligible":{"type":"boolean"},"qualified":{"type":"boolean"}
+ },"additionalProperties":false
+}

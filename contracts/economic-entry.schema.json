@@ -1,0 +1,10 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","required":["event_key","mission_id","kind","amount_cents","source_ref","recorded_at_ms"],
+ "properties":{
+ "event_key":{"type":"string","minLength":1},"mission_id":{"type":"string","minLength":1},
+ "kind":{"enum":["verified_earning","payment_received","cost"]},
+ "amount_cents":{"type":"integer","minimum":1},"source_ref":{"type":"string","minLength":1},
+ "recorded_at_ms":{"type":"integer","minimum":0}
+ },"additionalProperties":false
+}

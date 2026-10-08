@@ -1,0 +1,18 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object","required":["selected","rejected","allocated_slots","reserved_cost_cents","fingerprint"],
+ "properties":{
+ "selected":{"type":"array","items":{"type":"object","required":["opportunity_id","mission_id","expected_revenue_cents","expected_profit_cents","margin_bps","profit_per_hour_cents","expected_duration_ms","required_slots","resource_locks","estimated_cost_cents"],"properties":{
+ "opportunity_id":{"type":"string"},"mission_id":{"type":"string"},
+ "expected_revenue_cents":{"type":"integer"},"expected_profit_cents":{"type":"integer"},
+ "margin_bps":{"type":"integer"},"profit_per_hour_cents":{"type":"integer"},
+ "expected_duration_ms":{"type":"integer"},"required_slots":{"type":"integer"},
+ "resource_locks":{"type":"array","items":{"type":"string"}},"estimated_cost_cents":{"type":"integer"}
+ },"additionalProperties":false}},
+ "rejected":{"type":"array","items":{"type":"object","required":["opportunity_id","reason"],"properties":{
+ "opportunity_id":{"type":"string"},"reason":{"type":"string"}
+ },"additionalProperties":false}},
+ "allocated_slots":{"type":"integer","minimum":0},"reserved_cost_cents":{"type":"integer","minimum":0},
+ "fingerprint":{"type":"string","pattern":"^[0-9a-f]{64}$"}
+ },"additionalProperties":false
+}
