@@ -81,11 +81,37 @@ F06 PLANNER_ROUTER_KNOWLEDGE
 - proof: docs/PROOF_F06_PLANNER_ROUTER_KNOWLEDGE.md;
 - tag target: v0.5.1-planner-router-knowledge.
 
-## Active construction lane
+## Proven Independent Validation + Recovery
 
 F07 INDEPENDENT_VALIDATION_RECOVERY
+- map: VAL-001..VAL-055;
+- separate tma-validation Rust crate;
+- executor success treated as untrusted input;
+- capability-specific independent proof strategies;
+- evidence completeness/hash/size/confidence/deadline gates;
+- F02 ErrorClass reused exactly: 16/16 classes covered;
+- deterministic bounded RecoveryAgent;
+- retry/deadline/replay-safe/side-effect hard gates;
+- recovery fallback and bounded backoff;
+- stable validation/recovery SHA-256 fingerprints;
+- F05 durable recovery checkpoint/restart integration;
+- R05-01 validated-success gate: Succeeded requires independent append-only validation receipt;
+- tma-core current suite: 21 PASS / 0 FAIL;
+- 19 focused F07 Rust tests PASS;
+- real recovery process kill/restart PASS with fencing 1→2;
+- F07_CONTRACTS_OK fixtures=4;
+- F07_MAP_OK requirements=55 mapped=55;
+- F07_PURITY_OK;
+- F07_VERIFY=PASS;
+- full product gate: BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F07_VALIDATION_RECOVERY.md;
+- tag target: v0.5.2-independent-validation-recovery.
 
-No other phase is authorized as the main construction lane until F07 closes.
+## Active construction lane
+
+F08 TRAINING_BENCHMARK_QUALIFICATION_GATES
+
+No other phase is authorized as the main construction lane until F08 closes.
 
 ## Formal proof status
 

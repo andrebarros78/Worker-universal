@@ -20,6 +20,7 @@ pub enum DurableError {
     StaleFence { expected: i64, actual: i64 },
     LeaseExpired,
     ResultIdConflict(String),
+    ValidationReceiptConflict(String),
     IllegalTransition(TransitionError),
     LedgerCorrupt(String),
 }
@@ -39,6 +40,9 @@ impl fmt::Display for DurableError {
             }
             Self::LeaseExpired => write!(f, "lease expired"),
             Self::ResultIdConflict(id) => write!(f, "result id conflict: {id}"),
+            Self::ValidationReceiptConflict(id) => {
+                write!(f, "validation receipt conflict: {id}")
+            }
             Self::IllegalTransition(error) => write!(f, "{error}"),
             Self::LedgerCorrupt(message) => write!(f, "ledger corrupt: {message}"),
         }
@@ -114,6 +118,18 @@ pub struct ResultSubmission {
     pub fencing_token: i64,
     pub target_state: MissionState,
     pub payload_hash: String,
+    pub validation_receipt_id: Option<String>,
+    pub created_at_ms: i64,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ValidationReceipt {
+    pub receipt_id: String,
+    pub mission_id: String,
+    pub validator_id: String,
+    pub subject_payload_hash: String,
+    pub evidence_digest: String,
+    pub accepted: bool,
     pub created_at_ms: i64,
 }
 
@@ -236,6 +252,16 @@ impl DurableStore {
                 created_at_ms INTEGER NOT NULL
             );
 
+            CREATE TABLE IF NOT EXISTS validation_receipts (
+                receipt_id TEXT PRIMARY KEY,
+                mission_id TEXT NOT NULL REFERENCES missions(mission_id) ON DELETE RESTRICT,
+                validator_id TEXT NOT NULL,
+                subject_payload_hash TEXT NOT NULL,
+                evidence_digest TEXT NOT NULL,
+                accepted INTEGER NOT NULL CHECK(accepted IN (0,1)),
+                created_at_ms INTEGER NOT NULL
+            );
+
             CREATE TABLE IF NOT EXISTS results (
                 result_id TEXT PRIMARY KEY,
                 mission_id TEXT NOT NULL REFERENCES missions(mission_id) ON DELETE RESTRICT,
@@ -277,6 +303,18 @@ impl DurableStore {
             BEFORE DELETE ON mission_snapshots
             BEGIN
                 SELECT RAISE(ABORT, 'mission_snapshots_append_only');
+            END;
+
+            CREATE TRIGGER IF NOT EXISTS validation_receipts_no_update
+            BEFORE UPDATE ON validation_receipts
+            BEGIN
+                SELECT RAISE(ABORT, 'validation_receipts_append_only');
+            END;
+
+            CREATE TRIGGER IF NOT EXISTS validation_receipts_no_delete
+            BEFORE DELETE ON validation_receipts
+            BEGIN
+                SELECT RAISE(ABORT, 'validation_receipts_append_only');
             END;
             ",
         )?;
@@ -620,6 +658,111 @@ impl DurableStore {
         Ok(to)
     }
 
+    pub fn record_validation_receipt(&self, receipt: &ValidationReceipt) -> DurableResult<()> {
+        if receipt.receipt_id.trim().is_empty()
+            || receipt.mission_id.trim().is_empty()
+            || receipt.validator_id.trim().is_empty()
+            || receipt.subject_payload_hash.trim().is_empty()
+            || receipt.evidence_digest.len() != 64
+            || !receipt
+                .evidence_digest
+                .chars()
+                .all(|character| character.is_ascii_hexdigit())
+        {
+            return Err(DurableError::InvalidInput(
+                "invalid validation receipt".to_string(),
+            ));
+        }
+
+        let mut conn = self.connect()?;
+        let tx = conn.transaction_with_behavior(TransactionBehavior::Immediate)?;
+        let current = mission_from_tx(&tx, &receipt.mission_id)?;
+        if current.state != MissionState::Validating {
+            return Err(DurableError::InvalidInput(
+                "validation receipt requires validating mission".to_string(),
+            ));
+        }
+
+        let lease_owner = tx
+            .query_row(
+                "SELECT owner FROM leases WHERE mission_id=?1",
+                params![receipt.mission_id],
+                |row| row.get::<_, String>(0),
+            )
+            .optional()?
+            .ok_or_else(|| DurableError::LeaseMissing(receipt.mission_id.clone()))?;
+
+        if lease_owner == receipt.validator_id {
+            return Err(DurableError::InvalidInput(
+                "validator must be independent from lease owner".to_string(),
+            ));
+        }
+
+        let existing = tx
+            .query_row(
+                "SELECT mission_id,validator_id,subject_payload_hash,evidence_digest,accepted
+                 FROM validation_receipts WHERE receipt_id=?1",
+                params![receipt.receipt_id],
+                |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, String>(2)?,
+                        row.get::<_, String>(3)?,
+                        row.get::<_, i64>(4)?,
+                    ))
+                },
+            )
+            .optional()?;
+
+        if let Some(existing) = existing {
+            let same = existing.0 == receipt.mission_id
+                && existing.1 == receipt.validator_id
+                && existing.2 == receipt.subject_payload_hash
+                && existing.3 == receipt.evidence_digest
+                && existing.4 == i64::from(receipt.accepted);
+            if same {
+                tx.commit()?;
+                return Ok(());
+            }
+            return Err(DurableError::ValidationReceiptConflict(
+                receipt.receipt_id.clone(),
+            ));
+        }
+
+        tx.execute(
+            "INSERT INTO validation_receipts(
+                receipt_id,mission_id,validator_id,subject_payload_hash,
+                evidence_digest,accepted,created_at_ms
+             ) VALUES (?1,?2,?3,?4,?5,?6,?7)",
+            params![
+                receipt.receipt_id,
+                receipt.mission_id,
+                receipt.validator_id,
+                receipt.subject_payload_hash,
+                receipt.evidence_digest,
+                i64::from(receipt.accepted),
+                receipt.created_at_ms
+            ],
+        )?;
+        append_event_tx(
+            &tx,
+            &receipt.mission_id,
+            "validation_receipt_recorded",
+            &format!(
+                "receipt_id={};validator_id={};payload_hash={};evidence_digest={};accepted={}",
+                receipt.receipt_id,
+                receipt.validator_id,
+                receipt.subject_payload_hash,
+                receipt.evidence_digest,
+                receipt.accepted
+            ),
+            receipt.created_at_ms,
+        )?;
+        tx.commit()?;
+        Ok(())
+    }
+
     pub fn submit_result(&self, submission: &ResultSubmission) -> DurableResult<ResultDisposition> {
         let result_id = submission.result_id.as_str();
         let mission_id = submission.mission_id.as_str();
@@ -729,6 +872,78 @@ impl DurableStore {
             return Ok(ResultDisposition::Rejected { reason });
         }
 
+        let validation_receipt_id = if target == MissionState::Succeeded {
+            let Some(receipt_id) = submission.validation_receipt_id.as_deref() else {
+                let reason = "validation_receipt_required".to_string();
+                tx.execute(
+                    "INSERT INTO results(
+                        result_id,mission_id,worker_id,fencing_token,target_state,
+                        payload_hash,accepted,reason,created_at_ms
+                     ) VALUES (?1,?2,?3,?4,?5,?6,0,?7,?8)",
+                    params![
+                        result_id,
+                        mission_id,
+                        worker_id,
+                        token,
+                        state_to_str(target),
+                        payload_hash,
+                        reason,
+                        now_ms
+                    ],
+                )?;
+                append_event_tx(
+                    &tx,
+                    mission_id,
+                    "result_rejected",
+                    &format!("result_id={result_id};reason={reason};token={token}"),
+                    now_ms,
+                )?;
+                tx.commit()?;
+                return Ok(ResultDisposition::Rejected { reason });
+            };
+
+            let accepted = tx.query_row(
+                "SELECT COUNT(*) FROM validation_receipts
+                     WHERE receipt_id=?1
+                       AND mission_id=?2
+                       AND subject_payload_hash=?3
+                       AND accepted=1",
+                params![receipt_id, mission_id, payload_hash],
+                |row| row.get::<_, i64>(0),
+            )?;
+            if accepted != 1 {
+                let reason = "validation_receipt_invalid".to_string();
+                tx.execute(
+                    "INSERT INTO results(
+                        result_id,mission_id,worker_id,fencing_token,target_state,
+                        payload_hash,accepted,reason,created_at_ms
+                     ) VALUES (?1,?2,?3,?4,?5,?6,0,?7,?8)",
+                    params![
+                        result_id,
+                        mission_id,
+                        worker_id,
+                        token,
+                        state_to_str(target),
+                        payload_hash,
+                        reason,
+                        now_ms
+                    ],
+                )?;
+                append_event_tx(
+                    &tx,
+                    mission_id,
+                    "result_rejected",
+                    &format!("result_id={result_id};reason={reason};token={token}"),
+                    now_ms,
+                )?;
+                tx.commit()?;
+                return Ok(ResultDisposition::Rejected { reason });
+            }
+            Some(receipt_id)
+        } else {
+            None
+        };
+
         tx.execute(
             "UPDATE missions
              SET state=?2, terminal_result_hash=?3, updated_at_ms=?4
@@ -755,9 +970,10 @@ impl DurableStore {
             mission_id,
             "result_accepted",
             &format!(
-                "result_id={result_id};from={};to={};payload_hash={payload_hash};token={token}",
+                "result_id={result_id};from={};to={};payload_hash={payload_hash};token={token};validation_receipt_id={}",
                 state_to_str(current.state),
-                state_to_str(target)
+                state_to_str(target),
+                validation_receipt_id.unwrap_or("")
             ),
             now_ms,
         )?;
@@ -1352,6 +1568,7 @@ mod tests {
                 fencing_token: first.fencing_token,
                 target_state: MissionState::Failed,
                 payload_hash: "hash-stale".to_string(),
+                validation_receipt_id: None,
                 created_at_ms: 303,
             })
             .unwrap();
@@ -1383,6 +1600,18 @@ mod tests {
             )
             .unwrap();
         let before = store.event_count("m1").unwrap();
+        store
+            .record_validation_receipt(&ValidationReceipt {
+                receipt_id: "receipt-1".to_string(),
+                mission_id: "m1".to_string(),
+                validator_id: "validator-independent".to_string(),
+                subject_payload_hash: "result-hash".to_string(),
+                evidence_digest: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    .to_string(),
+                accepted: true,
+                created_at_ms: 290,
+            })
+            .unwrap();
         assert_eq!(
             store
                 .submit_result(&ResultSubmission {
@@ -1392,6 +1621,7 @@ mod tests {
                     fencing_token: grant.fencing_token,
                     target_state: MissionState::Succeeded,
                     payload_hash: "result-hash".to_string(),
+                    validation_receipt_id: Some("receipt-1".to_string()),
                     created_at_ms: 300,
                 })
                 .unwrap(),
@@ -1408,6 +1638,7 @@ mod tests {
                     fencing_token: grant.fencing_token,
                     target_state: MissionState::Succeeded,
                     payload_hash: "result-hash".to_string(),
+                    validation_receipt_id: Some("receipt-1".to_string()),
                     created_at_ms: 301,
                 })
                 .unwrap(),
@@ -1483,6 +1714,157 @@ mod tests {
         };
         assert_eq!(second.state, MissionState::Validating);
         assert!(second.fencing_token > first.fencing_token);
+        cleanup(&path);
+    }
+
+    #[test]
+    fn succeeded_requires_independent_matching_validation_receipt() {
+        let path = db_path("validation-receipt");
+        let store = DurableStore::open(&path).unwrap();
+        store.create_mission(&spec("m1"), 100).unwrap();
+        let grant = match store.claim_next("executor-a", 200, 1_000).unwrap() {
+            ClaimOutcome::Claimed(grant) => grant,
+            ClaimOutcome::Empty => panic!("expected lease"),
+        };
+        store
+            .transition_with_lease(
+                "m1",
+                "executor-a",
+                grant.fencing_token,
+                MissionState::Validating,
+                220,
+            )
+            .unwrap();
+
+        let rejected = store
+            .submit_result(&ResultSubmission {
+                result_id: "no-receipt".to_string(),
+                mission_id: "m1".to_string(),
+                worker_id: "executor-a".to_string(),
+                fencing_token: grant.fencing_token,
+                target_state: MissionState::Succeeded,
+                payload_hash: "hash-ok".to_string(),
+                validation_receipt_id: None,
+                created_at_ms: 230,
+            })
+            .unwrap();
+        assert_eq!(
+            rejected,
+            ResultDisposition::Rejected {
+                reason: "validation_receipt_required".to_string()
+            }
+        );
+
+        assert!(
+            store
+                .record_validation_receipt(&ValidationReceipt {
+                    receipt_id: "same-owner".to_string(),
+                    mission_id: "m1".to_string(),
+                    validator_id: "executor-a".to_string(),
+                    subject_payload_hash: "hash-ok".to_string(),
+                    evidence_digest:
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                            .to_string(),
+                    accepted: true,
+                    created_at_ms: 240,
+                })
+                .is_err()
+        );
+
+        store
+            .record_validation_receipt(&ValidationReceipt {
+                receipt_id: "independent".to_string(),
+                mission_id: "m1".to_string(),
+                validator_id: "validator-b".to_string(),
+                subject_payload_hash: "hash-ok".to_string(),
+                evidence_digest: "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+                    .to_string(),
+                accepted: true,
+                created_at_ms: 250,
+            })
+            .unwrap();
+
+        let wrong_hash = store
+            .submit_result(&ResultSubmission {
+                result_id: "wrong-hash".to_string(),
+                mission_id: "m1".to_string(),
+                worker_id: "executor-a".to_string(),
+                fencing_token: grant.fencing_token,
+                target_state: MissionState::Succeeded,
+                payload_hash: "hash-other".to_string(),
+                validation_receipt_id: Some("independent".to_string()),
+                created_at_ms: 260,
+            })
+            .unwrap();
+        assert_eq!(
+            wrong_hash,
+            ResultDisposition::Rejected {
+                reason: "validation_receipt_invalid".to_string()
+            }
+        );
+
+        let accepted = store
+            .submit_result(&ResultSubmission {
+                result_id: "accepted".to_string(),
+                mission_id: "m1".to_string(),
+                worker_id: "executor-a".to_string(),
+                fencing_token: grant.fencing_token,
+                target_state: MissionState::Succeeded,
+                payload_hash: "hash-ok".to_string(),
+                validation_receipt_id: Some("independent".to_string()),
+                created_at_ms: 270,
+            })
+            .unwrap();
+        assert_eq!(accepted, ResultDisposition::Accepted);
+        assert_eq!(store.mission("m1").unwrap().state, MissionState::Succeeded);
+        cleanup(&path);
+    }
+
+    #[test]
+    fn validation_receipts_are_append_only() {
+        let path = db_path("validation-append-only");
+        let store = DurableStore::open(&path).unwrap();
+        store.create_mission(&spec("m1"), 100).unwrap();
+        let grant = match store.claim_next("executor-a", 200, 1_000).unwrap() {
+            ClaimOutcome::Claimed(grant) => grant,
+            ClaimOutcome::Empty => panic!("expected lease"),
+        };
+        store
+            .transition_with_lease(
+                "m1",
+                "executor-a",
+                grant.fencing_token,
+                MissionState::Validating,
+                220,
+            )
+            .unwrap();
+        store
+            .record_validation_receipt(&ValidationReceipt {
+                receipt_id: "receipt-append".to_string(),
+                mission_id: "m1".to_string(),
+                validator_id: "validator-b".to_string(),
+                subject_payload_hash: "hash-ok".to_string(),
+                evidence_digest: "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+                    .to_string(),
+                accepted: true,
+                created_at_ms: 230,
+            })
+            .unwrap();
+        let conn = store.connect().unwrap();
+        assert!(
+            conn.execute(
+                "UPDATE validation_receipts SET accepted=0 WHERE receipt_id='receipt-append'",
+                [],
+            )
+            .is_err()
+        );
+        assert!(
+            conn.execute(
+                "DELETE FROM validation_receipts WHERE receipt_id='receipt-append'",
+                [],
+            )
+            .is_err()
+        );
         cleanup(&path);
     }
 

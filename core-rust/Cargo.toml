@@ -1,6 +1,6 @@
 [package]
 name = "tma-core"
-version = "0.5.0"
+version = "0.5.2"
 edition = "2024"
 description = "Deterministic state, SLA and invariant core for Timed Mission Agent."
 

@@ -1,0 +1,23 @@
+[package]
+name = "tma-validation"
+version = "0.5.2"
+edition = "2024"
+description = "Independent validation and bounded recovery for Timed Mission Agent."
+
+[lib]
+name = "tma_validation"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tma-validation"
+path = "src/main.rs"
+
+[[bin]]
+name = "tma-validation-recovery-probe"
+path = "src/bin/recovery_probe.rs"
+
+[dependencies]
+sha2 = "0.10.9"
+tma-foundation = { path = "../foundation-rust" }
+tma-core = { path = "../core-rust" }
+tma-planner = { path = "../planner-rust" }

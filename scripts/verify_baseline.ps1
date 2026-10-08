@@ -2,6 +2,10 @@ $ErrorActionPreference = 'Continue'
 $root = Split-Path -Parent $PSScriptRoot
 if (Test-Path -LiteralPath 'C:\msys64\ucrt64\bin\gcc.exe') { $env:PATH = 'C:\msys64\ucrt64\bin;' + $env:PATH }
 $fail = 0
+$previousPycachePrefix = $env:PYTHONPYCACHEPREFIX
+$baselinePycacheDir = Join-Path 'C:\ProgramData\SentinelX\workspace	ma-pycache' ("baseline-" + $PID)
+New-Item -ItemType Directory -Force -Path $baselinePycacheDir | Out-Null
+$env:PYTHONPYCACHEPREFIX = $baselinePycacheDir
 
 function Run-Step {
     param(
@@ -70,6 +74,7 @@ Run-Step 'F03_VISION_OCR' { & (Join-Path $root 'scripts\verify_f03.ps1') }
 Run-Step 'F04_BROWSER_COMPUTER' { & (Join-Path $root 'scripts\verify_f04.ps1') }
 Run-Step 'F05_DURABLE_RUNTIME' { & (Join-Path $root 'scripts\verify_f05.ps1') }
 Run-Step 'F06_PLANNER_ROUTER_KNOWLEDGE' { & (Join-Path $root 'scripts\verify_f06.ps1') }
+Run-Step 'F07_INDEPENDENT_VALIDATION_RECOVERY' { & (Join-Path $root 'scripts\verify_f07.ps1') }
 
 Push-Location (Join-Path $root 'availability-elixir')
 Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }
@@ -91,4 +96,10 @@ if ($fail -eq 0) {
 } else {
     Write-Output 'BASELINE_VERIFY=FAIL'
 }
+if ($null -eq $previousPycachePrefix) {
+    Remove-Item Env:PYTHONPYCACHEPREFIX -ErrorAction SilentlyContinue
+} else {
+    $env:PYTHONPYCACHEPREFIX = $previousPycachePrefix
+}
+Remove-Item -LiteralPath $baselinePycacheDir -Recurse -Force -ErrorAction SilentlyContinue
 exit $fail

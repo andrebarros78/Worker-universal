@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "receipt_id": "validation-abc",
+  "mission_id": "mission-1",
+  "validator_id": "validator-b",
+  "subject_payload_hash": "payload-hash",
+  "evidence_digest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "accepted": true,
+  "created_at_ms": 110
+}

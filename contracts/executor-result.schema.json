@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/executor-result.schema.json",
+  "title": "Executor Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mission_id",
+    "result_id",
+    "worker_id",
+    "capability_id",
+    "capability_kind",
+    "payload_hash",
+    "declared_success",
+    "required_evidence",
+    "evidence",
+    "completed_at_ms"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "result_id": {"type": "string", "minLength": 1},
+    "worker_id": {"type": "string", "minLength": 1},
+    "capability_id": {"type": "string", "minLength": 1},
+    "capability_kind": {
+      "enum": ["native","api","mcp","browser","computer","vision","document","research","llm","storage","notification"]
+    },
+    "payload_hash": {"type": "string", "minLength": 1},
+    "declared_success": {"type": "boolean"},
+    "required_evidence": {"type": "array", "items": {"type": "string"}},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind","sha256","bytes"],
+        "properties": {
+          "kind": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+          "bytes": {"type": "integer", "minimum": 1},
+          "confidence_bps": {"type": ["integer","null"], "minimum": 0, "maximum": 10000}
+        },
+        "additionalProperties": false
+      }
+    },
+    "confidence_bps": {"type": ["integer","null"], "minimum": 0, "maximum": 10000},
+    "completed_at_ms": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": false
+}

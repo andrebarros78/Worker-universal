@@ -10,20 +10,20 @@
     "proof": "docs/PROOF_POLYGLOT_V0_2.md"
   },
   "last_closed_phase": {
-    "id": "F06",
-    "name": "PLANNER_ROUTER_KNOWLEDGE",
-    "proof": "docs/PROOF_F06_PLANNER_ROUTER_KNOWLEDGE.md",
-    "release_tag": "v0.5.1-planner-router-knowledge"
-  },
-  "current_phase": {
     "id": "F07",
     "name": "INDEPENDENT_VALIDATION_RECOVERY",
-    "status": "IN_PROGRESS",
-    "objective": "Independently validate mission outcomes, classify failures, and execute bounded evidence-driven recovery without trusting executor success as proof."
+    "proof": "docs/PROOF_F07_VALIDATION_RECOVERY.md",
+    "release_tag": "v0.5.2-independent-validation-recovery"
   },
-  "next_phase": {
+  "current_phase": {
     "id": "F08",
     "name": "TRAINING_BENCHMARK_QUALIFICATION_GATES",
+    "status": "IN_PROGRESS",
+    "objective": "Use the production execution engine in controlled timed training and benchmark flows, enforce registration lifecycle gates, score capabilities, and prevent unqualified adapters from reaching production readiness."
+  },
+  "next_phase": {
+    "id": "F09",
+    "name": "PLATFORM_ADAPTERS",
     "status": "PLANNED"
   },
   "terminal_phase": {
@@ -46,5 +46,5 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-08T07:00:27-03:00"
+  "updated_at": "2026-10-08T08:03:15-03:00"
 }

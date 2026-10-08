@@ -178,6 +178,9 @@ Implementation/proof mapping: `docs/F06_IMPLEMENTATION_MATRIX.md`.
 ### Objective
 Never confuse "executor returned success" with real success.
 
+Complete requirement authority: `docs/F07_VALIDATION_RECOVERY_MAP.md` (VAL-001..VAL-055).
+Implementation/proof mapping: `docs/F07_IMPLEMENTATION_MATRIX.md`.
+
 ### Deliverables
 - Validation Agent;
 - proof strategies per capability;

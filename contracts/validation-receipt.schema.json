@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/validation-receipt.schema.json",
+  "title": "Independent Validation Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "mission_id",
+    "validator_id",
+    "subject_payload_hash",
+    "evidence_digest",
+    "accepted",
+    "created_at_ms"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "receipt_id": {"type": "string", "minLength": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "validator_id": {"type": "string", "minLength": 1},
+    "subject_payload_hash": {"type": "string", "minLength": 1},
+    "evidence_digest": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+    "accepted": {"type": "boolean"},
+    "created_at_ms": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": false
+}

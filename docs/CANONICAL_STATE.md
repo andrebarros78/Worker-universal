@@ -96,32 +96,55 @@ Remediation discovered during F05:
 - proof: docs\PROOF_F06_PLANNER_ROUTER_KNOWLEDGE.md;
 - release tag: v0.5.1-planner-router-knowledge.
 
+### F07 — INDEPENDENT_VALIDATION_RECOVERY — CLOSED
+- map: VAL-001..VAL-055;
+- tma-validation Rust crate;
+- executor result treated as untrusted input;
+- independent evidence completeness/hash/confidence/deadline validation;
+- proof strategies for Document/Vision, Browser, Research, Computer and deterministic capabilities;
+- 16/16 F02 ErrorClass recovery matrix;
+- bounded retry/deadline/replay-safe/side-effect policy;
+- recovery checkpoints persisted through F05;
+- real process kill/restart recovery PASS with fencing advancement;
+- R05-01: Succeeded now requires independent append-only validation receipt;
+- tma-core 0.5.2 current suite: 21 PASS;
+- 19 focused F07 tests PASS;
+- F07_CONTRACTS_OK;
+- F07_MAP_OK 55/55;
+- F07_PURITY_OK;
+- F07_VERIFY=PASS;
+- full BASELINE_VERIFY=PASS;
+- proof: docs\PROOF_F07_VALIDATION_RECOVERY.md;
+- release tag: v0.5.2-independent-validation-recovery.
+
 ## Current phase
 
-F07 — INDEPENDENT_VALIDATION_RECOVERY — IN_PROGRESS
+F08 — TRAINING_BENCHMARK_QUALIFICATION_GATES — IN_PROGRESS
 
 Objective:
-Never confuse executor-returned success with independently proven success.
+Use the production execution engine in controlled training/benchmark flows before release.
 
 Required deliverables:
-- Validation Agent;
-- proof strategies per capability;
-- failure taxonomy;
-- Recovery Agent;
-- bounded retry budget;
-- recovery state transitions;
-- evidence completeness gate.
+- timed mission harness;
+- training mode;
+- benchmark mode;
+- PRE-REGISTRATION state machine;
+- POST-REGISTRATION state machine;
+- promotion criteria;
+- capability scorecards.
 
 Exit gate:
-- inject every named failure class;
-- prove expected recovery or terminal state;
-- independent validation cannot be bypassed by executor success;
+- reproducible timed runs;
+- accuracy/latency thresholds;
+- synthetic registration lifecycle;
+- recovery before PRODUCTION_READY;
+- no adapter skips promotion gate;
 - full baseline PASS;
-- F07 proof + clean commit + state advancement.
+- F08 proof + clean commit + state advancement.
 
 ## Next phase
 
-F08 — TRAINING_BENCHMARK_QUALIFICATION_GATES — PLANNED
+F09 — PLATFORM_ADAPTERS — PLANNED
 
 ## Terminal phase
 

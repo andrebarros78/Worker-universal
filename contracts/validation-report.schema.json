@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://timed-mission-agent.local/contracts/validation-report.schema.json",
+  "title": "Validation Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mission_id",
+    "result_id",
+    "validator_id",
+    "executor_id",
+    "payload_hash",
+    "evidence_digest",
+    "complete",
+    "missing",
+    "invalid",
+    "outcome",
+    "fingerprint"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mission_id": {"type": "string", "minLength": 1},
+    "result_id": {"type": "string", "minLength": 1},
+    "validator_id": {"type": "string", "minLength": 1},
+    "executor_id": {"type": "string", "minLength": 1},
+    "payload_hash": {"type": "string", "minLength": 1},
+    "evidence_digest": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+    "complete": {"type": "boolean"},
+    "missing": {"type": "array", "items": {"type": "string"}},
+    "invalid": {"type": "array", "items": {"type": "string"}},
+    "outcome": {
+      "enum": [
+        "proven",
+        "network_failure",
+        "session_expired",
+        "element_moved",
+        "layout_changed",
+        "rate_limit",
+        "worker_crash",
+        "model_timeout",
+        "low_confidence",
+        "validation_failed",
+        "duplicate_risk",
+        "deadline_risk",
+        "external_dependency",
+        "permission_denied",
+        "contract_mismatch",
+        "cancelled",
+        "unknown"
+      ]
+    },
+    "fingerprint": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "error_class": "worker_crash",
+  "disposition": "retry",
+  "action": "restart_worker",
+  "attempt": 0,
+  "fingerprint": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

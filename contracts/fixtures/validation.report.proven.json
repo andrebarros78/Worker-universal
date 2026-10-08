@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "mission_id": "mission-1",
+  "result_id": "result-1",
+  "validator_id": "validator-b",
+  "executor_id": "executor-a",
+  "payload_hash": "payload-hash",
+  "evidence_digest": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "complete": true,
+  "missing": [],
+  "invalid": [],
+  "outcome": "proven",
+  "fingerprint": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+}

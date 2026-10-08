@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "mission_id": "mission-1",
+  "result_id": "result-1",
+  "worker_id": "executor-a",
+  "capability_id": "browser.playwright",
+  "capability_kind": "browser",
+  "payload_hash": "payload-hash",
+  "declared_success": true,
+  "required_evidence": ["dom","screenshot"],
+  "evidence": [
+    {"kind":"dom","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","bytes":100,"confidence_bps":null},
+    {"kind":"screenshot","sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","bytes":200,"confidence_bps":null}
+  ],
+  "confidence_bps": null,
+  "completed_at_ms": 100
+}
