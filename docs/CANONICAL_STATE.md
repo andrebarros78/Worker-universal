@@ -117,6 +117,12 @@ Remediation discovered during F05:
 - proof: docs\PROOF_F07_VALIDATION_RECOVERY.md;
 - release tag: v0.5.2-independent-validation-recovery.
 
+Post-release remediation:
+- R07-01 concurrent verification isolation is CLOSED;
+- F03 canonical corpus gate is serialized;
+- F03/F05/F07 temporary verification state is invocation-isolated;
+- proof: docs\REMEDIATION_F07R1_CONCURRENT_VERIFICATION_ISOLATION.md.
+
 ## Current phase
 
 F08 — TRAINING_BENCHMARK_QUALIFICATION_GATES — IN_PROGRESS
