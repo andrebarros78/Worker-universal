@@ -122,6 +122,9 @@ Implementation/proof mapping: `docs/F04_IMPLEMENTATION_MATRIX.md`.
 ### Objective
 Make mission state survive process and machine faults.
 
+Complete requirement authority: `docs/F05_DURABLE_RUNTIME_MAP.md` (DUR-001..DUR-045).
+Implementation/proof mapping: `docs/F05_IMPLEMENTATION_MATRIX.md`.
+
 ### Deliverables
 - persistent mission repository;
 - durable queue;

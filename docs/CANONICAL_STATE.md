@@ -34,71 +34,74 @@ state\EXECUTION_STATE.json
 
 ### F03 — VISION_OCR_DOCUMENT_INTELLIGENCE — CLOSED
 - map: VIS-001..VIS-035;
-- local Tesseract provider with provider-neutral document authority;
-- canonical benchmark: 16 cases / 112 fields / 100% accuracy and validation;
 - proof: docs\PROOF_F03_VISION_OCR.md;
 - tag: v0.3.0-vision-ocr.
 
-Remediation discovered later:
-- R03-01 regression benchmark output is now non-mutating;
-- proof: docs\REMEDIATION_F03R1_REGRESSION_GATE_HYGIENE.md.
-
 ### F04 — ISOLATED_BROWSER_COMPUTER_WORKER — CLOSED
 - map: BRC-001..BRC-040;
-- Playwright 1.64.0;
-- Playwright-managed Chromium;
-- headless mode enforced;
-- per-mission BrowserContext isolation;
-- semantic DOM locator strategy;
-- form fill/click/upload/download;
-- DOM/screenshot/download/error evidence;
-- storageState session persistence;
-- real browser crash recovery;
-- replay-safe retry policy;
-- unsafe action no-replay;
-- moved-element recovery;
-- deadline containment;
-- download path containment;
-- Computer Worker dedicated-session/VM contract;
-- isolation proof: browser session 0, Explorer session 1, sharedOperatorSession=false;
-- 14 focused Node tests PASS;
-- F04_VERIFY=PASS;
-- full baseline required and proven at closure;
 - proof: docs\PROOF_F04_BROWSER_COMPUTER.md;
-- release tag: v0.4.0-isolated-browser-worker.
+- tag: v0.4.0-isolated-browser-worker.
+
+Remediation discovered during F05:
+- R04-01 deadline-limited timeout classification corrected without weakening deadlines;
+- 5 repeated legacy worker runs PASS;
+- F04_VERIFY=PASS;
+- proof: docs\REMEDIATION_F04R1_DEADLINE_CLASSIFICATION.md.
+
+### F05 — DURABLE_MISSION_RUNTIME — CLOSED
+- map: DUR-001..DUR-045;
+- canonical mission persistence is implemented in Rust;
+- SQLite uses WAL + synchronous FULL;
+- durable mission projection + queue;
+- append-only SHA-256 event chain;
+- append-only snapshots/checkpoints;
+- mission idempotency keys;
+- result idempotency;
+- leases + monotonic fencing tokens;
+- stale/wrong-owner/expired result rejection;
+- terminal queue cleanup;
+- deterministic restart reconciliation;
+- 16-way claim race yields one owner;
+- real process kill/reopen proof for planned/running/validating;
+- Running resumes Running;
+- Validating resumes Validating;
+- checkpoint survives process death;
+- fresh worker receives a newer fencing token;
+- SQLite integrity and ledger chain verified;
+- 19 Rust tests PASS;
+- F05_VERIFY=PASS;
+- full BASELINE_VERIFY=PASS;
+- proof: docs\PROOF_F05_DURABLE_RUNTIME.md;
+- release tag: v0.5.0-durable-runtime.
 
 ## Current phase
 
-F05 — DURABLE_MISSION_RUNTIME — IN_PROGRESS
+F06 — PLANNER_ROUTER_KNOWLEDGE — IN_PROGRESS
 
 Objective:
-Make mission execution survive worker/process and machine restart boundaries without losing canonical state or accepting duplicate/stale results.
+Convert a high-level mission into a bounded executable plan and choose the best available capability.
 
 Required deliverables:
-- persistent mission repository;
-- durable queue;
-- append-only event journal;
-- checkpoints/snapshots;
-- idempotency keys;
-- leases and fencing tokens;
-- worker result deduplication;
-- stale-result rejection;
-- restart reconciliation;
-- reboot-boundary recovery proof.
+- mission classifier;
+- planner interface;
+- capability requirements;
+- Router scoring;
+- deterministic fallback policy;
+- Knowledge/Research interface;
+- LLM provider abstraction;
+- local/no-LLM fallback for deterministic mission classes.
 
 Exit gate:
-- worker killed during each meaningful mission state;
-- supervisor restart;
-- simulated/reproducible machine restart boundary;
-- duplicate result injection;
-- lease expiry/race;
-- ledger consistency;
-- full baseline PASS;
-- F05 proof + clean commit + state advancement.
+- no provider lock-in;
+- API/MCP/browser selection fixtures;
+- provider outage fallback;
+- plan bounded by deadline/cost/policy;
+- deterministic task works without LLM/API;
+- F06 proof + clean commit + state advancement.
 
 ## Next phase
 
-F06 — PLANNER_ROUTER_KNOWLEDGE — PLANNED
+F07 — INDEPENDENT_VALIDATION_RECOVERY — PLANNED
 
 ## Terminal phase
 

@@ -25,7 +25,7 @@ F03 VISION_OCR_DOCUMENT_INTELLIGENCE
 - map: VIS-001..VIS-035;
 - canonical release benchmark: 16 cases / 112 fields / accuracy 1.0000 / validation 1.0000;
 - dedicated gate: F03_VERIFY=PASS;
-- tag: v0.3.0-vision-ocr.
+- tag: v0.3.0-vision-ocr;
 - R03-01 fixed regression-report mutation without reopening F03.
 
 ## Proven Browser/Computer foundation
@@ -34,23 +34,35 @@ F04 ISOLATED_BROWSER_COMPUTER_WORKER
 - map: BRC-001..BRC-040;
 - Playwright 1.64.0 + Playwright-managed Chromium;
 - 14 focused Node tests PASS;
-- form/upload/download/evidence PASS;
-- session persistence and real crash recovery PASS;
-- unsafe-step no-replay PASS;
-- layout drift PASS;
-- deadline containment PASS;
-- operator isolation: browser session 0 vs Explorer session 1;
-- Computer Worker dedicated-session contract PASS;
+- process/session isolation PASS;
 - F04_VERIFY=PASS;
-- full product gate: BASELINE_VERIFY=PASS;
-- proof: docs/PROOF_F04_BROWSER_COMPUTER.md;
 - tag: v0.4.0-isolated-browser-worker.
+- R04-01 deadline-limited timeout classification fixed; 5 repeated legacy runs + F04_VERIFY PASS.
+
+## Proven Durable Mission Runtime
+
+F05 DURABLE_MISSION_RUNTIME
+- map: DUR-001..DUR-045;
+- Rust authority + SQLite WAL/FULL;
+- append-only event hash chain;
+- durable queue, snapshots and checkpoints;
+- idempotent mission/result contracts;
+- lease ownership and monotonic fencing;
+- stale-result rejection;
+- 16-way lease race: one active owner;
+- real process-kill recovery in planned/running/validating;
+- restart/reboot reconciliation PASS;
+- 19 Rust tests PASS;
+- F05_VERIFY=PASS;
+- full product gate: BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F05_DURABLE_RUNTIME.md;
+- tag: v0.5.0-durable-runtime.
 
 ## Active construction lane
 
-F05 DURABLE_MISSION_RUNTIME
+F06 PLANNER_ROUTER_KNOWLEDGE
 
-No other phase is authorized as the main construction lane until F05 closes.
+No other phase is authorized as the main construction lane until F06 closes.
 
 ## Formal proof status
 

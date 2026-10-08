@@ -1,3 +1,5 @@
+pub mod durable;
+
 use std::fmt;
 use std::time::{Duration, Instant};
 

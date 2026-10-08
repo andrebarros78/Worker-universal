@@ -40,8 +40,8 @@ Do not create a parallel root. Continue from Git history and `docs/CANONICAL_STA
 
 ## Current canonical phase
 
-F04 Isolated Browser/Computer Worker is closed and proven under `docs/PROOF_F04_BROWSER_COMPUTER.md`.
+F05 Durable Mission Runtime is closed and proven under `docs/PROOF_F05_DURABLE_RUNTIME.md`.
 
-Current construction lane: `F05 DURABLE_MISSION_RUNTIME`.
+Current construction lane: `F06 PLANNER_ROUTER_KNOWLEDGE`.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

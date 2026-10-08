@@ -1,5 +1,6 @@
 $ErrorActionPreference = 'Continue'
 $root = Split-Path -Parent $PSScriptRoot
+if (Test-Path -LiteralPath 'C:\msys64\ucrt64\bin\gcc.exe') { $env:PATH = 'C:\msys64\ucrt64\bin;' + $env:PATH }
 $fail = 0
 
 function Run-Step {
@@ -25,12 +26,19 @@ $node = 'C:\Program Files\Volta\node.exe'
 $python = Join-Path $root '.venv\Scripts\python.exe'
 $mix = 'C:\Program Files\Elixir\bin\mix.bat'
 
+$previousCargoTargetDir = $env:CARGO_TARGET_DIR
+$env:CARGO_TARGET_DIR = 'C:\ProgramData\SentinelX\workspace\tma-build\core-rust'
 Push-Location (Join-Path $root 'core-rust')
 Run-Step 'RUST_FMT' { & $cargo fmt --check }
 Run-Step 'RUST_CLIPPY' { & $cargo clippy --all-targets -- -D warnings }
 Run-Step 'RUST_TEST' { & $cargo test }
-Run-Step 'RUST_SELF_TEST' { & $cargo run --quiet -- self-test }
+Run-Step 'RUST_SELF_TEST' { & $cargo run --quiet --bin tma-core -- self-test }
 Pop-Location
+if ($null -eq $previousCargoTargetDir) {
+    Remove-Item Env:CARGO_TARGET_DIR -ErrorAction SilentlyContinue
+} else {
+    $env:CARGO_TARGET_DIR = $previousCargoTargetDir
+}
 
 Push-Location (Join-Path $root 'supervisor-go')
 Run-Step 'GO_FMT' {
@@ -60,6 +68,7 @@ Run-Step 'CONTINUITY_TEST' { & $python (Join-Path $root 'scripts\verify_continui
 Run-Step 'F02_FOUNDATION' { & (Join-Path $root 'scripts\verify_f02.ps1') }
 Run-Step 'F03_VISION_OCR' { & (Join-Path $root 'scripts\verify_f03.ps1') }
 Run-Step 'F04_BROWSER_COMPUTER' { & (Join-Path $root 'scripts\verify_f04.ps1') }
+Run-Step 'F05_DURABLE_RUNTIME' { & (Join-Path $root 'scripts\verify_f05.ps1') }
 
 Push-Location (Join-Path $root 'availability-elixir')
 Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }

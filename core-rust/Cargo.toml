@@ -1,6 +1,6 @@
 [package]
 name = "tma-core"
-version = "0.2.0"
+version = "0.5.0"
 edition = "2024"
 description = "Deterministic state, SLA and invariant core for Timed Mission Agent."
 
@@ -11,3 +11,11 @@ path = "src/lib.rs"
 [[bin]]
 name = "tma-core"
 path = "src/main.rs"
+
+[dependencies]
+rusqlite = { version = "0.32.1", features = ["bundled"] }
+sha2 = "0.10.9"
+
+[[bin]]
+name = "tma-durable-probe"
+path = "src/bin/durable_probe.rs"

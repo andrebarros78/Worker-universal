@@ -50,6 +50,7 @@ export class TimedBrowserWorker {
       }
 
       const remaining = mission.deadlineMs - elapsedBefore;
+      const deadlineLimitedTimeout = remaining <= step.timeoutMs;
       const timeout = Math.max(1, Math.min(step.timeoutMs, remaining));
       try {
         await Promise.race([
@@ -60,11 +61,15 @@ export class TimedBrowserWorker {
         ]);
       } catch (error) {
         const elapsed = nowMs() - started;
+        const message = error instanceof Error ? error.message : String(error);
+        const deadlineTriggered =
+          elapsed >= mission.deadlineMs ||
+          (message === "step_timeout" && deadlineLimitedTimeout);
         return {
-          status: elapsed >= mission.deadlineMs ? "deadline_exceeded" : "failed",
+          status: deadlineTriggered ? "deadline_exceeded" : "failed",
           completedSteps: completed,
           elapsedMs: elapsed,
-          error: error instanceof Error ? error.message : String(error),
+          error: message,
         };
       }
 

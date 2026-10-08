@@ -9,8 +9,8 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | F02 | v0.2.2 | Capability foundation | CLOSED | F01 | PROOF_F02_CAPABILITY_FOUNDATION.md |
 | F03 | v0.3.0 | Vision/OCR & document intelligence | CLOSED | F02 | PROOF_F03_VISION_OCR.md |
 | F04 | v0.4.0 | Isolated Browser/Computer Worker | CLOSED | F02 | PROOF_F04_BROWSER_COMPUTER.md |
-| F05 | v0.5.x | Durable mission runtime | IN_PROGRESS | F02,F04 | queue + idempotency + leases/fencing + reboot/restart recovery |
-| F06 | v0.5.x | Planner/Router/Knowledge | PLANNED | F02,F03,F04,F05 | capability routing + deterministic fallbacks + research contracts |
+| F05 | v0.5.0 | Durable mission runtime | CLOSED | F02,F04 | PROOF_F05_DURABLE_RUNTIME.md |
+| F06 | v0.5.x | Planner/Router/Knowledge | IN_PROGRESS | F02,F03,F04,F05 | capability routing + deterministic fallbacks + research contracts |
 | F07 | v0.5.x | Independent Validation + Recovery | PLANNED | F03,F04,F05,F06 | validator proofs + failure taxonomy + recovery matrix |
 | F08 | v0.6.x | Training/Benchmark/Qualification gates | PLANNED | F03,F04,F07 | timed benchmark harness + pre/post registration state machines |
 | F09 | v0.6.x | Platform adapters | PLANNED | F08 | generic adapters + initial platform adapters with isolation tests |
@@ -24,6 +24,7 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | ID | References | Status | Evidence |
 |---|---|---|---|
 | R03-01 | F03 | CLOSED | REMEDIATION_F03R1_REGRESSION_GATE_HYGIENE.md |
+| R04-01 | F04 | CLOSED | REMEDIATION_F04R1_DEADLINE_CLASSIFICATION.md |
 
 Remediation records do not reopen a closed phase and do not create a second active construction lane.
 
@@ -31,6 +32,6 @@ Remediation records do not reopen a closed phase and do not create a second acti
 
 Exactly one phase is active:
 
-F05 — DURABLE_MISSION_RUNTIME — IN_PROGRESS
+F06 — PLANNER_ROUTER_KNOWLEDGE — IN_PROGRESS
 
-Do not begin F06 as the main lane until F05 exit gate is proven and F05 is CLOSED.
+Do not begin F07 as the main lane until F06 exit gate is proven and F06 is CLOSED.
