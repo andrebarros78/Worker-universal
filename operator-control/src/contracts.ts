@@ -46,6 +46,36 @@ export type OperatorDecision = {
   nonce:string;
   signatureHex:string;
 };
+
+export type ObjectiveAuthorization = {
+  schemaVersion:1;
+  objectiveId:string;
+  operatorId:string;
+  objectiveTextHash:string;
+  targetOrigin:string;
+  authorizedActions:Action[];
+  authorizedScopes:string[];
+  sessionMode:"public_http"|"operator_current_browser_session";
+  training:boolean;
+  productiveHomologation:boolean;
+  issuedAtMs:number;
+  expiresAtMs:number;
+};
+export type ObjectiveReceipt = {
+  schemaVersion:1;
+  objectiveId:string;
+  operatorId:string;
+  missionId:string;
+  adapterId:string;
+  action:Action;
+  authorizedOrigin:string;
+  approvedScopes:string[];
+  sessionMode:ObjectiveAuthorization["sessionMode"];
+  auditStatus:"operator_objective_authorized";
+  productiveHomologation:false;
+  technicalStatus:DecisionProposal["technicalStatus"];
+};
+
 export type AuthorizationReceipt = {
   schemaVersion:1;
   proposalFingerprint:string;
