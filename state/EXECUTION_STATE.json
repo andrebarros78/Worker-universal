@@ -42,7 +42,7 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-09T12:16:52-03:00",
+  "updated_at": "2026-10-09T12:52:58-03:00",
   "f13_candidate": {
     "version": "v1.0.0-rc.1",
     "engineering_proof": "docs/PROOF_F13_ENGINEERING_CANDIDATE.md",
@@ -65,6 +65,37 @@
       "gate": "F13_ROLE_BOUNDARIES=PASS",
       "operator_authenticated_ui": "NOT_IMPLEMENTED",
       "external_dispatch_authorization": "NOT_PROVEN"
+    }
+  },
+  "f13_separation": {
+    "engineering_candidate": {
+      "status": "COMPLETE",
+      "version": "v1.0.0-rc.1",
+      "commit": "cfc82b948e3f655a96f51efb0da1d9c114786916",
+      "latest_role_separation_commit": "4f8dfae5bf44d4280030667464b8816f7c45af46",
+      "evidence": [
+        "F13_ENGINEERING_VERIFY=PASS",
+        "BASELINE_VERIFY=PASS",
+        "F13_ROLE_BOUNDARIES=PASS"
+      ],
+      "proofs": [
+        "docs/PROOF_F13_ENGINEERING_CANDIDATE.md",
+        "docs/PROOF_F13_ROLE_SEPARATION.md"
+      ]
+    },
+    "productive_homologation": {
+      "status": "PENDING",
+      "blocking_gate": "F13_FINAL_ACCEPTANCE=BLOCKED",
+      "mission_proven": false,
+      "required_evidence": [
+        "operator_authorization",
+        "qualified_productive_adapter",
+        "real_mission_receipt",
+        "independent_validation",
+        "verified_economic_result",
+        "productive_recovery_proof"
+      ],
+      "proof": null
     }
   }
 }
