@@ -10,20 +10,20 @@
     "proof": "docs/PROOF_POLYGLOT_V0_2.md"
   },
   "last_closed_phase": {
-    "id": "F10",
-    "name": "ECONOMIC_CONTROLLER_SCHEDULER",
-    "proof": "docs/PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md",
-    "release_tag": "v0.7.0-economic-controller"
-  },
-  "current_phase": {
     "id": "F11",
     "name": "AVAILABILITY_CONCURRENCY_HARDENING",
-    "status": "IN_PROGRESS",
-    "objective": "Prove concurrency 1/4/8/16, availability, fault injection, restart/recovery, anti-duplication and state integrity across the durable mission runtime."
+    "proof": "docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md",
+    "release_tag": "v0.8.0-availability-concurrency"
   },
-  "next_phase": {
+  "current_phase": {
     "id": "F12",
     "name": "SECURITY_FORMAL_OPERATIONAL_HARDENING",
+    "status": "IN_PROGRESS",
+    "objective": "Harden security, formal verification, auditability, secret isolation and operational recovery while preserving governed runtime invariants."
+  },
+  "next_phase": {
+    "id": "F13",
+    "name": "PERSONAL_PRODUCTION_V1_0",
     "status": "PLANNED"
   },
   "terminal_phase": {
@@ -46,5 +46,5 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-08T18:19:58-03:00"
+  "updated_at": "2026-10-08T21:14:20-03:00"
 }

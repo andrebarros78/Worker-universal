@@ -1,0 +1,16 @@
+[package]
+name = "tma-availability"
+version = "0.8.0"
+edition = "2024"
+description = "Concurrency, recovery and availability qualification for TMA."
+
+[lib]
+name = "tma_availability"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tma-availability"
+path = "src/main.rs"
+
+[dependencies]
+tma-core = { path = "../core-rust" }

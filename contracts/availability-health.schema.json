@@ -1,0 +1,16 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object",
+ "required":["status","ready","workers","queue_depth","inflight","completed","failed","restarts","last_progress_ago_ms"],
+ "properties":{
+ "status":{"enum":["healthy","unavailable","watchdog_stalled"]},
+ "ready":{"type":"boolean"},
+ "workers":{"type":"integer","minimum":1,"maximum":16},
+ "queue_depth":{"type":"integer","minimum":0},
+ "inflight":{"type":"integer","minimum":0},
+ "completed":{"type":"integer","minimum":0},
+ "failed":{"type":"integer","minimum":0},
+ "restarts":{"type":"integer","minimum":0},
+ "last_progress_ago_ms":{"type":"integer","minimum":0}
+ },"additionalProperties":false
+}

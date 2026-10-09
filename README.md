@@ -44,6 +44,8 @@ F09 initial governed simulation-only platform adapters are closed and proven in 
 
 F10 Economic Controller + Scheduler is CLOSED; proof: docs/PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md. Monetary observations are not externally bank-reconciled.
 
-Current construction lane: F11 AVAILABILITY_CONCURRENCY_HARDENING.
+F11 Availability + Concurrency Hardening is CLOSED and proven under docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md.
+
+Current construction lane: F12 SECURITY_FORMAL_OPERATIONAL_HARDENING.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

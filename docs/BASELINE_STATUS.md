@@ -172,11 +172,31 @@ F10 ECONOMIC_CONTROLLER_SCHEDULER
 - proof: docs/PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md;
 - no actual paid work or bank reconciliation claimed.
 
-## Active construction lane
+## Proven Availability and Concurrency Hardening
 
 F11 AVAILABILITY_CONCURRENCY_HARDENING
+- availability-rust v0.8.0; real F05 durable SQLite claim + fencing + checkpoint;
+- 1/4/8/16 concurrency PASS with no duplicate or lost claim;
+- Go bounded pool, backpressure, idempotent task admission and resource locks;
+- Go watchdog and HTTP loopback healthz/readyz PASS;
+- Go race detector PASS;
+- actual process kill/restart: planned/running/validating PASS;
+- 30-second gate soak: 608 missions;
+- extended 120-second soak: 100 cycles, 3200 missions, 4 tiers, integrity OK;
+- F11_CONTRACTS_OK fixtures=2;
+- F11_MAP_OK requirements=56 mapped=56;
+- F11_PURITY_OK;
+- F11_VERIFY=PASS;
+- full BASELINE_VERIFY=PASS;
+- runbook: docs/F11_OPERATIONAL_RUNBOOK.md;
+- proof: docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md;
+- no 24/7 guarantee or multi-day soak claimed.
 
-No other phase is authorized as the main construction lane until F11 closes.
+## Active construction lane
+
+F12 SECURITY_FORMAL_OPERATIONAL_HARDENING
+
+No other phase is authorized as the main construction lane until F12 closes.
 
 ## Formal proof status
 

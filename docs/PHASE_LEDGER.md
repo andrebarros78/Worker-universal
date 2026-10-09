@@ -15,8 +15,8 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | F08 | v0.6.0 | Training/Benchmark/Qualification gates | CLOSED | F03,F04,F07 | PROOF_F08_TRAINING_BENCHMARK_QUALIFICATION.md |
 | F09 | v0.6.1 | Platform adapters | CLOSED | F08 | PROOF_F09_PLATFORM_ADAPTERS.md (simulation-only initial adapters) |
 | F10 | v0.7.0 | Economic Controller + Scheduler | CLOSED | F05,F09 | PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md |
-| F11 | v0.8.x | Availability + concurrency hardening | IN_PROGRESS | F05,F07,F10 | 1→4→8→16 concurrency + chaos/soak/restart tests |
-| F12 | v0.9.x | Security/formal/operational hardening | PLANNED | F11 | secret isolation + audit + GNATprove when available + recovery drills |
+| F11 | v0.8.0 | Availability + concurrency hardening | CLOSED | F05,F07,F10 | PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md |
+| F12 | v0.9.x | Security/formal/operational hardening | IN_PROGRESS | F11 | secret isolation + audit + GNATprove when available + recovery drills |
 | F13 | v1.0.0 | Personal production release | PLANNED | F12 | end-to-end production proof + clean runbook + MISSION_PROVEN |
 
 ## Remediation records
@@ -35,6 +35,6 @@ Remediation records do not reopen a closed phase and do not create a second acti
 
 Exactly one phase is active:
 
-F11 — AVAILABILITY_CONCURRENCY_HARDENING — IN_PROGRESS
+F12 — SECURITY_FORMAL_OPERATIONAL_HARDENING — IN_PROGRESS
 
-Do not begin F12 as the main lane until F11 exit gate is proven and F11 is CLOSED.
+Do not begin F13 as the main lane until F12 exit gate is proven and F12 is CLOSED.

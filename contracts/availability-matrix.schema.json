@@ -1,0 +1,16 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "type":"object",
+ "required":["workers","missions","unique_claims","duplicates","lost","errors","ledger_events","elapsed_ms","integrity"],
+ "properties":{
+ "workers":{"enum":[1,4,8,16]},
+ "missions":{"type":"integer","minimum":1},
+ "unique_claims":{"type":"integer","minimum":0},
+ "duplicates":{"type":"integer","minimum":0},
+ "lost":{"type":"integer","minimum":0},
+ "errors":{"type":"array","items":{"type":"string"}},
+ "ledger_events":{"type":"integer","minimum":0},
+ "elapsed_ms":{"type":"integer","minimum":0},
+ "integrity":{"enum":["ok"]}
+ },"additionalProperties":false
+}

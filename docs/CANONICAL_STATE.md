@@ -170,29 +170,45 @@ Post-release remediation:
 - proof: docs/PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md;
 - tag: v0.7.0-economic-controller.
 
+### F11 — AVAILABILITY_CONCURRENCY_HARDENING — CLOSED
+- availability-rust v0.8.0; F05 durable queue, fenced leases, checkpoints and ledger integrity;
+- concurrency matrix 1 → 4 → 8 → 16 PASS; no duplicate/lost claims;
+- Go supervised pool, resource locks, backpressure and duplicate ID rejection;
+- watchdog, loopback HTTP healthz/readyz and race detector PASS;
+- actual kill/restart planned/running/validating PASS;
+- 120-second soak, 100 cycles, 3200 synthetic missions, integrity OK;
+- F11_CONTRACTS_OK fixtures=2;
+- F11_MAP_OK requirements=56 mapped=56;
+- F11_PURITY_OK;
+- F11_VERIFY=PASS;
+- BASELINE_VERIFY=PASS;
+- proof: docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md;
+- release: v0.8.0-availability-concurrency.
+
 ## Current phase
 
-F11 — AVAILABILITY_CONCURRENCY_HARDENING — IN_PROGRESS
+F12 — SECURITY_FORMAL_OPERATIONAL_HARDENING — IN_PROGRESS
 
 Objective:
-Prove availability, restart/recovery and safe scaling through 1 → 4 → 8 → 16 concurrent workers.
+Harden security, formal verification when available, auditability, secret isolation and operational recovery without loosening existing controls.
 
 Required deliverables:
-- controlled concurrency matrix and availability benchmark;
-- deadlock, lost update, duplicate dispatch and corruption checks;
-- restart/crash/soak and recovery drills;
-- resource contention and queue recovery;
-- no mutation of prior-phase proofs.
+- restricted secret handling and least privilege;
+- cross-project isolation;
+- audit and proof integrity checks;
+- SPARK/GNATprove diagnostics and formal proof when the toolchain is actually available;
+- coordinated fault-recovery and deployment runbook;
+- preserved F05/F07/F08/F10/F11 governance.
 
 Exit gate:
-- concurrency tiers 1/4/8/16 PASS;
-- failure injection and recovery PASS;
-- independent ledger checks PASS;
-- full baseline and F11 proof, release, state advancement.
+- security and operational test suite PASS;
+- secret isolation and recovery drills PASS;
+- proof of any formal-tool limitations;
+- full regression and F12 release proof.
 
 ## Next phase
 
-F12 — SECURITY_FORMAL_OPERATIONAL_HARDENING — PLANNED
+F13 — PERSONAL_PRODUCTION_V1_0 — PLANNED
 
 ## Terminal phase
 

@@ -277,6 +277,10 @@ No bank or productive platform integration is claimed by this phase.
 ### Objective
 Prove continuous operation under concurrent and failure conditions.
 
+Detailed requirements: docs/F11_AVAILABILITY_CONCURRENCY_MAP.md (AVC-001..AVC-056).
+Implementation: docs/F11_IMPLEMENTATION_MATRIX.md. Operations: docs/F11_OPERATIONAL_RUNBOOK.md.
+A 120-second soak does not establish multi-day availability.
+
 ### Deliverables
 - watchdogs;
 - health endpoints;
