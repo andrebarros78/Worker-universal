@@ -16,7 +16,7 @@ The detailed authority is docs/EXECUTION_PHASES.md. This file is the compact rel
 | F09 | v0.6.1 | Platform adapters — CLOSED (simulation-only initial adapters) |
 | F10 | v0.7.0 | Economic Controller + Scheduler — CLOSED |
 | F11 | v0.8.0 | Availability/concurrency hardening — CLOSED |
-| F12 | v0.9.x | Security/formal/operational hardening — IN_PROGRESS |
-| F13 | v1.0.0 | Personal production release — MISSION_PROVEN |
+| F12 | v0.9.0 | Security/formal/operational hardening — CLOSED (formal proof unavailable) |
+| F13 | v1.0.0 | Personal production release — IN_PROGRESS (MISSION_PROVEN pending) |
 
 Progress is phase-gated. Code presence does not equal phase completion.

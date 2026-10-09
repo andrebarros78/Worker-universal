@@ -46,6 +46,8 @@ F10 Economic Controller + Scheduler is CLOSED; proof: docs/PROOF_F10_ECONOMIC_CO
 
 F11 Availability + Concurrency Hardening is CLOSED and proven under docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md.
 
-Current construction lane: F12 SECURITY_FORMAL_OPERATIONAL_HARDENING.
+F12 Security/Formal/Operational Hardening is closed under docs/PROOF_F12_SECURITY_FORMAL_OPERATIONAL_HARDENING.md; GNATprove formal proof remains unavailable.
+
+Current construction lane: F13 PERSONAL_PRODUCTION_V1_0 — terminal acceptance still pending.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.

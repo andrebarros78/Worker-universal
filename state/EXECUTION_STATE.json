@@ -10,22 +10,18 @@
     "proof": "docs/PROOF_POLYGLOT_V0_2.md"
   },
   "last_closed_phase": {
-    "id": "F11",
-    "name": "AVAILABILITY_CONCURRENCY_HARDENING",
-    "proof": "docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md",
-    "release_tag": "v0.8.0-availability-concurrency"
-  },
-  "current_phase": {
     "id": "F12",
     "name": "SECURITY_FORMAL_OPERATIONAL_HARDENING",
-    "status": "IN_PROGRESS",
-    "objective": "Harden security, formal verification, auditability, secret isolation and operational recovery while preserving governed runtime invariants."
+    "proof": "docs/PROOF_F12_SECURITY_FORMAL_OPERATIONAL_HARDENING.md",
+    "release_tag": "v0.9.0-security-operational"
   },
-  "next_phase": {
+  "current_phase": {
     "id": "F13",
     "name": "PERSONAL_PRODUCTION_V1_0",
-    "status": "PLANNED"
+    "status": "IN_PROGRESS",
+    "objective": "Demonstrate an authorized personal-production mission end-to-end with independent validation, recovery, economics, evidence and final release acceptance before MISSION_PROVEN."
   },
+  "next_phase": null,
   "terminal_phase": {
     "id": "F13",
     "name": "PERSONAL_PRODUCTION_V1_0",
@@ -46,5 +42,5 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-08T21:14:20-03:00"
+  "updated_at": "2026-10-08T22:04:50-03:00"
 }

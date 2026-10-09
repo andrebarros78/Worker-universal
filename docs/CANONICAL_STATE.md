@@ -185,30 +185,47 @@ Post-release remediation:
 - proof: docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md;
 - release: v0.8.0-availability-concurrency.
 
+### F12 — SECURITY_FORMAL_OPERATIONAL_HARDENING — CLOSED
+- security-runtime Python stdlib, fail-closed secret reference validation;
+- append-only audit with SHA256 tamper detection and 16 concurrent test writers;
+- Windows ACL-private SQLite backup and HMAC-SHA256-signed manifest;
+- authenticated restore into separate directory; no overwrite;
+- Rust F05 restored ledger, snapshots, queue and integrity verified;
+- dependency/build inventory signed for 13 manifests;
+- 32 security Python tests PASS;
+- F12_CONTRACTS_OK fixtures=4;
+- F12_MAP_OK requirements=60 mapped=60;
+- F12_PURITY_OK;
+- F12_VERIFY=PASS and BASELINE_VERIFY=PASS;
+- GNATprove not installed: SPARK source ready but formal proof NOT established;
+- blocked combined kill/backup drill not counted as proof;
+- runbook: docs/F12_SECURITY_RUNBOOK.md;
+- proof: docs/PROOF_F12_SECURITY_FORMAL_OPERATIONAL_HARDENING.md;
+- release: v0.9.0-security-operational.
+
 ## Current phase
 
-F12 — SECURITY_FORMAL_OPERATIONAL_HARDENING — IN_PROGRESS
+F13 — PERSONAL_PRODUCTION_V1_0 — IN_PROGRESS
 
 Objective:
-Harden security, formal verification when available, auditability, secret isolation and operational recovery without loosening existing controls.
+Deliver and independently accept the personal production release through real authorized mission flows.
 
 Required deliverables:
-- restricted secret handling and least privilege;
-- cross-project isolation;
-- audit and proof integrity checks;
-- SPARK/GNATprove diagnostics and formal proof when the toolchain is actually available;
-- coordinated fault-recovery and deployment runbook;
-- preserved F05/F07/F08/F10/F11 governance.
+- end-to-end supported mission with verified eligibility/authorization;
+- full F02/F04/F05/F07/F08/F10/F11/F12 integration and rollback;
+- platform credentials managed outside repository;
+- mission deadline, evidence, independent validation, recovery and economics;
+- production runbook, one-command release qualification and final proof.
 
 Exit gate:
-- security and operational test suite PASS;
-- secret isolation and recovery drills PASS;
-- proof of any formal-tool limitations;
-- full regression and F12 release proof.
+- independent F13 end-to-end production evidence;
+- no simulated platform result masquerades as revenue or Succeeded;
+- full baseline and release hardening PASS;
+- only then establish the terminal MISSION_PROVEN label.
 
 ## Next phase
 
-F13 — PERSONAL_PRODUCTION_V1_0 — PLANNED
+NONE — F13 is the terminal construction phase. MISSION_PROVEN remains pending.
 
 ## Terminal phase
 

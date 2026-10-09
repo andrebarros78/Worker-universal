@@ -301,6 +301,9 @@ A 120-second soak does not establish multi-day availability.
 ### Objective
 Reduce operational fragility before production release.
 
+Complete map: docs/F12_SECURITY_FORMAL_OPERATIONAL_MAP.md (SEC-001..SEC-060).
+Runbook: docs/F12_SECURITY_RUNBOOK.md. GNATprove missing: no formal proof claimed.
+
 ### Deliverables
 - secret isolation;
 - least-privilege worker identities where practical;

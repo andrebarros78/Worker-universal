@@ -192,11 +192,31 @@ F11 AVAILABILITY_CONCURRENCY_HARDENING
 - proof: docs/PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md;
 - no 24/7 guarantee or multi-day soak claimed.
 
-## Active construction lane
+## Proven Security and Operational Recovery
 
 F12 SECURITY_FORMAL_OPERATIONAL_HARDENING
+- security-runtime with non-resolving secret references and audit metadata controls;
+- append-only hash-chained SQLite audit with 16 concurrent writers;
+- private Windows NTFS directory ACL on test backups;
+- online SQLite backup with HMAC-SHA256 and streaming SHA256 checks;
+- fail-closed restore into a new directory; overwrite, corruption and traversal denied;
+- security-rust F05 journal verifier;
+- 32 focused Python tests PASS;
+- 4-worker/64-mission actual F05 persisted SQLite offline backup/restore PASS;
+- signed inventory of 13 dependency and build manifests;
+- F12_CONTRACTS_OK fixtures=4;
+- F12_MAP_OK requirements=60 mapped=60;
+- F12_PURITY_OK;
+- F12_VERIFY=PASS and BASELINE_VERIFY=PASS;
+- GNATPROVE_NOT_INSTALLED; formal proof NOT claimed;
+- combined kill-and-backup drill blocked before execution, NOT claimed;
+- docs/F12_SECURITY_RUNBOOK.md and docs/PROOF_F12_SECURITY_FORMAL_OPERATIONAL_HARDENING.md.
 
-No other phase is authorized as the main construction lane until F12 closes.
+## Active construction lane
+
+F13 PERSONAL_PRODUCTION_V1_0 — terminal acceptance IN_PROGRESS.
+
+MISSION_PROVEN is not yet an achieved state.
 
 ## Formal proof status
 

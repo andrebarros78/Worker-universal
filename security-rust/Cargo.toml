@@ -1,0 +1,12 @@
+[package]
+name = "tma-security-verify"
+version = "0.9.0"
+edition = "2024"
+description = "Independent restored F05 SQLite integrity and journal verifier."
+
+[[bin]]
+name = "tma-security-verify"
+path = "src/main.rs"
+
+[dependencies]
+tma-core = { path = "../core-rust" }

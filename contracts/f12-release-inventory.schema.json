@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["schema","type","files"],"properties":{"schema":{"const":1},"type":{"const":"dependency-inventory"},"files":{"type":"object"}},"additionalProperties":false}

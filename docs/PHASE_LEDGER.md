@@ -16,8 +16,8 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | F09 | v0.6.1 | Platform adapters | CLOSED | F08 | PROOF_F09_PLATFORM_ADAPTERS.md (simulation-only initial adapters) |
 | F10 | v0.7.0 | Economic Controller + Scheduler | CLOSED | F05,F09 | PROOF_F10_ECONOMIC_CONTROLLER_SCHEDULER.md |
 | F11 | v0.8.0 | Availability + concurrency hardening | CLOSED | F05,F07,F10 | PROOF_F11_AVAILABILITY_CONCURRENCY_HARDENING.md |
-| F12 | v0.9.x | Security/formal/operational hardening | IN_PROGRESS | F11 | secret isolation + audit + GNATprove when available + recovery drills |
-| F13 | v1.0.0 | Personal production release | PLANNED | F12 | end-to-end production proof + clean runbook + MISSION_PROVEN |
+| F12 | v0.9.0 | Security/formal/operational hardening | CLOSED | F11 | PROOF_F12_SECURITY_FORMAL_OPERATIONAL_HARDENING.md — GNATprove unavailable |
+| F13 | v1.0.0 | Personal production release | IN_PROGRESS | F12 | end-to-end production proof required; MISSION_PROVEN not yet achieved |
 
 ## Remediation records
 
@@ -35,6 +35,6 @@ Remediation records do not reopen a closed phase and do not create a second acti
 
 Exactly one phase is active:
 
-F12 — SECURITY_FORMAL_OPERATIONAL_HARDENING — IN_PROGRESS
+F13 — PERSONAL_PRODUCTION_V1_0 — IN_PROGRESS
 
-Do not begin F13 as the main lane until F12 exit gate is proven and F12 is CLOSED.
+Terminal construction lane. Do not declare MISSION_PROVEN until F13 end-to-end production acceptance tests pass.
