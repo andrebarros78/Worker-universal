@@ -247,3 +247,5 @@ NONE — F13 is the terminal construction phase. MISSION_PROVEN remains pending.
 F13 — PERSONAL_PRODUCTION_V1_0
 
 Terminal label: MISSION_PROVEN.
+
+F13 operator role segregation (active remediation): technical capability inventory, engineering backlog, DecisionProposal without approval, separate cryptographic OperatorDecision verifier with scope/expiry/non-replay nonce. This is not productive authorization; see docs/PROOF_F13_ROLE_SEPARATION.md.

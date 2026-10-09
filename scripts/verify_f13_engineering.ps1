@@ -37,6 +37,7 @@ try {
    & $py (Join-Path $r 'scripts\verify_f13_duplicate.py') $bin $target (Join-Path $r 'examples\f13_local_input.txt')
   }
  }
+ Run-F13 'OPERATOR_ROLE_SEPARATION' { & (Join-Path $r 'scripts\verify_f13_operator_control.ps1') }
  Run-F13 'GATE_MAP' { & $py (Join-Path $r 'scripts\verify_f13_map.py') }
  Run-F13 'SAFETY_POLICY' { & $py (Join-Path $r 'scripts\verify_f13_purity.py') }
  if($fail -eq 0){
