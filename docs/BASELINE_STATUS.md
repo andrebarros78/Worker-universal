@@ -222,3 +222,16 @@ MISSION_PROVEN is not yet an achieved state.
 
 Ada/SPARK sources exist, but GNATprove is not installed. Status remains:
 SOURCE_READY_NOT_PROVEN.
+
+## F13 Engineering Candidate (not a closed production release)
+
+- production-rust v1.0.0-rc.1 implemented as an isolated orchestration crate.
+- 3 focused Rust integration tests PASS; no LLM/provider SDK required.
+- Actual local fixture transformed, artifact persisted and hash checked independently.
+- Crash/recovery simulated by F05 lease expiration, durable reopen, fencing token 1→2.
+- F07 independent validation and F05 terminal state PASS.
+- F10 synthetic cost=1 cent; revenue and payment=0.
+- F13_ENGINEERING_VERIFY=PASS; full BASELINE_VERIFY=PASS.
+- F13_FINAL_ACCEPTANCE=BLOCKED due F09 external adapter policy / missing productive qualifications.
+- MISSION_PROVEN remains pending. No final v1.0.0 release is claimed.
+- Docs: PROOF_F13_ENGINEERING_CANDIDATE.md and F13_OPERATIONAL_RUNBOOK.md.

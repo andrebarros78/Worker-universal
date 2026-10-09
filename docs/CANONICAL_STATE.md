@@ -223,6 +223,21 @@ Exit gate:
 - full baseline and release hardening PASS;
 - only then establish the terminal MISSION_PROVEN label.
 
+### F13 — Engineering candidate v1.0.0-rc.1 (not release closure)
+- production-rust orchestrates a local bounded deterministic mission across F05, F06, F07 and F10;
+- F05 durable checkpoint, simulated lease expiry, fencing/reconcile and stale result rejection pass;
+- F07 distinct validator, SHA256 evidence and F05 authenticated success receipt pass;
+- result.txt is physically persisted and independently verified;
+- financial record is explicitly synthetic cost only; no revenue or payment is claimed;
+- F02 Experimental capability / F09 non-simulation adapter remain rejected;
+- 3 Rust focused integration tests PASS, fmt/clippy -D warnings PASS;
+- 11 F05 events, 6 snapshots, independent receipt and two fencing generations verified;
+- F13_ENGINEERING_VERIFY=PASS and full BASELINE_VERIFY=PASS;
+- F13_FINAL_ACCEPTANCE=BLOCKED; MISSION_PROVEN=PENDING;
+- proof: docs/PROOF_F13_ENGINEERING_CANDIDATE.md;
+- acceptance blockers: docs/F13_ACCEPTANCE_BLOCKERS.md;
+- runbook: docs/F13_OPERATIONAL_RUNBOOK.md.
+
 ## Next phase
 
 NONE — F13 is the terminal construction phase. MISSION_PROVEN remains pending.

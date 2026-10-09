@@ -42,5 +42,22 @@
     "external_capabilities_optional": true,
     "evidence_required_for_close": true
   },
-  "updated_at": "2026-10-08T22:04:50-03:00"
+  "updated_at": "2026-10-09T11:12:05-03:00",
+  "f13_candidate": {
+    "version": "v1.0.0-rc.1",
+    "engineering_proof": "docs/PROOF_F13_ENGINEERING_CANDIDATE.md",
+    "engineering_gate": "F13_ENGINEERING_VERIFY=PASS",
+    "external_authorization": "BLOCKED",
+    "production_acceptance": "NOT_PROVEN",
+    "mission_proven": false,
+    "missing": [
+      "qualified_authorized_external_adapter",
+      "real_mission_receipt",
+      "verified_economic_result",
+      "productive_recovery_proof"
+    ],
+    "release_tag": "v1.0.0-rc1-f13-engineering",
+    "baseline": "BASELINE_VERIFY=PASS",
+    "separate_acceptance_gate": "F13_FINAL_ACCEPTANCE=BLOCKED"
+  }
 }

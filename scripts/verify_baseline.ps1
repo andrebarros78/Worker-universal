@@ -82,6 +82,7 @@ Run-Step 'F09_PLATFORM_ADAPTERS' { & (Join-Path $root 'scripts\verify_f09.ps1') 
 Run-Step 'F10_ECONOMIC_CONTROLLER_SCHEDULER' { & (Join-Path $root 'scripts\verify_f10.ps1') }
 Run-Step 'F11_AVAILABILITY_CONCURRENCY_HARDENING' { & (Join-Path $root 'scripts\verify_f11.ps1') }
 Run-Step 'F12_SECURITY_FORMAL_OPERATIONAL_HARDENING' { & (Join-Path $root 'scripts\verify_f12.ps1') }
+Run-Step 'F13_ENGINEERING_CANDIDATE' { & (Join-Path $root 'scripts\verify_f13_engineering.ps1') }
 
 Push-Location (Join-Path $root 'availability-elixir')
 Run-Step 'ELIXIR_FORMAT' { & $mix format --check-formatted }

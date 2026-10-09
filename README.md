@@ -51,3 +51,5 @@ F12 Security/Formal/Operational Hardening is closed under docs/PROOF_F12_SECURIT
 Current construction lane: F13 PERSONAL_PRODUCTION_V1_0 — terminal acceptance still pending.
 
 Always confirm the live pointer in `state/EXECUTION_STATE.json`.
+
+F13 technical candidate: production-rust v1.0.0-rc.1, engineering-only. Gate: scripts/verify_f13_engineering.ps1. Full F13 acceptance remains IN_PROGRESS; external F09 adapter mode and revenue proof are blocked. See docs/F13_OPERATIONAL_RUNBOOK.md and docs/F13_ACCEPTANCE_BLOCKERS.md.

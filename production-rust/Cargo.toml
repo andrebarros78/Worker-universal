@@ -1,0 +1,20 @@
+[package]
+name = "tma-production"
+version = "1.0.0-rc.1"
+edition = "2024"
+
+[lib]
+name = "tma_production"
+path = "src/lib.rs"
+
+[dependencies]
+tma-core = { path = "../core-rust" }
+tma-foundation = { path = "../foundation-rust" }
+tma-planner = { path = "../planner-rust" }
+tma-validation = { path = "../validation-rust" }
+tma-economic = { path = "../economic-rust" }
+sha2 = "0.10.9"
+
+[[bin]]
+name = "tma-production"
+path = "src/main.rs"
