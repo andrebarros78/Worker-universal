@@ -6,7 +6,10 @@
   "scripts": {
     "test": "node --test test/worker.test.ts test/browser_worker.test.ts test/computer_contract.test.ts",
     "self-test": "node src/worker.ts self-test",
-    "isolation-probe": "node scripts/isolation_probe.ts"
+    "isolation-probe": "node scripts/isolation_probe.ts",
+    "prepare:browser": "node src/portable_bridge_cli.ts prepare",
+    "status:browser": "node src/portable_bridge_cli.ts status",
+    "test:f14": "cd .. && node --test web-worker/test/portable_browser_bridge.test.ts web-worker/test/edge_extension_reader.test.ts web-worker/test/edge_extension_browser.test.ts web-worker/test/course_mission.test.ts web-worker/test/course_mission_exit_contract.test.ts web-worker/test/course_memory_multi.test.ts"
   },
   "dependencies": {
     "playwright": "1.64.0"

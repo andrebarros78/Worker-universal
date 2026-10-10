@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "TMA HomeOcta Read-Only Bridge",
+  "version": "0.1.0",
+  "description": "Origin-restricted background course reading for the Worker-universal. No CDP or profile access.",
+  "permissions": [
+    "alarms",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.homeocta.com/*",
+    "http://127.0.0.1:18764/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.homeocta.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

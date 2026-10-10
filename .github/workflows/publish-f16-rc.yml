@@ -1,0 +1,38 @@
+name: Publish F16 source prerelease
+on:
+  push:
+    branches:
+      - release/f16-portable-rc-20261010
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.repository == 'andrebarros78/Worker-universal'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate release scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f docs/RELEASE_F16_RC.md
+          test -f web-worker/src/portable_browser_bridge.ts
+          test -f START_TMA.cmd
+          test -f README_PORTABLE.md
+          grep -q 'MISSION_PROVEN=false' docs/RELEASE_F16_RC.md
+      - name: Create source-only prerelease and tag
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: v1.0.0-rc.2-f16-portable
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Tag/release already exists; leaving it immutable"
+            exit 0
+          fi
+          gh release create "$TAG" \
+            --target "${{ github.sha }}" \
+            --title "TIMED-MISSION-AGENT F16 — Portable Engineering RC" \
+            --notes-file docs/RELEASE_F16_RC.md \
+            --prerelease

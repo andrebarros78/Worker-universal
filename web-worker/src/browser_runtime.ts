@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { basename, dirname, join } from "node:path";
+import { basename, dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import type { Browser, BrowserContext, BrowserServer, Page } from "playwright";
 
@@ -48,6 +49,8 @@ export type BrowserRuntimeOptions = {
   headless?: boolean;
   recoveryBudget?: number;
   viewport?: { width: number; height: number };
+  /** Explicit isolated Chromium binary, never the operator\u0027s live profile. */
+  executablePath?: string;
   beforeStep?: (
     step: BrowserStep,
     attempt: number,
@@ -109,6 +112,8 @@ export class BrowserRuntime {
       headless: true,
       recoveryBudget: options.recoveryBudget ?? 1,
       viewport: options.viewport ?? { width: 1280, height: 800 },
+      executablePath: options.executablePath ?? process.env.TMA_BROWSER_EXECUTABLE_PATH ??
+        (()=>{const packaged=resolve(dirname(fileURLToPath(import.meta.url)),"..","runtime","chromium-win-x64","chrome.exe");return existsSync(packaged)?packaged:undefined;})(),
       beforeStep: options.beforeStep,
     };
   }
@@ -173,6 +178,19 @@ export class BrowserRuntime {
     await evidence.initialize();
     const started = nowMs();
     const completed: string[] = [];
+    // A declared mandatory wait is a deterministic lower bound. Reject missions
+    // that cannot possibly meet the SLA before starting an expensive browser.
+    // This is a runtime invariant, not an adjustment to the benchmark proof.
+    const minimumRequiredWaitMs = mission.steps.reduce((total,step)=>
+      total+(step.kind==="wait"?Math.max(0,step.waitMs):0),0);
+    if(minimumRequiredWaitMs >= mission.deadlineMs){
+      const manifest=await evidence.writeManifest();
+      return {
+        status:"deadline_exceeded",completedSteps:[],elapsedMs:nowMs()-started,
+        recoveryCount:0,sessionRestored:false,browserPids:[],evidence:evidence.all(),
+        evidenceManifest:manifest,error:"mission_minimum_duration_exceeds_deadline"
+      };
+    }
     let status: BrowserWorkerStatus = "succeeded";
     let finalError: string | undefined;
 
@@ -260,7 +278,12 @@ export class BrowserRuntime {
   }
 
   private async launch(): Promise<void> {
-    this.server = await chromium.launchServer({ headless: this.options.headless });
+    if(this.options.executablePath && !existsSync(this.options.executablePath))
+      throw new Error("configured_chromium_executable_missing");
+    this.server = await chromium.launchServer({
+      headless: this.options.headless,
+      ...(this.options.executablePath ? {executablePath:this.options.executablePath}:{}),
+    });
     const pid = this.server.process()?.pid;
     if (pid) this.pids.push(pid);
     this.browser = await chromium.connect(this.server.wsEndpoint());

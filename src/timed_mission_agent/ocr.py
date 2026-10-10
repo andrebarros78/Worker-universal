@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import io
+import os
 import shutil
 import subprocess
 import tempfile
@@ -59,6 +60,10 @@ class TesseractOCRProvider:
 
     @classmethod
     def _resolve_executable(cls) -> Path:
+        # Portable distribution: locate OCR by product root, never host drive letter.
+        bundled = Path(__file__).resolve().parents[2] / "runtime" / "tesseract-win-x64" / "tesseract.exe"
+        if bundled.is_file():
+            return bundled
         from_path = shutil.which("tesseract")
         if from_path:
             return Path(from_path)
@@ -108,6 +113,8 @@ class TesseractOCRProvider:
                 timeout=30,
                 encoding="utf-8",
                 errors="replace",
+                env={**os.environ, "TESSDATA_PREFIX": str(self.executable.parent / "tessdata")}
+                    if (self.executable.parent / "tessdata").is_dir() else None,
             )
             if completed.returncode != 0:
                 raise RuntimeError(
