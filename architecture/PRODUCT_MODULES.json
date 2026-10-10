@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "product": "TIMED-MISSION-AGENT",
+  "namingPolicy": {
+    "M": "permanent_product_module",
+    "F": "construction_history_only"
+  },
+  "moduleCount": 16,
+  "modules": [
+    {
+      "id": "M1",
+      "name": "Cérebro e Decisão",
+      "responsibility": "Propõe decisões e interpreta objetivos autorizados; não concede autorização nem assume estado de missão.",
+      "runtime": "TypeScript",
+      "paths": [
+        "operator-control/src/decision_agent.ts",
+        "operator-control/src/objective.ts"
+      ],
+      "dependsOn": [
+        "M2",
+        "M3",
+        "M4",
+        "M14"
+      ],
+      "engineeringStatus": "partial",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M2",
+      "name": "Core de Missões",
+      "responsibility": "Autoridade determinística sobre estados, prazos, transições e aceitação de resultados.",
+      "runtime": "Rust",
+      "paths": [
+        "core-rust/Cargo.toml"
+      ],
+      "dependsOn": [
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M3",
+      "name": "Capacidades e Ferramentas",
+      "responsibility": "Registra capacidades técnicas, descritores, contratos SDK e requisitos de acesso.",
+      "runtime": "Rust/TypeScript",
+      "paths": [
+        "foundation-rust/Cargo.toml",
+        "adapter-sdk"
+      ],
+      "dependsOn": [
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M4",
+      "name": "Planejamento e Roteamento",
+      "responsibility": "Constrói planos determinísticos e seleciona capacidades conforme política e orçamento.",
+      "runtime": "Rust",
+      "paths": [
+        "planner-rust/Cargo.toml"
+      ],
+      "dependsOn": [
+        "M2",
+        "M3",
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M5",
+      "name": "Execução Web e Computador",
+      "responsibility": "Executa passos isolados no navegador e coleta evidência de sessões permitidas; integra a ponte HomeOcta.",
+      "runtime": "TypeScript/Node",
+      "paths": [
+        "web-worker/src/browser_runtime.ts",
+        "web-worker/src/course_mission.ts",
+        "web-worker/extension/manifest.json"
+      ],
+      "dependsOn": [
+        "M2",
+        "M3",
+        "M11",
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M6",
+      "name": "Visão e Documentos",
+      "responsibility": "Executa OCR, processamento de imagens, extração e reconciliação de campos documentais.",
+      "runtime": "Python",
+      "paths": [
+        "src/timed_mission_agent/document_intelligence.py",
+        "src/timed_mission_agent/ocr.py"
+      ],
+      "dependsOn": [
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M7",
+      "name": "Validação e Recuperação",
+      "responsibility": "Aplica verificações independentes, evidências e regras de recuperação de resultados.",
+      "runtime": "Rust",
+      "paths": [
+        "validation-rust/Cargo.toml"
+      ],
+      "dependsOn": [
+        "M2",
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M8",
+      "name": "Memória e Evidências",
+      "responsibility": "Armazena evidências verificáveis e recupera conteúdo com proveniência; compreensão semântica ainda não comprovada.",
+      "runtime": "TypeScript/Python",
+      "paths": [
+        "web-worker/src/course_knowledge.ts",
+        "src/timed_mission_agent/ledger.py"
+      ],
+      "dependsOn": [
+        "M7",
+        "M14"
+      ],
+      "engineeringStatus": "partial",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M9",
+      "name": "Supervisão e Concorrência",
+      "responsibility": "Gerencia vida de processos, reinícios, workers e diagnóstico de saúde.",
+      "runtime": "Go",
+      "paths": [
+        "supervisor-go/go.mod"
+      ],
+      "dependsOn": [
+        "M2",
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M10",
+      "name": "Disponibilidade",
+      "responsibility": "Provê base OTP e componente de disponibilidade para serviços de longa duração.",
+      "runtime": "Elixir/Rust",
+      "paths": [
+        "availability-elixir/mix.exs",
+        "availability-rust/Cargo.toml"
+      ],
+      "dependsOn": [
+        "M9",
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M11",
+      "name": "Segurança e Invariantes",
+      "responsibility": "Define proteção operacional, verificação Rust e invariantes formais; prova completa Ada/SPARK pendente.",
+      "runtime": "Rust/Ada",
+      "paths": [
+        "security-rust/Cargo.toml",
+        "security-runtime",
+        "formal-ada"
+      ],
+      "dependsOn": [
+        "M2",
+        "M14"
+      ],
+      "engineeringStatus": "partial",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M12",
+      "name": "Controlador Econômico",
+      "responsibility": "Implementa avaliação determinística de valor, risco, custo e elegibilidade econômica.",
+      "runtime": "Rust",
+      "paths": [
+        "economic-rust/Cargo.toml"
+      ],
+      "dependsOn": [
+        "M2",
+        "M7",
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M13",
+      "name": "Adaptadores de Plataformas",
+      "responsibility": "Organiza conectores e limites de ações das plataformas; integração produtiva depende de qualificação.",
+      "runtime": "TypeScript",
+      "paths": [
+        "platform-adapters"
+      ],
+      "dependsOn": [
+        "M3",
+        "M5",
+        "M11",
+        "M14"
+      ],
+      "engineeringStatus": "partial",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M14",
+      "name": "Contratos Intermódulos",
+      "responsibility": "Mantém esquemas versionados de mensagens e validação das interfaces entre runtimes.",
+      "runtime": "JSON Schema",
+      "paths": [
+        "contracts"
+      ],
+      "dependsOn": [],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M15",
+      "name": "Qualificação e Benchmark",
+      "responsibility": "Mede qualidade, concorrência, limites de desempenho e prontidão de capacidades.",
+      "runtime": "Rust",
+      "paths": [
+        "qualification-rust/Cargo.toml",
+        "benchmarks"
+      ],
+      "dependsOn": [
+        "M7",
+        "M13",
+        "M14"
+      ],
+      "engineeringStatus": "verified_local",
+      "productiveAcceptance": "not_proven"
+    },
+    {
+      "id": "M16",
+      "name": "Gate de Produção",
+      "responsibility": "Orquestra ensaio, critérios finais de aceite e bloqueio de produção sem prova externa.",
+      "runtime": "Rust",
+      "paths": [
+        "production-rust/Cargo.toml"
+      ],
+      "dependsOn": [
+        "M2",
+        "M7",
+        "M11",
+        "M12",
+        "M15",
+        "M14"
+      ],
+      "engineeringStatus": "partial",
+      "productiveAcceptance": "not_proven"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Phase Ledger
 
+**F designates execution/construction phases, never product modules.** The stable product modules are M1–M16 in `architecture/PRODUCT_MODULES.json`. Historical construction-to-product mappings are in `docs/engineering/PHASE_MODULE_TRACEABILITY.md`. The F14/F15/F16 shorthand used in engineering receipts does not supersede this canonical phase ledger.
+
 Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 
 | ID | Release target | Phase | Status | Depends on | Exit evidence |
@@ -28,6 +30,7 @@ Status vocabulary: PLANNED | IN_PROGRESS | BLOCKED_EXTERNAL | CLOSED.
 | R05-01 | F05 | CLOSED | REMEDIATION_F05R1_VALIDATED_SUCCESS_GATE.md |
 | R02-01 | F02 | CLOSED | REMEDIATION_F02R1_SEQUENTIAL_PROMOTION_GATE.md |
 | R07-01 | F03,F05,F07 | CLOSED | REMEDIATION_F07R1_CONCURRENT_VERIFICATION_ISOLATION.md |
+| R13-01 | F13 | IN_PROGRESS | REMEDIATION_F13_OBJECTIVE_EDGE_COURSE_20261009.md — sessão autenticada e regressão integral pendentes |
 
 Remediation records do not reopen a closed phase and do not create a second active construction lane.
 

@@ -9,11 +9,21 @@ set "TMA_OTP=%TMA_ROOT%runtime\elixir-availability-win-x64\bin\tma_availability.
 set "TMA_ACTION=%~1"
 if not defined TMA_ACTION set "TMA_ACTION=prepare"
 if not exist "%TMA_NODE%" (echo TMA_NODE_RUNTIME_MISSING& exit /b 11)
+if /I "%TMA_ACTION%"=="modules" goto modules
+if /I "%TMA_ACTION%"=="module" goto module
 if /I "%TMA_ACTION%"=="prepare" goto prepare
 if /I "%TMA_ACTION%"=="verify" goto verify
 if /I "%TMA_ACTION%"=="supervisor-health" goto supervisorhealth
 echo TMA_COMMAND_UNSUPPORTED=%TMA_ACTION%
 exit /b 64
+
+:modules
+"%TMA_NODE%" "%TMA_ROOT%web-worker\src\module_catalog.ts" list
+exit /b %ERRORLEVEL%
+
+:module
+"%TMA_NODE%" "%TMA_ROOT%web-worker\src\module_catalog.ts" inspect "%~2"
+exit /b %ERRORLEVEL%
 
 :prepare
 "%TMA_NODE%" "%TMA_ROOT%web-worker\src\portable_bridge_cli.ts" prepare
@@ -24,6 +34,8 @@ echo TMA_LIVE_MISSION_PROVEN=FALSE
 exit /b 0
 
 :verify
+"%TMA_NODE%" "%TMA_ROOT%web-worker\src\module_catalog.ts" verify
+if errorlevel 1 (echo TMA_PRODUCT_MODULE_CONTRACT_FAILED& exit /b 17)
 call "%~f0" prepare
 if errorlevel 1 exit /b 4
 if not exist "%TMA_CORE%" (echo TMA_CORE_MISSING& exit /b 11)

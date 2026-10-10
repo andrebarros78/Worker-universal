@@ -1,4 +1,10 @@
-# TIMED-MISSION-AGENT — Distribuição portátil F16
+# TIMED-MISSION-AGENT — Distribuição portátil (arquitetura M)
+
+**Produto:** módulos M1–M16, definidos e versionados em `architecture/PRODUCT_MODULES.json`. **Construção:** fases F, registradas separadamente no histórico.
+
+Consultar módulos: `START_TMA.cmd modules`; inspecionar: `START_TMA.cmd module M1`. O comando `START_TMA.cmd verify` também valida contratos, dependências e presença dos módulos.
+
+**Histórico da construção:** distribuição F16.
 
 **Estado:** candidato de distribuição integrada, não release produtiva homologada.
 

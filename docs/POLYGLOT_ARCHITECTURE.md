@@ -1,5 +1,7 @@
 # Polyglot architecture baseline v0.2
 
+Product module identity is defined exclusively by **M1–M16** in `architecture/PRODUCT_MODULES.json`. Rust remains the sole mission authority (M2). Construction phase numbers **Fxx** do not designate components. See `docs/PRODUCT_ARCHITECTURE_MODULES.md`.
+
 ## Authority by component
 
 | Layer | Technology | Authority |

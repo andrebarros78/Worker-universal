@@ -4,6 +4,10 @@ Canonical root: `D:\TIMED-MISSION-AGENT`
 Product type: personal autonomous work execution system
 Baseline line: POLYGLOT_V0_2
 
+Product identity: permanent modules M1–M16 are defined in `architecture/PRODUCT_MODULES.json`.
+Construction identity: F00–F13 are phases and belong only to `docs/PHASE_LEDGER.md`.
+Engineering may change a module; an F identifier must never be a product module.
+
 ## Sovereign objective
 
 Generate dependable personal income by converting eligible automatable work into completed, validated missions with minimal operator intervention.

@@ -1,0 +1,40 @@
+name: Publish modular product architecture prerelease
+on:
+  push:
+    branches:
+      - release/tma-modular-rc3-20261010
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.repository == 'andrebarros78/Worker-universal'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify module taxonomy
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f architecture/PRODUCT_MODULES.json
+          test -f web-worker/src/module_catalog.ts
+          test -f docs/PRODUCT_ARCHITECTURE_MODULES.md
+          test -f docs/engineering/PHASE_MODULE_TRACEABILITY.md
+          test -f START_TMA.cmd
+          jq -e '.moduleCount == 16 and (.modules | length == 16) and ([.modules[].id] == ["M1","M2","M3","M4","M5","M6","M7","M8","M9","M10","M11","M12","M13","M14","M15","M16"])' architecture/PRODUCT_MODULES.json
+          grep -q 'MISSION_PROVEN=false' docs/MODULAR_PRODUCT_RELEASE_RC.md
+      - name: Publish immutable source prerelease
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: v1.0.0-rc.3-modular
+        run: |
+          set -euo pipefail
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Existing tag retained"
+            exit 0
+          fi
+          gh release create "$TAG" \
+            --target "${{ github.sha }}" \
+            --title "TIMED-MISSION-AGENT — Modular M1–M16 (RC3)" \
+            --notes-file docs/MODULAR_PRODUCT_RELEASE_RC.md \
+            --prerelease

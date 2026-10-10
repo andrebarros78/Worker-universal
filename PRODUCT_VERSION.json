@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "product": "TIMED-MISSION-AGENT",
+  "version": "1.0.0-rc.3-modular",
+  "releaseType": "engineering_release_candidate",
+  "moduleRegistry": "architecture/PRODUCT_MODULES.json",
+  "moduleCount": 16,
+  "constructionPhases": "docs/PHASE_LEDGER.md",
+  "canonicalSource": "D:\\TIMED-MISSION-AGENT",
+  "missionProven": false,
+  "portableRuntimeTested": true,
+  "liveOctaLearningProven": false,
+  "physicalSecondHostProven": false,
+  "sourceLicensesReviewed": false
+}

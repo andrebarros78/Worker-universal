@@ -9,6 +9,9 @@
     "isolation-probe": "node scripts/isolation_probe.ts",
     "prepare:browser": "node src/portable_bridge_cli.ts prepare",
     "status:browser": "node src/portable_bridge_cli.ts status",
+    "modules": "node src/module_catalog.ts list",
+    "verify:modules": "node src/module_catalog.ts verify",
+    "test:modules": "cd .. && node --test web-worker/test/module_catalog.test.ts",
     "test:f14": "cd .. && node --test web-worker/test/portable_browser_bridge.test.ts web-worker/test/edge_extension_reader.test.ts web-worker/test/edge_extension_browser.test.ts web-worker/test/course_mission.test.ts web-worker/test/course_mission_exit_contract.test.ts web-worker/test/course_memory_multi.test.ts"
   },
   "dependencies": {
